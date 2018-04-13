@@ -1,0 +1,12 @@
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.WEB.deps.json
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.WEB.runtimeconfig.json
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.WEB.runtimeconfig.dev.json
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.WEB.dll
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.WEB.pdb
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.csprojResolveAssemblyReference.cache
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.csproj.CoreCompileInputs.cache
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.AssemblyInfoInputs.cache
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.AssemblyInfo.cs
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.dll
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.pdb

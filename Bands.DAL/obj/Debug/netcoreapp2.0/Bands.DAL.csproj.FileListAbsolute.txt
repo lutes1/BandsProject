@@ -1,0 +1,9 @@
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\bin\Debug\netcoreapp2.0\Bands.DAL.deps.json
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\bin\Debug\netcoreapp2.0\Bands.DAL.dll
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\bin\Debug\netcoreapp2.0\Bands.DAL.pdb
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\obj\Debug\netcoreapp2.0\Bands.DAL.csprojResolveAssemblyReference.cache
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\obj\Debug\netcoreapp2.0\Bands.DAL.csproj.CoreCompileInputs.cache
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\obj\Debug\netcoreapp2.0\Bands.DAL.AssemblyInfoInputs.cache
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\obj\Debug\netcoreapp2.0\Bands.DAL.AssemblyInfo.cs
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\obj\Debug\netcoreapp2.0\Bands.DAL.dll
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\obj\Debug\netcoreapp2.0\Bands.DAL.pdb

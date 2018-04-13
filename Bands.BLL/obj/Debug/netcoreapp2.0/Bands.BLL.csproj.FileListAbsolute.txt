@@ -1,0 +1,9 @@
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\bin\Debug\netcoreapp2.0\Bands.BLL.deps.json
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\bin\Debug\netcoreapp2.0\Bands.BLL.dll
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\bin\Debug\netcoreapp2.0\Bands.BLL.pdb
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\obj\Debug\netcoreapp2.0\Bands.BLL.csprojResolveAssemblyReference.cache
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\obj\Debug\netcoreapp2.0\Bands.BLL.csproj.CoreCompileInputs.cache
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\obj\Debug\netcoreapp2.0\Bands.BLL.AssemblyInfoInputs.cache
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\obj\Debug\netcoreapp2.0\Bands.BLL.AssemblyInfo.cs
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\obj\Debug\netcoreapp2.0\Bands.BLL.dll
+c:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\obj\Debug\netcoreapp2.0\Bands.BLL.pdb
