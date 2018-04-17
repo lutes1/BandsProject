@@ -18,6 +18,8 @@ namespace Bands.DAL
             builder.ApplyConfiguration(new MusicianConfig());
             builder.ApplyConfiguration(new BandConfig());
             builder.ApplyConfiguration(new PictureCofig());
+            builder.ApplyConfiguration(new MusicianBandConfig());
+            builder.ApplyConfiguration(new MusicianInterestConfig());   
         }
 
         public DbSet<Musician> Musicians { get; set; }

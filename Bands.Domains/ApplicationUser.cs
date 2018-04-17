@@ -10,6 +10,8 @@ namespace Bands.Domains
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        public long PictureId { get; set; }
         public Picture Picture { get; set; }
         public Musician Musician { get; set; }
     }

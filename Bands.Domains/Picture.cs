@@ -10,10 +10,8 @@ namespace Bands.Domains
         public string Path { get; set; }
         public Guid PictureGuid { get; set; }
 
-        public long BandId { get; set; }
         public Band Band { get; set; }
 
-        public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
     }
 }

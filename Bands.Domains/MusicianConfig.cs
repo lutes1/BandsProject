@@ -9,6 +9,7 @@ namespace Bands.Domains
         {
             builder.Property(x => x.Description).HasMaxLength(1000);
             builder.Property(x => x.City).HasMaxLength(20);
+            builder.HasKey(x => x.ApplicationUserId);
         }
     }
 }

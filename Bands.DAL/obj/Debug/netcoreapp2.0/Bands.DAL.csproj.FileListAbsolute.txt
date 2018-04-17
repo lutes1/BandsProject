@@ -14,3 +14,5 @@ C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\obj
 C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\bin\Debug\netcoreapp2.0\Bands.Domains.dll
 C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\bin\Debug\netcoreapp2.0\Bands.Domains.pdb
 C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\obj\Debug\netcoreapp2.0\Bands.DAL.csprojResolveAssemblyReference.cache
+C:\Users\petru.lutenco\Documents\visual studio 2017\Projects\Bands\Bands.DAL\bin\Debug\netcoreapp2.0\Bands.DAL.runtimeconfig.json
+C:\Users\petru.lutenco\Documents\visual studio 2017\Projects\Bands\Bands.DAL\bin\Debug\netcoreapp2.0\Bands.DAL.runtimeconfig.dev.json

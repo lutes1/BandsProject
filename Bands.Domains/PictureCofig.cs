@@ -1,5 +1,4 @@
-﻿using System.Data.Entity.ModelConfiguration;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Bands.Domains
