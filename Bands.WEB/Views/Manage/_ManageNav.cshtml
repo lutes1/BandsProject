@@ -1,4 +1,5 @@
-﻿@using Bands.WEB.Views.Manage
+﻿@using Bands.Domains
+@using Bands.WEB.Views.Manage
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();

@@ -1,20 +1,14 @@
 ﻿using System.Data.Entity.ModelConfiguration;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Bands.Domains
 {
-    public class BandConfig : EntityTypeConfiguration<Band>
+    public class BandConfig : IEntityTypeConfiguration<Band>
     {
-        public BandConfig()
+        public void Configure(EntityTypeBuilder<Band> builder)
         {
-            Property(x => x.BandName).IsRequired().HasMaxLength(20);
-
-            HasRequired(x => x.Picture).WithRequiredDependent(x => x.Band);
-            HasMany(x => x.Musicians).WithMany(x => x.Bands).Map(x =>
-            {
-                x.ToTable("MusiciansBands");
-                x.MapLeftKey("BandId_FK");
-                x.MapRightKey("MusicianId_FK");
-            });
+            builder.Property(x => x.BandName).IsRequired().HasMaxLength(20);
         }
     }
 }

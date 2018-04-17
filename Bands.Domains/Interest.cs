@@ -8,6 +8,6 @@ namespace Bands.Domains
     {
         public long InterestId { get; set; }
         public string Name { get; set; }
-        public List<Musician> Musicians { set; get; }
+        public List<MusicianInterest> MusicianInterests { set; get; }
     }
 }
