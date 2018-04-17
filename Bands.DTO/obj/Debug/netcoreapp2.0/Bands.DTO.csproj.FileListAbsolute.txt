@@ -1,0 +1,9 @@
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\bin\Debug\netcoreapp2.0\Bands.DTO.deps.json
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\bin\Debug\netcoreapp2.0\Bands.DTO.dll
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\bin\Debug\netcoreapp2.0\Bands.DTO.pdb
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\obj\Debug\netcoreapp2.0\Bands.DTO.csprojResolveAssemblyReference.cache
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\obj\Debug\netcoreapp2.0\Bands.DTO.csproj.CoreCompileInputs.cache
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\obj\Debug\netcoreapp2.0\Bands.DTO.AssemblyInfoInputs.cache
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\obj\Debug\netcoreapp2.0\Bands.DTO.AssemblyInfo.cs
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\obj\Debug\netcoreapp2.0\Bands.DTO.dll
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\obj\Debug\netcoreapp2.0\Bands.DTO.pdb
