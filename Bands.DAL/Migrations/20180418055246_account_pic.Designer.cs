@@ -11,9 +11,10 @@ using System;
 namespace Bands.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180418055246_account_pic")]
+    partial class account_pic
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -226,43 +227,9 @@ namespace Bands.DAL.Migrations
                         .IsRequired()
                         .HasMaxLength(20);
 
-                    b.Property<long?>("PracticeLocationId");
-
                     b.HasKey("PictureId");
 
-                    b.HasIndex("PracticeLocationId");
-
                     b.ToTable("Picture");
-                });
-
-            modelBuilder.Entity("Bands.Domains.PracticeLocation", b =>
-                {
-                    b.Property<long>("PracticeLocationId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(1000);
-
-                    b.Property<decimal>("Latitude")
-                        .HasColumnType("numeric(18,6)");
-
-                    b.Property<decimal>("Longitude")
-                        .HasColumnType("numeric(18,6)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(20);
-
-                    b.Property<string>("OwnerFullName")
-                        .HasMaxLength(40);
-
-                    b.Property<string>("PhoneNumber")
-                        .HasMaxLength(20);
-
-                    b.HasKey("PracticeLocationId");
-
-                    b.ToTable("PracticeLocations");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -433,13 +400,6 @@ namespace Bands.DAL.Migrations
                     b.HasOne("Bands.Domains.Musician", "Musician")
                         .WithMany("Interests")
                         .HasForeignKey("MusicianApplicationUserId");
-                });
-
-            modelBuilder.Entity("Bands.Domains.Picture", b =>
-                {
-                    b.HasOne("Bands.Domains.PracticeLocation", "PracticeLocation")
-                        .WithMany("Pictures")
-                        .HasForeignKey("PracticeLocationId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

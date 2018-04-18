@@ -13,5 +13,7 @@ namespace Bands.Domains
         public Band Band { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }
+
+        public PracticeLocation PracticeLocation { get; set; }
     }
 }

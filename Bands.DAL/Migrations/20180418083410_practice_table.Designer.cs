@@ -11,9 +11,10 @@ using System;
 namespace Bands.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180418083410_practice_table")]
+    partial class practice_table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -244,11 +245,9 @@ namespace Bands.DAL.Migrations
                         .IsRequired()
                         .HasMaxLength(1000);
 
-                    b.Property<decimal>("Latitude")
-                        .HasColumnType("numeric(18,6)");
-
-                    b.Property<decimal>("Longitude")
-                        .HasColumnType("numeric(18,6)");
+                    b.Property<string>("GoolleMapsAddress")
+                        .IsRequired()
+                        .HasMaxLength(1000);
 
                     b.Property<string>("Name")
                         .IsRequired()

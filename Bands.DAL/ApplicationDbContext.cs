@@ -19,7 +19,8 @@ namespace Bands.DAL
             builder.ApplyConfiguration(new BandConfig());
             builder.ApplyConfiguration(new PictureCofig());
             builder.ApplyConfiguration(new MusicianBandConfig());
-            builder.ApplyConfiguration(new MusicianInterestConfig());   
+            builder.ApplyConfiguration(new MusicianInterestConfig());
+            builder.ApplyConfiguration(new PracticeLocationConfig());
         }
 
         public DbSet<Musician> Musicians { get; set; }
@@ -29,5 +30,6 @@ namespace Bands.DAL
         public Interest Interest { get; set; }
         public Picture Picture { get; set; }
         public MusicianType MusicianTypes { get; set; }
+        public DbSet<PracticeLocation> PracticeLocations { get; set; }
     }
 }
