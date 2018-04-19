@@ -1,4 +1,9 @@
-﻿using Bands.DAL;
+﻿using Bands.BLL;
+using Bands.BLL.Abstractions;
+using Bands.BLL.ServicesImplementations;
+using Bands.DAL;
+using Bands.DAL.Abstractions;
+using Bands.DAL.Repositories;
 using Bands.Domains;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -26,6 +31,14 @@ namespace Bands.WEB
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(DatabaseRepository<>));
+
+            services.AddScoped(typeof(IMusiciansRepository), typeof(MusiciansRepository));
+
+            services.AddScoped(typeof(IBandsRepository), typeof(BandsRepository));
+
+            services.AddScoped(typeof(IBandsServices), typeof(BandsServices));
+
+            services.AddScoped(typeof(IMusiciansServices), typeof(MusiciansServices));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()

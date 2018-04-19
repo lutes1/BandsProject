@@ -5,11 +5,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Bands.WEB.Models;
+using Bands.BLL;
+using Bands.BLL.Abstractions;
 
 namespace Bands.WEB.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IMusiciansServices _musicianServices;
+        private readonly IBandsServices _bandServices;
+
+        public HomeController(IMusiciansServices musicianServices,IBandsServices bandServices)
+        {
+            _musicianServices = musicianServices;
+            _bandServices = bandServices;
+        }
         public IActionResult Index()
         {
             return View();
@@ -21,13 +31,14 @@ namespace Bands.WEB.Controllers
 
         public IActionResult Bands()
         {
-
-            return View();
+            var model = _bandServices.GetAllBands();
+            return View(model);
         }
 
         public IActionResult Musicians()
         {
-            return View();
+            var model = _musicianServices.GetAllMusicians();
+            return View(model);
         }
     }
 }

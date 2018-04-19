@@ -23,7 +23,10 @@
     ".NETCoreApp,Version=v2.0": {
       "Bands.WEB/1.0.0": {
         "dependencies": {
+          "Bands.BLL": "1.0.0",
           "Bands.DAL": "1.0.0",
+          "Bands.DTO": "1.0.0",
+          "Bands.Domains": "1.0.0",
           "Microsoft.AspNetCore.All": "2.0.6",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.2",
           "Microsoft.NETCore.App": "2.0.0",
@@ -4055,6 +4058,18 @@
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
       },
+      "Bands.BLL/1.0.0": {
+        "dependencies": {
+          "Bands.DAL": "1.0.0",
+          "Bands.Domains": "1.0.0"
+        },
+        "runtime": {
+          "Bands.BLL.dll": {}
+        },
+        "compile": {
+          "Bands.BLL.dll": {}
+        }
+      },
       "Bands.DAL/1.0.0": {
         "dependencies": {
           "Bands.Domains": "1.0.0",
@@ -4080,6 +4095,14 @@
         },
         "compile": {
           "Bands.Domains.dll": {}
+        }
+      },
+      "Bands.DTO/1.0.0": {
+        "runtime": {
+          "Bands.DTO.dll": {}
+        },
+        "compile": {
+          "Bands.DTO.dll": {}
         }
       },
       "Microsoft.NETCore.App/2.0.0": {
@@ -6394,12 +6417,22 @@
       "path": "windowsazure.storage/8.1.4",
       "hashPath": "windowsazure.storage.8.1.4.nupkg.sha512"
     },
+    "Bands.BLL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Bands.DAL/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
     "Bands.Domains/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Bands.DTO/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

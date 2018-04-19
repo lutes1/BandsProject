@@ -19,7 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Bands.BLL\Bands.BLL.csproj" />
     <ProjectReference Include="..\Bands.DAL\Bands.DAL.csproj" />
+    <ProjectReference Include="..\Bands.Domains\Bands.Domains.csproj" />
+    <ProjectReference Include="..\Bands.DTO\Bands.DTO.csproj" />
   </ItemGroup>
 
   <ItemGroup>

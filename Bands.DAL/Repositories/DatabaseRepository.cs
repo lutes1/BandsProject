@@ -1,32 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+using Bands.DAL.Abstractions;
 
-namespace Bands.DAL
+namespace Bands.DAL.Repositories
 {
-    public interface IGenericRepository<T> where T : class
-    {
-        IEnumerable<T> GetAll();
-        IEnumerable<T> FindBy(Func<T, bool> predicate);
-        void Add(T entity);
-        void Delete(T entity);
-    }
     public class DatabaseRepository<T> : IGenericRepository<T> where T : class
     {
-        protected readonly DbContext DbContext;
-        public DatabaseRepository(DbContext context)
+        protected readonly ApplicationDbContext DbContext;
+        public DatabaseRepository(ApplicationDbContext context)
         {
             DbContext = context;
         }
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
-            return DbContext.Set<T>();
+            return DbContext.Set<T>().ToList();
         }
-        public IEnumerable<T> FindBy(Func<T, bool> predicate)
+        public virtual IEnumerable<T> FindBy(Func<T, bool> predicate)
         {
-            return DbContext.Set<T>().Where(predicate);
+            return DbContext.Set<T>().Where(predicate).ToList();
         }
         public void Add(T entity)
         {

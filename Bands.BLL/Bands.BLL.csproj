@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Bands.DAL\Bands.DAL.csproj" />
+    <ProjectReference Include="..\Bands.Domains\Bands.Domains.csproj" />
+  </ItemGroup>
+
 </Project>

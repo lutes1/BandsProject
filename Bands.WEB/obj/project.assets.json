@@ -5029,6 +5029,20 @@
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
       },
+      "Bands.BLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Bands.DAL": "1.0.0",
+          "Bands.Domains": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Bands.BLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Bands.BLL.dll": {}
+        }
+      },
       "Bands.DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -5058,6 +5072,16 @@
         },
         "runtime": {
           "bin/placeholder/Bands.Domains.dll": {}
+        }
+      },
+      "Bands.DTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Bands.DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Bands.DTO.dll": {}
         }
       }
     }
@@ -13146,6 +13170,11 @@
         "windowsazure.storage.nuspec"
       ]
     },
+    "Bands.BLL/1.0.0": {
+      "type": "project",
+      "path": "../Bands.BLL/Bands.BLL.csproj",
+      "msbuildProject": "../Bands.BLL/Bands.BLL.csproj"
+    },
     "Bands.DAL/1.0.0": {
       "type": "project",
       "path": "../Bands.DAL/Bands.DAL.csproj",
@@ -13155,11 +13184,19 @@
       "type": "project",
       "path": "../Bands.Domains/Bands.Domains.csproj",
       "msbuildProject": "../Bands.Domains/Bands.Domains.csproj"
+    },
+    "Bands.DTO/1.0.0": {
+      "type": "project",
+      "path": "../Bands.DTO/Bands.DTO.csproj",
+      "msbuildProject": "../Bands.DTO/Bands.DTO.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "Bands.BLL >= 1.0.0",
       "Bands.DAL >= 1.0.0",
+      "Bands.DTO >= 1.0.0",
+      "Bands.Domains >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.6",
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.2",
       "Microsoft.NETCore.App >= 2.0.0",
@@ -13196,8 +13233,17 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
+            "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.BLL\\Bands.BLL.csproj": {
+              "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.BLL\\Bands.BLL.csproj"
+            },
             "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DAL\\Bands.DAL.csproj": {
               "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DAL\\Bands.DAL.csproj"
+            },
+            "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.Domains\\Bands.Domains.csproj": {
+              "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.Domains\\Bands.Domains.csproj"
+            },
+            "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DTO\\Bands.DTO.csproj": {
+              "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DTO\\Bands.DTO.csproj"
             }
           }
         }

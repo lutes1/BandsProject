@@ -6,3 +6,17 @@
 
 <h2>Musicians</h2>
 
+@model IEnumerable<Bands.Domains.Musician>
+
+
+    @foreach (var element in Model)
+    {
+        string musicianType = element.MusicianType!= null ? element.MusicianType.TypeName : "Not Specified";
+     <div class="element">
+            <label>Full Name     : </label><h3>@element.ApplicationUser.FirstName @element.ApplicationUser.LastName</h3>
+            <label>Musician type : </label><strong>@musicianType</strong><br />
+            <label>City          : </label><b>@element.City</b><br/>
+            <label>Likes         : </label><b>@element.Likes</b><br />
+            <label>Description   : </label><b>@element.Description</b><br />
+        </div>
+    }
