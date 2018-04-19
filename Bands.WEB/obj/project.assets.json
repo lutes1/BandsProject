@@ -119,7 +119,7 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.dll": {}
         }
       },
-      "Microsoft.AspNetCore.All/2.0.6": {
+      "Microsoft.AspNetCore.All/2.0.7": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore": "2.0.2",
@@ -5065,7 +5065,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "2.0.2"
+          "Microsoft.AspNetCore.All": "2.0.7",
+          "Microsoft.EntityFrameworkCore": "2.0.2",
+          "Microsoft.EntityFrameworkCore.Tools": "2.0.2"
         },
         "compile": {
           "bin/placeholder/Bands.Domains.dll": {}
@@ -5167,10 +5169,10 @@
         "microsoft.aspnetcore.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.All/2.0.6": {
-      "sha512": "5AEYk4hS25RcPkh1kWeKpn487/9Bb3GeVfu8Sl7EOFv9ADXmz7ypVyVlp8FMwgQIJSykzy6kF6KOOduhrWGmSA==",
+    "Microsoft.AspNetCore.All/2.0.7": {
+      "sha512": "hpWBRgs094P0jBWJRqBV+8oXl6G+O5ixDAgXI5qouOsg2jlLOmYr1+95+lRbLSn31HhKbQdNel6VQSDUbm0juw==",
       "type": "package",
-      "path": "microsoft.aspnetcore.all/2.0.6",
+      "path": "microsoft.aspnetcore.all/2.0.7",
       "files": [
         "build/PublishWithAspNetCoreTargetManifest.targets",
         "build/aspnetcore-store-2.0.0-common.xml",
@@ -5181,9 +5183,10 @@
         "build/aspnetcore-store-2.0.3.xml",
         "build/aspnetcore-store-2.0.5.xml",
         "build/aspnetcore-store-2.0.6.xml",
+        "build/aspnetcore-store-2.0.7.xml",
         "build/netcoreapp2.0/Microsoft.AspNetCore.All.targets",
         "lib/netcoreapp2.0/_._",
-        "microsoft.aspnetcore.all.2.0.6.nupkg.sha512",
+        "microsoft.aspnetcore.all.2.0.7.nupkg.sha512",
         "microsoft.aspnetcore.all.nuspec"
       ]
     },
@@ -13197,53 +13200,51 @@
       "Bands.DAL >= 1.0.0",
       "Bands.DTO >= 1.0.0",
       "Bands.Domains >= 1.0.0",
-      "Microsoft.AspNetCore.All >= 2.0.6",
+      "Microsoft.AspNetCore.All >= 2.0.7",
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.2",
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\petru.lutenco\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/petrulutenco/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.WEB\\Bands.WEB.csproj",
+      "projectUniqueName": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.WEB/Bands.WEB.csproj",
       "projectName": "Bands.WEB",
-      "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.WEB\\Bands.WEB.csproj",
-      "packagesPath": "C:\\Users\\petru.lutenco\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.WEB\\obj\\",
+      "projectPath": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.WEB/Bands.WEB.csproj",
+      "packagesPath": "/Users/petrulutenco/.nuget/packages/",
+      "outputPath": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.WEB/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\petru.lutenco\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/petrulutenco/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.BLL\\Bands.BLL.csproj": {
-              "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.BLL\\Bands.BLL.csproj"
+            "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.BLL/Bands.BLL.csproj": {
+              "projectPath": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.BLL/Bands.BLL.csproj"
             },
-            "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DAL\\Bands.DAL.csproj": {
-              "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DAL\\Bands.DAL.csproj"
+            "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DAL/Bands.DAL.csproj": {
+              "projectPath": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DAL/Bands.DAL.csproj"
             },
-            "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.Domains\\Bands.Domains.csproj": {
-              "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.Domains\\Bands.Domains.csproj"
+            "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.Domains/Bands.Domains.csproj": {
+              "projectPath": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.Domains/Bands.Domains.csproj"
             },
-            "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DTO\\Bands.DTO.csproj": {
-              "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DTO\\Bands.DTO.csproj"
+            "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DTO/Bands.DTO.csproj": {
+              "projectPath": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DTO/Bands.DTO.csproj"
             }
           }
         }
@@ -13259,7 +13260,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.All": {
             "target": "Package",
-            "version": "[2.0.6, )"
+            "version": "[2.0.7, )"
           },
           "Microsoft.EntityFrameworkCore.Tools": {
             "suppressParent": "All",

@@ -11,5 +11,6 @@ namespace Bands.Domains
         public long PictureId { get; set; }
         public Picture Picture { get; set; }
         public List<MusicianBand> MusicianBands { get; set; }
+        public List<BandsGenres> BandsGenres { get; set; }
     }
 }

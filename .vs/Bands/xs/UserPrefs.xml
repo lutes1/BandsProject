@@ -1,0 +1,24 @@
+﻿<Properties StartupConfiguration="{C3BBFE75-5A16-454A-BE85-B085307EEBED}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Bands.DAL/ApplicationDbContext.cs">
+    <Files>
+      <File FileName="Bands.Domains/ApplicationUser.cs" Line="17" Column="2" />
+      <File FileName="Bands.DAL/ApplicationDbContext.cs" Line="24" Column="65" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Bands" expanded="True">
+            <Node name="Bands.WEB" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Bands.WEB PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>

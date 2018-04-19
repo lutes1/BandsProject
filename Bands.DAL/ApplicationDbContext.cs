@@ -21,15 +21,17 @@ namespace Bands.DAL
             builder.ApplyConfiguration(new MusicianBandConfig());
             builder.ApplyConfiguration(new MusicianInterestConfig());
             builder.ApplyConfiguration(new PracticeLocationConfig());
+            builder.ApplyConfiguration(new BandsGenresConfig());
         }
 
         public DbSet<Musician> Musicians { get; set; }
         public DbSet<Band> Bands { get; set; }
         public DbSet<Equipment> Equipments { get; set; }
         public DbSet<EquipmentType> EquipmentTypes { get; set; }
-        public Interest Interest { get; set; }
-        public Picture Picture { get; set; }
-        public MusicianType MusicianTypes { get; set; }
+        public DbSet<Interest> Interests { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
+        public DbSet<MusicianType> MusicianTypes { get; set; }
         public DbSet<PracticeLocation> PracticeLocations { get; set; }
+        public DbSet<Genre> Genres { set; get; }
     }
 }
