@@ -5,6 +5,7 @@ using Bands.DAL;
 using Bands.DAL.Abstractions;
 using Bands.DAL.Repositories;
 using Bands.Domains;
+using Bands.Domains.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -40,7 +41,7 @@ namespace Bands.WEB
 
             services.AddScoped(typeof(IMusiciansServices), typeof(MusiciansServices));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole<long>>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 

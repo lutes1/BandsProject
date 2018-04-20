@@ -4061,6 +4061,7 @@
       "Bands.BLL/1.0.0": {
         "dependencies": {
           "Bands.DAL": "1.0.0",
+          "Bands.DTO": "1.0.0",
           "Bands.Domains": "1.0.0"
         },
         "runtime": {
@@ -4072,6 +4073,7 @@
       },
       "Bands.DAL/1.0.0": {
         "dependencies": {
+          "Bands.DTO": "1.0.0",
           "Bands.Domains": "1.0.0",
           "Microsoft.AspNetCore.Identity": "2.0.2",
           "Microsoft.EntityFrameworkCore": "2.0.2",

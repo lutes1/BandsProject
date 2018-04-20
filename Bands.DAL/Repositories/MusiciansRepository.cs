@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Bands.DAL.Abstractions;
-using Bands.Domains;
+using Bands.DTO;
+using Bands.Domains.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bands.DAL.Repositories
@@ -26,6 +27,22 @@ namespace Bands.DAL.Repositories
                 .Include(x=>x.ApplicationUser)
                 .Include(x => x.ApplicationUser)
                 .FirstOrDefault(x=>x.ApplicationUserId.Equals(id));
+        }
+
+        public MusicianCommonDto GetMusicianCommonData()
+        {
+            var musicianCommonDto =
+
+                new MusicianCommonDto
+                {
+                    Cities = DbContext.MapLocations.Select(x => x.City).ToList(),
+                    Countries = DbContext.MapLocations.Select(x => x.Country).ToList(),
+                    Interests = DbContext.Interests.Select(x => x.Name).ToList(),
+                    MusicianTypes = DbContext.MusicianTypes.Select(x => x.TypeName).ToList()
+                };
+
+
+            return musicianCommonDto;
         }
     }
 }

@@ -17,24 +17,19 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Musicians">Musicians</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Bands">Bands</a></li>
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
-            </div>
+    <ul class="nav navbar-nav">
+        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+        <li><a asp-area="" asp-controller="Home" asp-action="Musicians">Musicians</a></li>
+        <li><a asp-area="" asp-controller="Home" asp-action="Bands">Bands</a></li>
+    </ul>
+    @await Html.PartialAsync("_LoginPartial")
+    <div class="container-fluid outerPage">
+        <div class="container mainBlock">
+            @RenderBody()
+            <footer>
+                <p>&copy; 2018 - Bands</p>
+            </footer>
         </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - Bands</p>
-        </footer>
     </div>
 
     <environment include="Development">

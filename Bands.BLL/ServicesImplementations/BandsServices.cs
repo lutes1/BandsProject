@@ -3,6 +3,7 @@ using System.Linq;
 using Bands.BLL.Abstractions;
 using Bands.DAL.Abstractions;
 using Bands.Domains;
+using Bands.Domains.Models;
 
 namespace Bands.BLL.ServicesImplementations
 {

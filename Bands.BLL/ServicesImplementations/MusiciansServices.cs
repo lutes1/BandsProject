@@ -4,6 +4,8 @@ using Bands.BLL.Abstractions;
 using Bands.DAL;
 using Bands.DAL.Abstractions;
 using Bands.Domains;
+using Bands.Domains.Models;
+using Bands.DTO;
 
 namespace Bands.BLL.ServicesImplementations
 {
@@ -23,6 +25,11 @@ namespace Bands.BLL.ServicesImplementations
         public Musician GetMusicianById(string id)
         {
             return _musiciansRepository.GetMuscianById(id);
+        }
+
+        public MusicianCommonDto GetMusicianCommonData()
+        {
+            return _musiciansRepository.GetMusicianCommonData();
         }
     }
 }

@@ -18,6 +18,38 @@ namespace Bands.WEB.Models.AccountViewModels
         [Display(Name = "LastName")]
         public string LastName { get; set; }
 
+        [StringLength(1000, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
+        [Display(Name = "Description")]
+        public string Description { get; set; }
+
+        [StringLength(30, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
+        [Display(Name = "City")]
+        public string City { get; set; }
+
+        [StringLength(30, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
+        [Display(Name = "Country")]
+        public string Country { get; set; }
+
+        [StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
+        [Display(Name = "MusicianType")]
+        public string MusicianType { get; set; }
+
+        //[StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
+        //[Display(Name = "EquipmentName")]
+        //public string EquipmentName { get; set; }
+
+        //[StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
+        //[Display(Name = "EquipmentName")]
+        //public string EquipmentModel { get; set; }
+
+        //[StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
+        //[Display(Name = "EquipmentName")]
+        //public string EquipmentType { get; set; }
+
+        //[StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
+        //[Display(Name = "EquipmentName")]
+        //public string Interests { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

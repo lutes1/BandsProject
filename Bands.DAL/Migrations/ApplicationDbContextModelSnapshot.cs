@@ -20,9 +20,48 @@ namespace Bands.DAL.Migrations
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Bands.Domains.ApplicationUser", b =>
+            modelBuilder.Entity("Bands.Domains.JonctionModels.BandsGenres", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<long>("BandId");
+
+                    b.Property<long>("GenreId");
+
+                    b.HasKey("BandId", "GenreId");
+
+                    b.HasIndex("GenreId");
+
+                    b.ToTable("BandsGenres");
+                });
+
+            modelBuilder.Entity("Bands.Domains.JonctionModels.MusicianBand", b =>
+                {
+                    b.Property<long>("BandId");
+
+                    b.Property<long>("MusicianId");
+
+                    b.HasKey("BandId", "MusicianId");
+
+                    b.HasIndex("MusicianId");
+
+                    b.ToTable("MusicianBand");
+                });
+
+            modelBuilder.Entity("Bands.Domains.JonctionModels.MusicianInterest", b =>
+                {
+                    b.Property<long>("InterestId");
+
+                    b.Property<long>("MusicianId");
+
+                    b.HasKey("InterestId", "MusicianId");
+
+                    b.HasIndex("MusicianId");
+
+                    b.ToTable("MusicianInterest");
+                });
+
+            modelBuilder.Entity("Bands.Domains.Models.ApplicationUser", b =>
+                {
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AccessFailedCount");
@@ -85,7 +124,7 @@ namespace Bands.DAL.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Bands.Domains.Band", b =>
+            modelBuilder.Entity("Bands.Domains.Models.Band", b =>
                 {
                     b.Property<long>("BandId")
                         .ValueGeneratedOnAdd();
@@ -94,26 +133,34 @@ namespace Bands.DAL.Migrations
                         .IsRequired()
                         .HasMaxLength(20);
 
-                    b.Property<long>("PictureId");
+                    b.Property<long?>("PictureId");
 
                     b.HasKey("BandId");
 
                     b.HasIndex("PictureId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[PictureId] IS NOT NULL");
 
                     b.ToTable("Bands");
                 });
 
-            modelBuilder.Entity("Bands.Domains.Equipment", b =>
+            modelBuilder.Entity("Bands.Domains.Models.Equipment", b =>
                 {
                     b.Property<long>("EquipmentId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("EquipmentName");
+                    b.Property<string>("EquipmentName")
+                        .IsRequired()
+                        .HasMaxLength(20);
 
-                    b.Property<long?>("EquipmentTypeId");
+                    b.Property<long?>("EquipmentTypeId")
+                        .IsRequired();
 
-                    b.Property<string>("MusicianApplicationUserId");
+                    b.Property<string>("Model")
+                        .HasMaxLength(30);
+
+                    b.Property<long?>("MusicianApplicationUserId")
+                        .IsRequired();
 
                     b.HasKey("EquipmentId");
 
@@ -124,94 +171,108 @@ namespace Bands.DAL.Migrations
                     b.ToTable("Equipments");
                 });
 
-            modelBuilder.Entity("Bands.Domains.EquipmentType", b =>
+            modelBuilder.Entity("Bands.Domains.Models.EquipmentType", b =>
                 {
                     b.Property<long>("EquipmentTypeId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20);
 
                     b.HasKey("EquipmentTypeId");
 
                     b.ToTable("EquipmentTypes");
                 });
 
-            modelBuilder.Entity("Bands.Domains.Interest", b =>
+            modelBuilder.Entity("Bands.Domains.Models.Genre", b =>
+                {
+                    b.Property<long>("GenreId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20);
+
+                    b.HasKey("GenreId");
+
+                    b.ToTable("Genres");
+                });
+
+            modelBuilder.Entity("Bands.Domains.Models.Interest", b =>
                 {
                     b.Property<long>("InterestId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20);
 
                     b.HasKey("InterestId");
 
-                    b.ToTable("Interest");
+                    b.ToTable("Interests");
                 });
 
-            modelBuilder.Entity("Bands.Domains.Musician", b =>
+            modelBuilder.Entity("Bands.Domains.Models.MapLocation", b =>
                 {
-                    b.Property<string>("ApplicationUserId");
+                    b.Property<long>("MapLocationId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(50);
 
                     b.Property<string>("City")
-                        .HasMaxLength(20);
+                        .IsRequired()
+                        .HasMaxLength(30);
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(30);
+
+                    b.HasKey("MapLocationId");
+
+                    b.ToTable("MapLocations");
+                });
+
+            modelBuilder.Entity("Bands.Domains.Models.Musician", b =>
+                {
+                    b.Property<long>("ApplicationUserId");
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000);
 
                     b.Property<long>("Likes");
 
-                    b.Property<long?>("MusicianTypeId");
+                    b.Property<long?>("MapLocationId")
+                        .IsRequired();
+
+                    b.Property<long?>("MusicianTypeId")
+                        .IsRequired();
 
                     b.HasKey("ApplicationUserId");
+
+                    b.HasIndex("MapLocationId");
 
                     b.HasIndex("MusicianTypeId");
 
                     b.ToTable("Musicians");
                 });
 
-            modelBuilder.Entity("Bands.Domains.MusicianBand", b =>
-                {
-                    b.Property<long>("BandId");
-
-                    b.Property<long>("MusicianId");
-
-                    b.Property<string>("MusicianApplicationUserId");
-
-                    b.HasKey("BandId", "MusicianId");
-
-                    b.HasIndex("MusicianApplicationUserId");
-
-                    b.ToTable("MusicianBand");
-                });
-
-            modelBuilder.Entity("Bands.Domains.MusicianInterest", b =>
-                {
-                    b.Property<long>("InterestId");
-
-                    b.Property<long>("MusicianId");
-
-                    b.Property<string>("MusicianApplicationUserId");
-
-                    b.HasKey("InterestId", "MusicianId");
-
-                    b.HasIndex("MusicianApplicationUserId");
-
-                    b.ToTable("MusicianInterest");
-                });
-
-            modelBuilder.Entity("Bands.Domains.MusicianType", b =>
+            modelBuilder.Entity("Bands.Domains.Models.MusicianType", b =>
                 {
                     b.Property<long>("MusicianTypeId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("TypeName");
+                    b.Property<string>("TypeName")
+                        .IsRequired()
+                        .HasMaxLength(20);
 
                     b.HasKey("MusicianTypeId");
 
-                    b.ToTable("MusicianType");
+                    b.ToTable("MusicianTypes");
                 });
 
-            modelBuilder.Entity("Bands.Domains.Picture", b =>
+            modelBuilder.Entity("Bands.Domains.Models.Picture", b =>
                 {
                     b.Property<long>("PictureId")
                         .ValueGeneratedOnAdd();
@@ -226,29 +287,22 @@ namespace Bands.DAL.Migrations
                         .IsRequired()
                         .HasMaxLength(20);
 
-                    b.Property<long?>("PracticeLocationId");
+                    b.Property<long?>("PracticePalceMapLocationId");
 
                     b.HasKey("PictureId");
 
-                    b.HasIndex("PracticeLocationId");
+                    b.HasIndex("PracticePalceMapLocationId");
 
-                    b.ToTable("Picture");
+                    b.ToTable("Pictures");
                 });
 
-            modelBuilder.Entity("Bands.Domains.PracticeLocation", b =>
+            modelBuilder.Entity("Bands.Domains.Models.PracticePlace", b =>
                 {
-                    b.Property<long>("PracticeLocationId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<long>("MapLocationId");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(1000);
-
-                    b.Property<decimal>("Latitude")
-                        .HasColumnType("numeric(18,6)");
-
-                    b.Property<decimal>("Longitude")
-                        .HasColumnType("numeric(18,6)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -260,14 +314,14 @@ namespace Bands.DAL.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasMaxLength(20);
 
-                    b.HasKey("PracticeLocationId");
+                    b.HasKey("MapLocationId");
 
                     b.ToTable("PracticeLocations");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<long>", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("ConcurrencyStamp")
@@ -289,7 +343,7 @@ namespace Bands.DAL.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<long>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -298,8 +352,7 @@ namespace Bands.DAL.Migrations
 
                     b.Property<string>("ClaimValue");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired();
+                    b.Property<long>("RoleId");
 
                     b.HasKey("Id");
 
@@ -308,7 +361,7 @@ namespace Bands.DAL.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<long>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -317,8 +370,7 @@ namespace Bands.DAL.Migrations
 
                     b.Property<string>("ClaimValue");
 
-                    b.Property<string>("UserId")
-                        .IsRequired();
+                    b.Property<long>("UserId");
 
                     b.HasKey("Id");
 
@@ -327,7 +379,7 @@ namespace Bands.DAL.Migrations
                     b.ToTable("AspNetUserClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<long>", b =>
                 {
                     b.Property<string>("LoginProvider");
 
@@ -335,8 +387,7 @@ namespace Bands.DAL.Migrations
 
                     b.Property<string>("ProviderDisplayName");
 
-                    b.Property<string>("UserId")
-                        .IsRequired();
+                    b.Property<long>("UserId");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -345,11 +396,11 @@ namespace Bands.DAL.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<long>", b =>
                 {
-                    b.Property<string>("UserId");
+                    b.Property<long>("UserId");
 
-                    b.Property<string>("RoleId");
+                    b.Property<long>("RoleId");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -358,9 +409,9 @@ namespace Bands.DAL.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<long>", b =>
                 {
-                    b.Property<string>("UserId");
+                    b.Property<long>("UserId");
 
                     b.Property<string>("LoginProvider");
 
@@ -373,115 +424,145 @@ namespace Bands.DAL.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Bands.Domains.ApplicationUser", b =>
+            modelBuilder.Entity("Bands.Domains.JonctionModels.BandsGenres", b =>
                 {
-                    b.HasOne("Bands.Domains.Picture", "Picture")
-                        .WithOne("ApplicationUser")
-                        .HasForeignKey("Bands.Domains.ApplicationUser", "PictureId");
-                });
+                    b.HasOne("Bands.Domains.Models.Band", "Band")
+                        .WithMany("BandsGenres")
+                        .HasForeignKey("BandId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity("Bands.Domains.Band", b =>
-                {
-                    b.HasOne("Bands.Domains.Picture", "Picture")
-                        .WithOne("Band")
-                        .HasForeignKey("Bands.Domains.Band", "PictureId")
+                    b.HasOne("Bands.Domains.Models.Genre", "Genre")
+                        .WithMany("BandsGenres")
+                        .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Bands.Domains.Equipment", b =>
+            modelBuilder.Entity("Bands.Domains.JonctionModels.MusicianBand", b =>
                 {
-                    b.HasOne("Bands.Domains.EquipmentType", "EquipmentType")
-                        .WithMany("Equipments")
-                        .HasForeignKey("EquipmentTypeId");
-
-                    b.HasOne("Bands.Domains.Musician", "Musician")
-                        .WithMany("Equipments")
-                        .HasForeignKey("MusicianApplicationUserId");
-                });
-
-            modelBuilder.Entity("Bands.Domains.Musician", b =>
-                {
-                    b.HasOne("Bands.Domains.ApplicationUser", "ApplicationUser")
-                        .WithOne("Musician")
-                        .HasForeignKey("Bands.Domains.Musician", "ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Bands.Domains.MusicianType", "MusicianType")
-                        .WithMany("Musician")
-                        .HasForeignKey("MusicianTypeId");
-                });
-
-            modelBuilder.Entity("Bands.Domains.MusicianBand", b =>
-                {
-                    b.HasOne("Bands.Domains.Band", "Band")
+                    b.HasOne("Bands.Domains.Models.Band", "Band")
                         .WithMany("MusicianBands")
                         .HasForeignKey("BandId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Bands.Domains.Musician", "Musician")
+                    b.HasOne("Bands.Domains.Models.Musician", "Musician")
                         .WithMany("MusicianBands")
-                        .HasForeignKey("MusicianApplicationUserId");
+                        .HasForeignKey("MusicianId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Bands.Domains.MusicianInterest", b =>
+            modelBuilder.Entity("Bands.Domains.JonctionModels.MusicianInterest", b =>
                 {
-                    b.HasOne("Bands.Domains.Interest", "Interest")
+                    b.HasOne("Bands.Domains.Models.Interest", "Interest")
                         .WithMany("MusicianInterests")
                         .HasForeignKey("InterestId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Bands.Domains.Musician", "Musician")
+                    b.HasOne("Bands.Domains.Models.Musician", "Musician")
                         .WithMany("Interests")
-                        .HasForeignKey("MusicianApplicationUserId");
+                        .HasForeignKey("MusicianId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Bands.Domains.Picture", b =>
+            modelBuilder.Entity("Bands.Domains.Models.ApplicationUser", b =>
                 {
-                    b.HasOne("Bands.Domains.PracticeLocation", "PracticeLocation")
+                    b.HasOne("Bands.Domains.Models.Picture", "Picture")
+                        .WithOne("ApplicationUser")
+                        .HasForeignKey("Bands.Domains.Models.ApplicationUser", "PictureId");
+                });
+
+            modelBuilder.Entity("Bands.Domains.Models.Band", b =>
+                {
+                    b.HasOne("Bands.Domains.Models.Picture", "Picture")
+                        .WithOne("Band")
+                        .HasForeignKey("Bands.Domains.Models.Band", "PictureId");
+                });
+
+            modelBuilder.Entity("Bands.Domains.Models.Equipment", b =>
+                {
+                    b.HasOne("Bands.Domains.Models.EquipmentType", "EquipmentType")
+                        .WithMany("Equipments")
+                        .HasForeignKey("EquipmentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Bands.Domains.Models.Musician", "Musician")
+                        .WithMany("Equipments")
+                        .HasForeignKey("MusicianApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Bands.Domains.Models.Musician", b =>
+                {
+                    b.HasOne("Bands.Domains.Models.ApplicationUser", "ApplicationUser")
+                        .WithOne("Musician")
+                        .HasForeignKey("Bands.Domains.Models.Musician", "ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Bands.Domains.Models.MapLocation", "MapLocation")
+                        .WithMany("Musician")
+                        .HasForeignKey("MapLocationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Bands.Domains.Models.MusicianType", "MusicianType")
+                        .WithMany("Musician")
+                        .HasForeignKey("MusicianTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Bands.Domains.Models.Picture", b =>
+                {
+                    b.HasOne("Bands.Domains.Models.PracticePlace", "PracticePlace")
                         .WithMany("Pictures")
-                        .HasForeignKey("PracticeLocationId");
+                        .HasForeignKey("PracticePalceMapLocationId");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Bands.Domains.Models.PracticePlace", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
+                    b.HasOne("Bands.Domains.Models.MapLocation", "MapLocation")
+                        .WithOne("PracticePlace")
+                        .HasForeignKey("Bands.Domains.Models.PracticePlace", "MapLocationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<long>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<long>")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<long>", b =>
                 {
-                    b.HasOne("Bands.Domains.ApplicationUser")
+                    b.HasOne("Bands.Domains.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<long>", b =>
                 {
-                    b.HasOne("Bands.Domains.ApplicationUser")
+                    b.HasOne("Bands.Domains.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<long>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<long>")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Bands.Domains.ApplicationUser")
+                    b.HasOne("Bands.Domains.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<long>", b =>
                 {
-                    b.HasOne("Bands.Domains.ApplicationUser")
+                    b.HasOne("Bands.Domains.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

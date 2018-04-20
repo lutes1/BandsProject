@@ -4761,6 +4761,16 @@
         "runtime": {
           "bin/placeholder/Bands.Domains.dll": {}
         }
+      },
+      "Bands.DTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Bands.DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Bands.DTO.dll": {}
+        }
       }
     }
   },
@@ -12548,10 +12558,16 @@
       "type": "project",
       "path": "../Bands.Domains/Bands.Domains.csproj",
       "msbuildProject": "../Bands.Domains/Bands.Domains.csproj"
+    },
+    "Bands.DTO/1.0.0": {
+      "type": "project",
+      "path": "../Bands.DTO/Bands.DTO.csproj",
+      "msbuildProject": "../Bands.DTO/Bands.DTO.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "Bands.DTO >= 1.0.0",
       "Bands.Domains >= 1.0.0",
       "Microsoft.AspNetCore.Identity >= 2.0.2",
       "Microsoft.EntityFrameworkCore >= 2.0.2",
@@ -12562,35 +12578,40 @@
     ]
   },
   "packageFolders": {
-    "/Users/petrulutenco/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\petru.lutenco\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DAL/Bands.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DAL\\Bands.DAL.csproj",
       "projectName": "Bands.DAL",
-      "projectPath": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DAL/Bands.DAL.csproj",
-      "packagesPath": "/Users/petrulutenco/.nuget/packages/",
-      "outputPath": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DAL/obj/",
+      "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DAL\\Bands.DAL.csproj",
+      "packagesPath": "C:\\Users\\petru.lutenco\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/petrulutenco/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\petru.lutenco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.Domains/Bands.Domains.csproj": {
-              "projectPath": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.Domains/Bands.Domains.csproj"
+            "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.Domains\\Bands.Domains.csproj": {
+              "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.Domains\\Bands.Domains.csproj"
+            },
+            "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DTO\\Bands.DTO.csproj": {
+              "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DTO\\Bands.DTO.csproj"
             }
           }
         }

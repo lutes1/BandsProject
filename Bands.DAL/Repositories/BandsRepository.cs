@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Bands.DAL.Abstractions;
 using Bands.Domains;
+using Bands.Domains.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bands.DAL.Repositories

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Bands.BLL.Abstractions;
 using Bands.DAL;
 using Bands.Domains;
+using Bands.Domains.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -26,17 +28,22 @@ namespace Bands.WEB.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        private readonly IMusiciansServices _musicianServices;
+
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            IMusiciansServices musicianServices
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _musicianServices = musicianServices;
         }
 
         [TempData]
@@ -211,14 +218,16 @@ namespace Bands.WEB.Controllers
         public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            return View();
+            var model = _musicianServices.GetMusicianCommonData();
+            return View(new RegisterDataViewModel{MusicianCommonData = model});
         }
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Register(RegisterDataViewModel modelData, string returnUrl = null)
         {
+            var model = modelData.RegisterViewModel;
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid) 
             {
@@ -246,7 +255,8 @@ namespace Bands.WEB.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            var musicianCommonData = _musicianServices.GetMusicianCommonData();
+            return View(new RegisterDataViewModel{MusicianCommonData = musicianCommonData, RegisterViewModel = model});
         }
 
         [HttpPost]
