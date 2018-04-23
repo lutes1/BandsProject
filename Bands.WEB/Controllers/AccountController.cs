@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Bands.BLL.Abstractions;
-using Bands.DAL;
-using Bands.Domains;
 using Bands.Domains.Models;
+using Bands.DTO;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;    
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
@@ -219,7 +216,7 @@ namespace Bands.WEB.Controllers
 		{
 			ViewData["ReturnUrl"] = returnUrl;
 			var model = _musicianServices.GetMusicianCommonData();
-			return View(new RegisterDataViewModel { MusicianCommonData = model });
+			return View(new RegisterDataViewModel { MusicianReadCommonData = model });
 		}
 
 		[HttpPost]
@@ -229,7 +226,9 @@ namespace Bands.WEB.Controllers
 		{
 			var model = modelData.RegisterViewModel;
 			ViewData["ReturnUrl"] = returnUrl;
-			if (ModelState.IsValid)
+		    IdentityResult result = null;
+
+            if (ModelState.IsValid)
 			{
 				var user = new ApplicationUser
 				{
@@ -238,16 +237,28 @@ namespace Bands.WEB.Controllers
 					UserName = model.Email,
 					Email = model.Email
 				};
-				var result = await _userManager.CreateAsync(user, model.Password);
+				result = await _userManager.CreateAsync(user, model.Password);
 				if (result.Succeeded)
 				{
 					_logger.LogInformation("User created a new account with password.");
 
+                    _musicianServices.CreateMusician(new MusicianCreateDto
+                    {
+                        MusicianType = model.MusicianType,
+                        ApplicationUser = user,
+                        Description = model.Description,
+                        Interests = model.Interests,
+                        City = model.City,
+                        Country = model.Country
+                    });
 					var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 					var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
 					await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
 
 					await _signInManager.SignInAsync(user, isPersistent: false);
+
+
+
 					_logger.LogInformation("User created a new account with password.");
 					return RedirectToLocal(returnUrl);
 				}
@@ -256,7 +267,7 @@ namespace Bands.WEB.Controllers
 
 			// If we got this far, something failed, redisplay form
 			var musicianCommonData = _musicianServices.GetMusicianCommonData();
-			return View(new RegisterDataViewModel { MusicianCommonData = musicianCommonData, RegisterViewModel = model });
+			return View(new RegisterDataViewModel { MusicianReadCommonData = musicianCommonData, RegisterViewModel = model,Result = result});
 		}
 
 		[HttpPost]
@@ -476,8 +487,7 @@ namespace Bands.WEB.Controllers
 				return RedirectToAction(nameof(HomeController.Index), "Home");
 			}
 		}
-
-		#endregion
+	    #endregion
 
 	}
 }

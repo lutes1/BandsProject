@@ -16,3 +16,8 @@ C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\obj
 C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\obj\Debug\netcoreapp2.0\Bands.DTO.dll
 C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\obj\Debug\netcoreapp2.0\Bands.DTO.pdb
 C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\obj\Debug\netcoreapp2.0\Bands.DTO.csprojResolveAssemblyReference.cache
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\bin\Debug\netcoreapp2.0\Bands.Domains.dll
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\bin\Debug\netcoreapp2.0\Bands.Domains.pdb
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DTO\obj\Debug\netcoreapp2.0\Bands.DTO.csproj.CopyComplete
+C:\Users\petru.lutenco\Documents\visual studio 2017\Projects\Bands\Bands.DTO\bin\Debug\netcoreapp2.0\Bands.DTO.runtimeconfig.json
+C:\Users\petru.lutenco\Documents\visual studio 2017\Projects\Bands\Bands.DTO\bin\Debug\netcoreapp2.0\Bands.DTO.runtimeconfig.dev.json

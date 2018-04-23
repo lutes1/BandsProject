@@ -1,91 +1,107 @@
 ﻿@model RegisterDataViewModel
-    @{
-        ViewData["Title"] = "Register";
-    }
-    <!--new form-->
-    <form id="sign-up-form" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
-        <!--Personal Data-->
-        <sup>All fields marked with <span class="required-field ">*</span> are required.</sup>
-        <div class="form-group">
-            <label for="FirstName" class="input-label">FirstName</label><span class="required-field ">*</span>
-            <input asp-for="RegisterViewModel.FirstName" id="FirstName" class="form-control" placeholder="First Name..." />
-        </div>
-        <div class="form-group">
-            <label class="input-label" for="LastName">LastName</label><span class="required-field ">*</span>
-            <input asp-for="RegisterViewModel.LastName" id="LastName" class="form-control" placeholder="Last Name..." />
-        </div>
-        <div class="form-group">
-            <label class="input-label" for="Email">Email</label><span class="required-field ">*</span>
-            <input asp-for="RegisterViewModel.Email" id="Email" class="form-control" placeholder="Email..." />
-        </div>
-        <div class="form-group">
-            <label class="input-label" for="Password">Password</label><span class="required-field ">*</span>
-            <input asp-for="RegisterViewModel.Password" id="Password" class="form-control" placeholder="Password..." />
-        </div>
-        <div class="form-group">
-            <label class="input-label" for="ConfirmPassword">Confirm Password</label><span class="required-field ">*</span>
-            <input asp-for="RegisterViewModel.ConfirmPassword" id="ConfirmPassword" class="form-control" placeholder="Confirm Password..." />
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-6">
-                    <!--City-->
-                    <label class="input-label" for="City">City</label><span class="required-field">*</span>
-                    <input asp-for="RegisterViewModel.City" id="City" name="City" class="form-control" placeholder="City...">
-                </div>
-                <div class="col-md-6">
-                    <!--Country-->
-                    <label class="input-label" for="Country">Country</label><span class="required-field ">*</span>
-                    <input asp-for="RegisterViewModel.Country" id="Country" name="Country" class="form-control" placeholder="Country...">
-                </div>
+@{
+    ViewData["Title"] = "Register";
+}
+@{ string emailAvalability = Model.Result?.Succeeded == false ? "This email is not avalable" : string.Empty;}
+<!--new form-->
+<form id="sign-up-form" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+    <!--Personal Data-->
+    <sup>All fields marked with <span class="required-field ">*</span> are required.</sup>
+    <div class="form-group">
+        <label for="FirstName" class="input-label">First Name</label><span class="required-field ">*</span>
+        <input asp-for="RegisterViewModel.FirstName" id="FirstName" class="form-control" placeholder="First Name..." />
+        <span asp-validation-for="RegisterViewModel.FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="input-label" for="LastName">Last Name</label><span class="required-field ">*</span>
+        <input asp-for="RegisterViewModel.LastName" id="LastName" class="form-control" placeholder="Last Name..." />
+        <span asp-validation-for="RegisterViewModel.LastName" class="text-danger"></span>
+
+    </div>
+    <div class="form-group">
+        <label class="input-label" for="Email">Email</label><span class="required-field ">*</span>
+        <input asp-for="RegisterViewModel.Email" id="Email" class="form-control" placeholder="Email..." />
+        <span asp-validation-for="RegisterViewModel.Email" class="text-danger">@emailAvalability</span>
+
+    </div>
+    <div class="form-group">
+        <label class="input-label" for="Password">Password</label><span class="required-field ">*</span>
+        <input asp-for="RegisterViewModel.Password" id="Password" class="form-control" placeholder="Password..." />
+        <span asp-validation-for="RegisterViewModel.Password" class="text-danger"></span>
+
+    </div>
+    <div class="form-group">
+        <label class="input-label" for="ConfirmPassword">Confirm Password</label><span class="required-field ">*</span>
+        <input asp-for="RegisterViewModel.ConfirmPassword" id="ConfirmPassword" class="form-control" placeholder="Confirm Password..." />
+        <span asp-validation-for="RegisterViewModel.ConfirmPassword" class="text-danger"></span>
+
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6">
+                <!--City-->
+                <label class="input-label" for="City">City</label><span class="required-field">*</span>
+                <input asp-for="RegisterViewModel.City" id="City" class="form-control" placeholder="City...">
+                <span asp-validation-for="RegisterViewModel.City" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <!--Country-->
+                <label class="input-label" for="Country">Country</label><span class="required-field ">*</span>
+                <input asp-for="RegisterViewModel.Country" id="Country" class="form-control" placeholder="Country...">
+                <span asp-validation-for="RegisterViewModel.Country" class="text-danger"></span>
             </div>
         </div>
-        <!--MusicianType-->
-        <div class="form-group">
-            <label class="input-label" for="MusicianType">Musician Type</label><span class="required-field ">*</span>
-            <input asp-for="RegisterViewModel.MusicianType" id="MusicianType" name="MusicianType" class="form-control" placeholder="Musician type...">
-        </div>
-        <!--Interests-->
-        <div class="form-group">
-            <label class="input-label" for="Interests">Interests</label><span class="required-field ">*</span>
-            <input asp-for="RegisterViewModel.Interests" id="Interests" name="Interests" class="form-control" maxlength="20" title="No more than 20 characters" placeholder="Interests...">
-            <div id="interests-container">
+    </div>
+    <!--MusicianType-->
+    <div class="form-group">
+        <label class="input-label" for="MusicianType">Musician Type</label><span class="required-field ">*</span>
+        <input asp-for="RegisterViewModel.MusicianType" id="MusicianType" class="form-control" placeholder="Musician type...">
+        <span asp-validation-for="RegisterViewModel.MusicianType" class="text-danger"></span>
 
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="input-label" for="Description">Description</label>
-            <textarea asp-for="RegisterViewModel.Description" id="Description" class="form-control" rows="3" placeholder="Description..."></textarea>
-        </div>
-        <div class="submit-button">
-            <button id="submit-button" type="submit" class="btn btn-default">Submit</button>
-        </div>
-        <!--User common data populating-->
-        <script type="text/javascript">
-                var interests = [];
-                var cities = [];
-                var countries = [];
-                var musicianTypes = [];
+    </div>
+    <!--Interests-->
+    <div class="form-group">
+        <label class="input-label" for="Interests">Interests</label>
+        <input id="Interests" class="form-control" maxlength="20" title="No more than 20 characters" placeholder="Interests...">
+        <div id="interests-container">
 
-                @foreach(var data_element in @Model.MusicianCommonData.Interests)
-                {  
-                    @: interests.push("@data_element");
-                }   
-                @foreach(var data_element in @Model.MusicianCommonData.MusicianTypes)
-                {  
-                    @: musicianTypes.push("@data_element");
-                }   
-                @foreach(var data_element in @Model.MusicianCommonData.Cities)
-                {  
-                    @: cities.push("@data_element");
-                }   
-                @foreach(var data_element in @Model.MusicianCommonData.Countries)
-                {  
-                    @: countries.push("@data_element");
-                }   
-        </script>
-    </form>
-    @section Scripts
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="input-label" for="Description">Description</label>
+        <textarea asp-for="RegisterViewModel.Description" id="Description" class="form-control" rows="3" placeholder="Description..."></textarea>
+    </div>
+    <!--Hidden element to store interests-->
+    <textarea class="hidden" display="none" id="interestsHidden" asp-for="RegisterViewModel.Interests"></textarea>
+    <div class="submit-button">
+        <button id="submit-button" type="submit" class="btn btn-default">Submit</button>
+    </div>
+    <!--User common data populating-->
+    <script type="text/javascript">
+        var interests = [];
+        var cities = [];
+        var countries = [];
+        var musicianTypes = [];
+
+        @foreach(var dataElement in @Model.MusicianReadCommonData.Interests)
         {
-        @await Html.PartialAsync("_ValidationScriptsPartial")
-    }
+            @: interests.push("@dataElement");
+        }
+        @foreach(var dataElement in @Model.MusicianReadCommonData.MusicianTypes)
+        {
+            @: musicianTypes.push("@dataElement");
+        }
+        @foreach(var dataElement in @Model.MusicianReadCommonData.Cities)
+        {
+            @: cities.push("@dataElement");
+        }
+        @foreach(var dataElement in @Model.MusicianReadCommonData.Countries)
+        {
+            @: countries.push("@dataElement");
+        }
+    </script>
+</form>
+@section Scripts
+    {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

@@ -4102,6 +4102,9 @@
         }
       },
       "Bands.DTO/1.0.0": {
+        "dependencies": {
+          "Bands.Domains": "1.0.0"
+        },
         "runtime": {
           "Bands.DTO.dll": {}
         },

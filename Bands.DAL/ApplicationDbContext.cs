@@ -1,4 +1,5 @@
 ﻿using Bands.Domains.Configs;
+using Bands.Domains.JonctionModels;
 using Bands.Domains.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -42,5 +43,8 @@ namespace Bands.DAL
         public DbSet<PracticePlace> PracticePlaces { get; set; }
         public DbSet<Genre> Genres { set; get; }
         public DbSet<MapLocation> MapLocations { get; set; }
+        public DbSet<MusicianInterest> MusicianInterests { get; set; }
+        public DbSet<BandsGenres> BandsGenres { get; set; }
+        public DbSet<MusicianBand> MusicianBands { get; set; }
     }
 }

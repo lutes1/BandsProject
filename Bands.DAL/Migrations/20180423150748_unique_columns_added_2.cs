@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Bands.DAL.Migrations
 {
-    public partial class new_migr_long_id : Migration
+    public partial class unique_columns_added_2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,34 +64,30 @@ namespace Bands.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MapLocations",
+                columns: table => new
+                {
+                    MapLocationId = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Address = table.Column<string>(maxLength: 50, nullable: true),
+                    City = table.Column<string>(maxLength: 30, nullable: false),
+                    Country = table.Column<string>(maxLength: 30, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MapLocations", x => x.MapLocationId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MusicianTypes",
                 columns: table => new
                 {
-                    MusicianTypeId = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    MusicianTypeId = table.Column<long>(nullable: false),
                     TypeName = table.Column<string>(maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MusicianTypes", x => x.MusicianTypeId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PracticeLocations",
-                columns: table => new
-                {
-                    PracticeLocationId = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(maxLength: 1000, nullable: false),
-                    Latitude = table.Column<decimal>(type: "numeric(18,6)", nullable: false),
-                    Longitude = table.Column<decimal>(type: "numeric(18,6)", nullable: false),
-                    Name = table.Column<string>(maxLength: 20, nullable: false),
-                    OwnerFullName = table.Column<string>(maxLength: 40, nullable: true),
-                    PhoneNumber = table.Column<string>(maxLength: 20, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PracticeLocations", x => x.PracticeLocationId);
+                    table.PrimaryKey("PK_MusicianTypes", x => new { x.MusicianTypeId, x.TypeName });
                 });
 
             migrationBuilder.CreateTable(
@@ -116,6 +112,27 @@ namespace Bands.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PracticePlaces",
+                columns: table => new
+                {
+                    MapLocationId = table.Column<long>(nullable: false),
+                    Description = table.Column<string>(maxLength: 1000, nullable: false),
+                    Name = table.Column<string>(maxLength: 20, nullable: false),
+                    OwnerFullName = table.Column<string>(maxLength: 40, nullable: true),
+                    PhoneNumber = table.Column<string>(maxLength: 20, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PracticePlaces", x => x.MapLocationId);
+                    table.ForeignKey(
+                        name: "FK_PracticePlaces_MapLocations_MapLocationId",
+                        column: x => x.MapLocationId,
+                        principalTable: "MapLocations",
+                        principalColumn: "MapLocationId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Pictures",
                 columns: table => new
                 {
@@ -124,16 +141,16 @@ namespace Bands.DAL.Migrations
                     Path = table.Column<string>(maxLength: 200, nullable: false),
                     PictureGuid = table.Column<Guid>(nullable: false),
                     PictureName = table.Column<string>(maxLength: 20, nullable: false),
-                    PracticeLocationId = table.Column<long>(nullable: true)
+                    PracticePlaceMapLocationId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pictures", x => x.PictureId);
                     table.ForeignKey(
-                        name: "FK_Pictures_PracticeLocations_PracticeLocationId",
-                        column: x => x.PracticeLocationId,
-                        principalTable: "PracticeLocations",
-                        principalColumn: "PracticeLocationId",
+                        name: "FK_Pictures_PracticePlaces_PracticePlaceMapLocationId",
+                        column: x => x.PracticePlaceMapLocationId,
+                        principalTable: "PracticePlaces",
+                        principalColumn: "MapLocationId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -282,10 +299,11 @@ namespace Bands.DAL.Migrations
                 columns: table => new
                 {
                     ApplicationUserId = table.Column<long>(nullable: false),
-                    City = table.Column<string>(maxLength: 20, nullable: true),
                     Description = table.Column<string>(maxLength: 1000, nullable: true),
                     Likes = table.Column<long>(nullable: false),
-                    MusicianTypeId = table.Column<long>(nullable: false)
+                    MapLocationId = table.Column<long>(nullable: false),
+                    MusicianTypeId = table.Column<long>(nullable: false),
+                    MusicianTypeTypeName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -297,10 +315,16 @@ namespace Bands.DAL.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Musicians_MusicianTypes_MusicianTypeId",
-                        column: x => x.MusicianTypeId,
+                        name: "FK_Musicians_MapLocations_MapLocationId",
+                        column: x => x.MapLocationId,
+                        principalTable: "MapLocations",
+                        principalColumn: "MapLocationId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Musicians_MusicianTypes_MusicianTypeId_MusicianTypeTypeName",
+                        columns: x => new { x.MusicianTypeId, x.MusicianTypeTypeName },
                         principalTable: "MusicianTypes",
-                        principalColumn: "MusicianTypeId",
+                        principalColumns: new[] { "MusicianTypeId", "TypeName" },
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -357,7 +381,7 @@ namespace Bands.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MusicianBand",
+                name: "MusicianBands",
                 columns: table => new
                 {
                     BandId = table.Column<long>(nullable: false),
@@ -365,15 +389,15 @@ namespace Bands.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MusicianBand", x => new { x.BandId, x.MusicianId });
+                    table.PrimaryKey("PK_MusicianBands", x => new { x.BandId, x.MusicianId });
                     table.ForeignKey(
-                        name: "FK_MusicianBand_Bands_BandId",
+                        name: "FK_MusicianBands_Bands_BandId",
                         column: x => x.BandId,
                         principalTable: "Bands",
                         principalColumn: "BandId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MusicianBand_Musicians_MusicianId",
+                        name: "FK_MusicianBands_Musicians_MusicianId",
                         column: x => x.MusicianId,
                         principalTable: "Musicians",
                         principalColumn: "ApplicationUserId",
@@ -381,7 +405,7 @@ namespace Bands.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MusicianInterest",
+                name: "MusicianInterests",
                 columns: table => new
                 {
                     InterestId = table.Column<long>(nullable: false),
@@ -389,15 +413,15 @@ namespace Bands.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MusicianInterest", x => new { x.InterestId, x.MusicianId });
+                    table.PrimaryKey("PK_MusicianInterests", x => new { x.InterestId, x.MusicianId });
                     table.ForeignKey(
-                        name: "FK_MusicianInterest_Interests_InterestId",
+                        name: "FK_MusicianInterests_Interests_InterestId",
                         column: x => x.InterestId,
                         principalTable: "Interests",
                         principalColumn: "InterestId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MusicianInterest_Musicians_MusicianId",
+                        name: "FK_MusicianInterests_Musicians_MusicianId",
                         column: x => x.MusicianId,
                         principalTable: "Musicians",
                         principalColumn: "ApplicationUserId",
@@ -473,24 +497,29 @@ namespace Bands.DAL.Migrations
                 column: "MusicianApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MusicianBand_MusicianId",
-                table: "MusicianBand",
+                name: "IX_MusicianBands_MusicianId",
+                table: "MusicianBands",
                 column: "MusicianId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MusicianInterest_MusicianId",
-                table: "MusicianInterest",
+                name: "IX_MusicianInterests_MusicianId",
+                table: "MusicianInterests",
                 column: "MusicianId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Musicians_MusicianTypeId",
+                name: "IX_Musicians_MapLocationId",
                 table: "Musicians",
-                column: "MusicianTypeId");
+                column: "MapLocationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pictures_PracticeLocationId",
+                name: "IX_Musicians_MusicianTypeId_MusicianTypeTypeName",
+                table: "Musicians",
+                columns: new[] { "MusicianTypeId", "MusicianTypeTypeName" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pictures_PracticePlaceMapLocationId",
                 table: "Pictures",
-                column: "PracticeLocationId");
+                column: "PracticePlaceMapLocationId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -517,10 +546,10 @@ namespace Bands.DAL.Migrations
                 name: "Equipments");
 
             migrationBuilder.DropTable(
-                name: "MusicianBand");
+                name: "MusicianBands");
 
             migrationBuilder.DropTable(
-                name: "MusicianInterest");
+                name: "MusicianInterests");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -550,7 +579,10 @@ namespace Bands.DAL.Migrations
                 name: "Pictures");
 
             migrationBuilder.DropTable(
-                name: "PracticeLocations");
+                name: "PracticePlaces");
+
+            migrationBuilder.DropTable(
+                name: "MapLocations");
         }
     }
 }

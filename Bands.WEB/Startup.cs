@@ -41,6 +41,12 @@ namespace Bands.WEB
 
             services.AddScoped(typeof(IMusiciansServices), typeof(MusiciansServices));
 
+            services.AddScoped(typeof(IMusicianInterestsRepository), typeof(MusicianInterestsRepository));
+
+            services.AddScoped(typeof(IInterestsRepository), typeof(InterestsRepository));
+
+            services.AddScoped(typeof(IMusicianTypeRepository), typeof(MusicianTypeRepository));
+
             services.AddIdentity<ApplicationUser, IdentityRole<long>>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();

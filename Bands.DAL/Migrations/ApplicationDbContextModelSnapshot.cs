@@ -43,7 +43,7 @@ namespace Bands.DAL.Migrations
 
                     b.HasIndex("MusicianId");
 
-                    b.ToTable("MusicianBand");
+                    b.ToTable("MusicianBands");
                 });
 
             modelBuilder.Entity("Bands.Domains.JonctionModels.MusicianInterest", b =>
@@ -56,7 +56,7 @@ namespace Bands.DAL.Migrations
 
                     b.HasIndex("MusicianId");
 
-                    b.ToTable("MusicianInterest");
+                    b.ToTable("MusicianInterests");
                 });
 
             modelBuilder.Entity("Bands.Domains.Models.ApplicationUser", b =>
@@ -246,28 +246,28 @@ namespace Bands.DAL.Migrations
                     b.Property<long?>("MapLocationId")
                         .IsRequired();
 
-                    b.Property<long?>("MusicianTypeId")
+                    b.Property<long>("MusicianTypeId");
+
+                    b.Property<string>("MusicianTypeTypeName")
                         .IsRequired();
 
                     b.HasKey("ApplicationUserId");
 
                     b.HasIndex("MapLocationId");
 
-                    b.HasIndex("MusicianTypeId");
+                    b.HasIndex("MusicianTypeId", "MusicianTypeTypeName");
 
                     b.ToTable("Musicians");
                 });
 
             modelBuilder.Entity("Bands.Domains.Models.MusicianType", b =>
                 {
-                    b.Property<long>("MusicianTypeId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<long>("MusicianTypeId");
 
                     b.Property<string>("TypeName")
-                        .IsRequired()
                         .HasMaxLength(20);
 
-                    b.HasKey("MusicianTypeId");
+                    b.HasKey("MusicianTypeId", "TypeName");
 
                     b.ToTable("MusicianTypes");
                 });
@@ -287,11 +287,11 @@ namespace Bands.DAL.Migrations
                         .IsRequired()
                         .HasMaxLength(20);
 
-                    b.Property<long?>("PracticePalceMapLocationId");
+                    b.Property<long?>("PracticePlaceMapLocationId");
 
                     b.HasKey("PictureId");
 
-                    b.HasIndex("PracticePalceMapLocationId");
+                    b.HasIndex("PracticePlaceMapLocationId");
 
                     b.ToTable("Pictures");
                 });
@@ -316,7 +316,7 @@ namespace Bands.DAL.Migrations
 
                     b.HasKey("MapLocationId");
 
-                    b.ToTable("PracticeLocations");
+                    b.ToTable("PracticePlaces");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<long>", b =>
@@ -504,7 +504,7 @@ namespace Bands.DAL.Migrations
 
                     b.HasOne("Bands.Domains.Models.MusicianType", "MusicianType")
                         .WithMany("Musician")
-                        .HasForeignKey("MusicianTypeId")
+                        .HasForeignKey("MusicianTypeId", "MusicianTypeTypeName")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -512,7 +512,7 @@ namespace Bands.DAL.Migrations
                 {
                     b.HasOne("Bands.Domains.Models.PracticePlace", "PracticePlace")
                         .WithMany("Pictures")
-                        .HasForeignKey("PracticePalceMapLocationId");
+                        .HasForeignKey("PracticePlaceMapLocationId");
                 });
 
             modelBuilder.Entity("Bands.Domains.Models.PracticePlace", b =>

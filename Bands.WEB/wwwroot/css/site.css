@@ -1,12 +1,12 @@
 ﻿html, body {
     height: 100%;
-    margin: 0px;
+    margin-top: 0;
     min-width: 300px;
 }
 
 .outerPage {
     background-color: #afafaf;
-    height: calc(100%+30px);
+    height: 100%;   
     padding: 1%;
 }
 
@@ -138,4 +138,7 @@ textarea {
 }
 ul{
     list-style-type: none;
+}
+.hidden {
+    display: none;
 }

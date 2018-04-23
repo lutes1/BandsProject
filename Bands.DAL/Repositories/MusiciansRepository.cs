@@ -21,28 +21,42 @@ namespace Bands.DAL.Repositories
                 .ToList();
         }
 
-        public Musician GetMuscianById(string id)
+        public Musician GetMuscianById(long id)
         {
             return DbContext.Musicians
                 .Include(x=>x.ApplicationUser)
                 .Include(x => x.ApplicationUser)
-                .FirstOrDefault(x=>x.ApplicationUserId.Equals(id));
+                .FirstOrDefault(x=>x.ApplicationUserId == id);
         }
 
-        public MusicianCommonDto GetMusicianCommonData()
+        public MusicianReadCommonDto GetMusicianCommonData()
         {
             var musicianCommonDto =
 
-                new MusicianCommonDto
+                new MusicianReadCommonDto
                 {
-                    Cities = DbContext.MapLocations.Select(x => x.City).ToList(),
-                    Countries = DbContext.MapLocations.Select(x => x.Country).ToList(),
+                    Cities = DbContext.MapLocations.Select(x => x.City).Distinct().ToList(),
+                    Countries = DbContext.MapLocations.Select(x => x.Country).Distinct().ToList(),
                     Interests = DbContext.Interests.Select(x => x.Name).ToList(),
-                    MusicianTypes = DbContext.MusicianTypes.Select(x => x.TypeName).ToList()
+                    MusicianTypes = DbContext.MusicianTypes.Select(x => x.TypeName).Distinct().ToList()
                 };
 
 
             return musicianCommonDto;
+        }
+
+        public void MusicianCreate(Musician musician)
+        {
+            DbContext.Musicians.Add(new Musician
+            {
+                Description = musician.Description,
+                MusicianType = musician.MusicianType,
+                MapLocation = musician.MapLocation,
+                ApplicationUser = musician.ApplicationUser,
+                Likes = 0,
+                Interests = musician.Interests
+            });
+            DbContext.SaveChanges();
         }
     }
 }

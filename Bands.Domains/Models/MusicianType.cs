@@ -11,11 +11,5 @@ namespace Bands.Domains.Models
         public List<Musician> Musician { get; set; }
     }
 
-    public class MusicianTypeConfig : IEntityTypeConfiguration<MusicianType>
-    {
-        public void Configure(EntityTypeBuilder<MusicianType> builder)
-        {
-            builder.Property(x => x.TypeName).IsRequired().HasMaxLength(20);
-        }
-    }
+  
 }
