@@ -23,5 +23,49 @@
     <ItemGroup>
         <Folder Include="App_Code\" />
         <Folder Include="wwwroot\images\" />
+        <Folder Include="wwwroot\lib\jquery-ui\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Remove="wwwroot\lib\jquery-ui\AUTHORS.txt" />
+      <Content Remove="wwwroot\lib\jquery-ui\index.html" />
+      <Content Remove="wwwroot\lib\jquery-ui\jquery-ui.css" />
+      <Content Remove="wwwroot\lib\jquery-ui\jquery-ui.js" />
+      <Content Remove="wwwroot\lib\jquery-ui\jquery-ui.min.css" />
+      <Content Remove="wwwroot\lib\jquery-ui\jquery-ui.min.js" />
+      <Content Remove="wwwroot\lib\jquery-ui\jquery-ui.structure.css" />
+      <Content Remove="wwwroot\lib\jquery-ui\jquery-ui.structure.min.css" />
+      <Content Remove="wwwroot\lib\jquery-ui\jquery-ui.theme.css" />
+      <Content Remove="wwwroot\lib\jquery-ui\jquery-ui.theme.min.css" />
+      <Content Remove="wwwroot\lib\jquery-ui\LICENSE.txt" />
+      <Content Remove="wwwroot\lib\jquery-ui\package.json" />
+      <Content Remove="wwwroot\lib\jquery %28copy%29\.bower.json" />
+      <Content Remove="wwwroot\lib\jquery-ui\external\jquery\jquery.js" />
+      <Content Remove="wwwroot\lib\jquery-ui\images\ui-icons_444444_256x240.png" />
+      <Content Remove="wwwroot\lib\jquery-ui\images\ui-icons_555555_256x240.png" />
+      <Content Remove="wwwroot\lib\jquery-ui\images\ui-icons_777620_256x240.png" />
+      <Content Remove="wwwroot\lib\jquery-ui\images\ui-icons_777777_256x240.png" />
+      <Content Remove="wwwroot\lib\jquery-ui\images\ui-icons_cc0000_256x240.png" />
+      <Content Remove="wwwroot\lib\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Include="wwwroot\lib\jquery-ui\AUTHORS.txt" />
+      <None Include="wwwroot\lib\jquery-ui\index.html" />
+      <None Include="wwwroot\lib\jquery-ui\jquery-ui.css" />
+      <None Include="wwwroot\lib\jquery-ui\jquery-ui.js" />
+      <None Include="wwwroot\lib\jquery-ui\jquery-ui.min.css" />
+      <None Include="wwwroot\lib\jquery-ui\jquery-ui.min.js" />
+      <None Include="wwwroot\lib\jquery-ui\jquery-ui.structure.css" />
+      <None Include="wwwroot\lib\jquery-ui\jquery-ui.structure.min.css" />
+      <None Include="wwwroot\lib\jquery-ui\jquery-ui.theme.css" />
+      <None Include="wwwroot\lib\jquery-ui\jquery-ui.theme.min.css" />
+      <None Include="wwwroot\lib\jquery-ui\LICENSE.txt" />
+      <None Include="wwwroot\lib\jquery-ui\package.json" />
+      <None Include="wwwroot\lib\jquery-ui\external\jquery\jquery.js" />
+      <None Include="wwwroot\lib\jquery-ui\images\ui-icons_444444_256x240.png" />
+      <None Include="wwwroot\lib\jquery-ui\images\ui-icons_555555_256x240.png" />
+      <None Include="wwwroot\lib\jquery-ui\images\ui-icons_777620_256x240.png" />
+      <None Include="wwwroot\lib\jquery-ui\images\ui-icons_777777_256x240.png" />
+      <None Include="wwwroot\lib\jquery-ui\images\ui-icons_cc0000_256x240.png" />
+      <None Include="wwwroot\lib\jquery-ui\images\ui-icons_ffffff_256x240.png" />
     </ItemGroup>
 </Project>

@@ -1,18 +1,12 @@
 ﻿<Properties StartupConfiguration="{C3BBFE75-5A16-454A-BE85-B085307EEBED}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Bands.DAL/ApplicationDbContext.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Bands.WEB/Views/Account/Register.cshtml">
     <Files>
-      <File FileName="Bands.Domains/ApplicationUser.cs" Line="17" Column="2" />
-      <File FileName="Bands.DAL/ApplicationDbContext.cs" Line="24" Column="65" />
+      <File FileName="Bands.WEB/Views/Account/Register.cshtml" Line="99" Column="1" />
+      <File FileName="Bands.WEB/Controllers/AccountController.cs" Line="481" Column="3" />
+      <File FileName="Bands.WEB/Views/Shared/_Layout.cshtml" Line="38" Column="38" />
+      <File FileName="Bands.WEB/Views/Shared/_ValidationScriptsPartial.cshtml" Line="1" Column="1" />
+      <File FileName="Bands.WEB/wwwroot/js/site.js" Line="3" Column="54" NotebookId="1" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Bands" expanded="True">
-            <Node name="Bands.WEB" selected="True" />
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -11,19 +11,21 @@
 /Users/petrulutenco/Desktop/Internship/BandsProject/Bands.BLL/obj/Debug/netcoreapp2.0/Bands.BLL.csproj.CoreCompileInputs.cache
 /Users/petrulutenco/Desktop/Internship/BandsProject/Bands.BLL/obj/Debug/netcoreapp2.0/Bands.BLL.AssemblyInfoInputs.cache
 /Users/petrulutenco/Desktop/Internship/BandsProject/Bands.BLL/obj/Debug/netcoreapp2.0/Bands.BLL.AssemblyInfo.cs
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\bin\Debug\netcoreapp2.0\Bands.BLL.deps.json
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\bin\Debug\netcoreapp2.0\Bands.BLL.dll
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\bin\Debug\netcoreapp2.0\Bands.BLL.pdb
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\bin\Debug\netcoreapp2.0\Bands.DAL.dll
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\bin\Debug\netcoreapp2.0\Bands.Domains.dll
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\bin\Debug\netcoreapp2.0\Bands.DAL.pdb
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\bin\Debug\netcoreapp2.0\Bands.Domains.pdb
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\obj\Debug\netcoreapp2.0\Bands.BLL.csprojResolveAssemblyReference.cache
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\obj\Debug\netcoreapp2.0\Bands.BLL.csproj.CoreCompileInputs.cache
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\obj\Debug\netcoreapp2.0\Bands.BLL.AssemblyInfoInputs.cache
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\obj\Debug\netcoreapp2.0\Bands.BLL.AssemblyInfo.cs
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\obj\Debug\netcoreapp2.0\Bands.BLL.csproj.CopyComplete
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\obj\Debug\netcoreapp2.0\Bands.BLL.dll
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\obj\Debug\netcoreapp2.0\Bands.BLL.pdb
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\bin\Debug\netcoreapp2.0\Bands.DTO.dll
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.BLL\bin\Debug\netcoreapp2.0\Bands.DTO.pdb
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/bin/Debug/netcoreapp2.0/Bands.BLL.deps.json
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/bin/Debug/netcoreapp2.0/Bands.BLL.dll
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/bin/Debug/netcoreapp2.0/Bands.BLL.pdb
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/bin/Debug/netcoreapp2.0/Bands.DAL.dll
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/bin/Debug/netcoreapp2.0/Bands.Domains.dll
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/bin/Debug/netcoreapp2.0/Bands.DAL.pdb
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/bin/Debug/netcoreapp2.0/Bands.Domains.pdb
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/obj/Debug/netcoreapp2.0/Bands.BLL.csprojResolveAssemblyReference.cache
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/obj/Debug/netcoreapp2.0/Bands.BLL.csproj.CoreCompileInputs.cache
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/obj/Debug/netcoreapp2.0/Bands.BLL.AssemblyInfoInputs.cache
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/obj/Debug/netcoreapp2.0/Bands.BLL.AssemblyInfo.cs
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/obj/Debug/netcoreapp2.0/Bands.BLL.csproj.CopyComplete
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/obj/Debug/netcoreapp2.0/Bands.BLL.dll
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/obj/Debug/netcoreapp2.0/Bands.BLL.pdb
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/bin/Debug/netcoreapp2.0/Bands.DTO.dll
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.BLL/bin/Debug/netcoreapp2.0/Bands.DTO.pdb
+/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.BLL/bin/Debug/netcoreapp2.0/Bands.DTO.dll
+/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.BLL/bin/Debug/netcoreapp2.0/Bands.DTO.pdb

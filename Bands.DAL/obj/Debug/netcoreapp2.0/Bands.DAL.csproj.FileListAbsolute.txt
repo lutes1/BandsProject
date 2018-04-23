@@ -9,17 +9,19 @@
 /Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DAL/bin/Debug/netcoreapp2.0/Bands.DAL.pdb
 /Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DAL/bin/Debug/netcoreapp2.0/Bands.Domains.dll
 /Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DAL/bin/Debug/netcoreapp2.0/Bands.Domains.pdb
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\bin\Debug\netcoreapp2.0\Bands.DAL.deps.json
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\bin\Debug\netcoreapp2.0\Bands.DAL.dll
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\bin\Debug\netcoreapp2.0\Bands.DAL.pdb
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\bin\Debug\netcoreapp2.0\Bands.Domains.dll
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\bin\Debug\netcoreapp2.0\Bands.Domains.pdb
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\obj\Debug\netcoreapp2.0\Bands.DAL.csprojResolveAssemblyReference.cache
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\obj\Debug\netcoreapp2.0\Bands.DAL.csproj.CoreCompileInputs.cache
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\obj\Debug\netcoreapp2.0\Bands.DAL.AssemblyInfoInputs.cache
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\obj\Debug\netcoreapp2.0\Bands.DAL.AssemblyInfo.cs
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\obj\Debug\netcoreapp2.0\Bands.DAL.csproj.CopyComplete
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\obj\Debug\netcoreapp2.0\Bands.DAL.dll
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\obj\Debug\netcoreapp2.0\Bands.DAL.pdb
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\bin\Debug\netcoreapp2.0\Bands.DTO.dll
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.DAL\bin\Debug\netcoreapp2.0\Bands.DTO.pdb
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.DAL/bin/Debug/netcoreapp2.0/Bands.DAL.deps.json
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.DAL/bin/Debug/netcoreapp2.0/Bands.DAL.dll
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.DAL/bin/Debug/netcoreapp2.0/Bands.DAL.pdb
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.DAL/bin/Debug/netcoreapp2.0/Bands.Domains.dll
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.DAL/bin/Debug/netcoreapp2.0/Bands.Domains.pdb
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.DAL/obj/Debug/netcoreapp2.0/Bands.DAL.csprojResolveAssemblyReference.cache
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.DAL/obj/Debug/netcoreapp2.0/Bands.DAL.csproj.CoreCompileInputs.cache
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.DAL/obj/Debug/netcoreapp2.0/Bands.DAL.AssemblyInfoInputs.cache
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.DAL/obj/Debug/netcoreapp2.0/Bands.DAL.AssemblyInfo.cs
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.DAL/obj/Debug/netcoreapp2.0/Bands.DAL.csproj.CopyComplete
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.DAL/obj/Debug/netcoreapp2.0/Bands.DAL.dll
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.DAL/obj/Debug/netcoreapp2.0/Bands.DAL.pdb
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.DAL/bin/Debug/netcoreapp2.0/Bands.DTO.dll
+C:/Users/petru.lutenco/documents/visual studio 2017/Projects/Bands/Bands.DAL/bin/Debug/netcoreapp2.0/Bands.DTO.pdb
+/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DAL/bin/Debug/netcoreapp2.0/Bands.DTO.dll
+/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DAL/bin/Debug/netcoreapp2.0/Bands.DTO.pdb
