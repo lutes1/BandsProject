@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bands.DAL", "Bands.DAL\Band
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bands.WEB", "Bands.WEB\Bands.WEB.csproj", "{C3BBFE75-5A16-454A-BE85-B085307EEBED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bands.DTO", "Bands.DTO\Bands.DTO.csproj", "{D1F24E01-3DCA-48F9-94E7-61DCE03237D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bands.DTO", "Bands.DTO\Bands.DTO.csproj", "{D1F24E01-3DCA-48F9-94E7-61DCE03237D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bands.Domains", "Bands.Domains\Bands.Domains.csproj", "{42EFBBE5-54D7-4C86-B924-CA12AB34B0F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bands.Domains", "Bands.Domains\Bands.Domains.csproj", "{42EFBBE5-54D7-4C86-B924-CA12AB34B0F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

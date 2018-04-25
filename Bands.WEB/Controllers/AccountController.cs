@@ -228,29 +228,29 @@ namespace Bands.WEB.Controllers
 			ViewData["ReturnUrl"] = returnUrl;
 		    IdentityResult result = null;
 
-            if (ModelState.IsValid)
+		    if (ModelState.IsValid)
 			{
 				var user = new ApplicationUser
 				{
 					FirstName = model.FirstName,
 					LastName = model.LastName,
 					UserName = model.Email,
-					Email = model.Email
-				};
-				result = await _userManager.CreateAsync(user, model.Password);
-				if (result.Succeeded)
-				{
-					_logger.LogInformation("User created a new account with password.");
-
-                    _musicianServices.CreateMusician(new MusicianCreateDto
+					Email = model.Email,
+                    Musician = _musicianServices.CreateMusician(new MusicianCreateDto
                     {
                         MusicianType = model.MusicianType,
-                        ApplicationUser = user,
                         Description = model.Description,
                         Interests = model.Interests,
                         City = model.City,
                         Country = model.Country
-                    });
+                    })
+                };
+				result = await _userManager.CreateAsync(user, model.Password);
+
+				if (result.Succeeded)
+				{
+					_logger.LogInformation("User created a new account with password.");
+
 					var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 					var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
 					await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);

@@ -13,17 +13,15 @@ namespace Bands.BLL.ServicesImplementations
 {
     public class MusiciansServices : IMusiciansServices
     {
-        private IMusicianTypeRepository _musicianTypeRepository { get; }
+        private readonly IMusicianTypeRepository _musicianTypeRepository;
         private readonly IMusiciansRepository _musiciansRepository;
-        private readonly IMusicianInterestsRepository _musicianInterestsRepository;
 
         private readonly IInterestsRepository _interestsRepository;
 
-        public MusiciansServices(IMusiciansRepository musiciansRepository, IMusicianInterestsRepository musicianInterestsRepository, IInterestsRepository interestsRepository, IMusicianTypeRepository musicianTypeRepository)
+        public MusiciansServices(IMusiciansRepository musiciansRepository, IInterestsRepository interestsRepository, IMusicianTypeRepository musicianTypeRepository)
         {
             _musicianTypeRepository = musicianTypeRepository;
             _musiciansRepository = musiciansRepository;
-            _musicianInterestsRepository = musicianInterestsRepository;
             _interestsRepository = interestsRepository;
         }
         public List<Musician> GetAllMusicians()
@@ -41,48 +39,42 @@ namespace Bands.BLL.ServicesImplementations
             return _musiciansRepository.GetMusicianCommonData();
         }
 
-        
 
-        public void CreateMusician(MusicianCreateDto musicianDto)
+
+        public Musician CreateMusician(MusicianCreateDto musicianDto)
         {
-            var musicianType = new MusicianType() {TypeName = musicianDto.MusicianType};
+           var interetsBindedList = new List<MusicianInterest>();
 
-            var storedMusicianType = _musicianTypeRepository.GetMusicianTypeByName(musicianDto.MusicianType);
-
-            if (storedMusicianType != null)
-                musicianType = storedMusicianType;
+            if (!string.IsNullOrEmpty(musicianDto.Interests))
+            {
+                foreach (var interest in musicianDto.Interests.Split(','))
+                {
+                    interetsBindedList.Add(new MusicianInterest
+                    {
+                        Interest = _interestsRepository.CheckForStoredInterest(interest)
+                    });
+                }
+            }
 
             var musician = new Musician
             {
-                MapLocation = new MapLocation() { City = musicianDto.City, Country = musicianDto.Country },
-                ApplicationUser = musicianDto.ApplicationUser,
+                MapLocation = new MapLocation
+                {
+                    City = musicianDto.City,
+                    Country = musicianDto.Country
+                },
                 Description = musicianDto.Description,
-                MusicianType = musicianType
+                MusicianType = CheckForStoredMusicianType(musicianDto.MusicianType),
+                Interests = interetsBindedList,
+                DisplayContactData = false
             };
+            return musician;
+        }
 
-            var interetsBindedList = new List<MusicianInterest>();
-
-
-            foreach (var interest in musicianDto.Interests.Split(','))
-            {
-                var musicianInterest = new Interest
-                {
-                    Name = interest
-                };
-
-                var storedInterest = _interestsRepository.GetInterestByName(interest);
-
-                if (storedInterest != null)
-                    musicianInterest = storedInterest;
-
-                interetsBindedList.Add(new MusicianInterest
-                {
-                    Musician = musician,
-                    Interest = musicianInterest
-                });
-            }
-
-            _musicianInterestsRepository.CreateInterest(interetsBindedList);
+        public MusicianType CheckForStoredMusicianType(string musicianTypeName)
+        {
+            return _musicianTypeRepository.GetMusicianTypeByName(musicianTypeName)
+                   ?? new MusicianType() { TypeName = musicianTypeName };
         }
     }
 }

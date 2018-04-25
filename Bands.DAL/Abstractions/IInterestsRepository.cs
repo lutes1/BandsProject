@@ -9,6 +9,6 @@ namespace Bands.DAL.Abstractions
     {
         Interest GetInterestById(long id);
         Interest GetInterestByName(string name);
-
+        Interest CheckForStoredInterest(string interestName);
     }
 }

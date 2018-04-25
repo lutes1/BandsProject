@@ -10,20 +10,27 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-            </li>
-            <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>
-            </li>
-        </ul>
+        <div class="nav-item ">
+            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img id="user-dropdown" class="icon" src="https://image.flaticon.com/icons/png/512/23/23228.png" alt="@UserManager.GetUserAsync(User).Result.FirstName"/>
+            </a>
+            <div class="dropdown-container" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">@UserManager.GetUserAsync(User).Result.FirstName</a>
+                <hr/>
+                <button type="submit" class="dropdown-item">Log out</button>
+            </div>
+        </div>
     </form>
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
-        <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
-    </ul>
+    <div class="nav-item">
+        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img id="user-dropdown" class="icon" src="https://image.flaticon.com/icons/png/512/23/23228.png" alt="User"/>
+        </a>
+        <div class="dropdown-container" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+            <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
+        </div>
+    </div>
 }

@@ -18,6 +18,9 @@ namespace Bands.DAL.Repositories
             return DbContext.Musicians
                 .Include(x=>x.MusicianType)
                 .Include(x => x.ApplicationUser)
+                .Include(x=>x.Interests)
+                .ThenInclude(x=>x.Interest)
+                .Include(x=>x.MapLocation)
                 .ToList();
         }
 
@@ -25,7 +28,6 @@ namespace Bands.DAL.Repositories
         {
             return DbContext.Musicians
                 .Include(x=>x.ApplicationUser)
-                .Include(x => x.ApplicationUser)
                 .FirstOrDefault(x=>x.ApplicationUserId == id);
         }
 

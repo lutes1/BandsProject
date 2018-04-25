@@ -23,5 +23,10 @@ namespace Bands.DAL.Repositories
         {
             return DbContext.Interests.FirstOrDefault(x => x.Name == name);
         }
+
+        public Interest CheckForStoredInterest(string interestName)
+        {
+            return GetInterestByName(interestName) ?? new Interest{Name = interestName};
+        }
     }
 }

@@ -4,35 +4,37 @@
 }
 @{ string emailAvalability = Model.Result?.Succeeded == false ? "This email is not avalable" : string.Empty;}
 <!--new form-->
-<form id="sign-up-form" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+<form class="sign-up-form generic-form" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+    <hr />
+
     <!--Personal Data-->
     <sup>All fields marked with <span class="required-field ">*</span> are required.</sup>
     <div class="form-group">
         <label for="FirstName" class="input-label">First Name</label><span class="required-field ">*</span>
-        <input asp-for="RegisterViewModel.FirstName" id="FirstName" class="form-control" placeholder="First Name..." />
+        <input asp-for="RegisterViewModel.FirstName" id="FirstName" class="form-control" placeholder="First Name..."/>
         <span asp-validation-for="RegisterViewModel.FirstName" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label class="input-label" for="LastName">Last Name</label><span class="required-field ">*</span>
-        <input asp-for="RegisterViewModel.LastName" id="LastName" class="form-control" placeholder="Last Name..." />
+        <input asp-for="RegisterViewModel.LastName" id="LastName" class="form-control" placeholder="Last Name..."/>
         <span asp-validation-for="RegisterViewModel.LastName" class="text-danger"></span>
 
     </div>
     <div class="form-group">
         <label class="input-label" for="Email">Email</label><span class="required-field ">*</span>
-        <input asp-for="RegisterViewModel.Email" id="Email" class="form-control" placeholder="Email..." />
+        <input asp-for="RegisterViewModel.Email" id="Email" class="form-control" placeholder="Email..."/>
         <span asp-validation-for="RegisterViewModel.Email" class="text-danger">@emailAvalability</span>
 
     </div>
     <div class="form-group">
         <label class="input-label" for="Password">Password</label><span class="required-field ">*</span>
-        <input asp-for="RegisterViewModel.Password" id="Password" class="form-control" placeholder="Password..." />
+        <input asp-for="RegisterViewModel.Password" id="Password" class="form-control" placeholder="Password..."/>
         <span asp-validation-for="RegisterViewModel.Password" class="text-danger"></span>
 
     </div>
     <div class="form-group">
         <label class="input-label" for="ConfirmPassword">Confirm Password</label><span class="required-field ">*</span>
-        <input asp-for="RegisterViewModel.ConfirmPassword" id="ConfirmPassword" class="form-control" placeholder="Confirm Password..." />
+        <input asp-for="RegisterViewModel.ConfirmPassword" id="ConfirmPassword" class="form-control" placeholder="Confirm Password..."/>
         <span asp-validation-for="RegisterViewModel.ConfirmPassword" class="text-danger"></span>
 
     </div>
@@ -83,19 +85,19 @@
         var countries = [];
         var musicianTypes = [];
 
-        @foreach(var dataElement in @Model.MusicianReadCommonData.Interests)
+        @foreach (var dataElement in @Model.MusicianReadCommonData.Interests)
         {
             @: interests.push("@dataElement");
         }
-        @foreach(var dataElement in @Model.MusicianReadCommonData.MusicianTypes)
+        @foreach (var dataElement in @Model.MusicianReadCommonData.MusicianTypes)
         {
             @: musicianTypes.push("@dataElement");
         }
-        @foreach(var dataElement in @Model.MusicianReadCommonData.Cities)
+        @foreach (var dataElement in @Model.MusicianReadCommonData.Cities)
         {
             @: cities.push("@dataElement");
         }
-        @foreach(var dataElement in @Model.MusicianReadCommonData.Countries)
+        @foreach (var dataElement in @Model.MusicianReadCommonData.Countries)
         {
             @: countries.push("@dataElement");
         }

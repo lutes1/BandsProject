@@ -16,7 +16,7 @@ namespace Bands.WEB.Models.AccountViewModels
         [StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
         public string LastName { get; set; }
 
-        [StringLength(1000, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
+        [StringLength(1000, ErrorMessage = "The {0} cannot contain more than {1} characters.")]
         public string Description { get; set; }
 
         [Required]
@@ -32,7 +32,7 @@ namespace Bands.WEB.Models.AccountViewModels
             MinimumLength = 1)]
         public string MusicianType { get; set; }
 
-        
+
         public string Interests { get; set; }
 
         [Required]
@@ -40,7 +40,7 @@ namespace Bands.WEB.Models.AccountViewModels
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+        [StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

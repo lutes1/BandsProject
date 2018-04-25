@@ -18,24 +18,24 @@
 /Users/petrulutenco/Desktop/Internship/BandsProject/Bands.WEB/obj/Debug/netcoreapp2.0/UserSecretsAssemblyInfo.cs
 /Users/petrulutenco/Desktop/Internship/BandsProject/Bands.WEB/obj/Debug/netcoreapp2.0/Bands.WEB.AssemblyInfoInputs.cache
 /Users/petrulutenco/Desktop/Internship/BandsProject/Bands.WEB/obj/Debug/netcoreapp2.0/Bands.WEB.AssemblyInfo.cs
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.csprojResolveAssemblyReference.cache
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.csproj.CoreCompileInputs.cache
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.AssemblyInfoInputs.cache
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.AssemblyInfo.cs
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.dll
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.pdb
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.WEB.deps.json
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.WEB.runtimeconfig.json
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.WEB.runtimeconfig.dev.json
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.WEB.dll
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.WEB.pdb
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.BLL.dll
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.DAL.dll
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.Domains.dll
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.DTO.dll
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.BLL.pdb
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.DAL.pdb
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.Domains.pdb
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.DTO.pdb
-C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.csproj.CopyComplete
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.WEB.deps.json
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.WEB.runtimeconfig.json
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.WEB.runtimeconfig.dev.json
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.WEB.dll
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.WEB.pdb
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.BLL.dll
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.DAL.dll
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.Domains.dll
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.DTO.dll
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.BLL.pdb
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.DAL.pdb
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.Domains.pdb
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\bin\Debug\netcoreapp2.0\Bands.DTO.pdb
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.csprojResolveAssemblyReference.cache
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.csproj.CoreCompileInputs.cache
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.AssemblyInfoInputs.cache
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.AssemblyInfo.cs
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.csproj.CopyComplete
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.dll
+C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.WEB\obj\Debug\netcoreapp2.0\Bands.WEB.pdb

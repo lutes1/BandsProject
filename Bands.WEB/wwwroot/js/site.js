@@ -1,6 +1,40 @@
 ﻿$(document).ready(
-    function ()
-    {
+    function () {
+        if ($(window).width() <= 991) {
+            arrangeContentForSmallScreen();
+        }
+        else {
+            arrangeContentForBigScreen();
+        }
+
+        $(window).resize(function () {
+            if ($(window).width() <= 991) {
+                arrangeContentForSmallScreen();
+
+            } else {
+                arrangeContentForBigScreen();
+            }
+        });
+
+        function arrangeContentForBigScreen() {
+            $(".top-menu-item").addClass("line-right");
+            $(".dropdown-container").addClass("dropdown-container-right");
+            $(".dropdown-container").removeClass("dropdown-container-left");
+        }
+
+        function arrangeContentForSmallScreen() {
+            $(".top-menu-item").removeClass("line-right");
+            $(".dropdown-container").removeClass("dropdown-container-right");
+            $(".dropdown-container").addClass("dropdown-container-left");
+        }
+
+
+        $("#user-dropdown").click(
+            function() {
+                $(".dropdown-container").toggle("blind");
+            }
+        );
+
         //------Autocompletes population
         $("#Interests").autocomplete({
             classes: {
@@ -31,11 +65,10 @@
         });
 
         //--------------------------
-
         $("#submit-button").click(function () {
             var userInterests = [];
 
-            var interests = $(".interest-name");;
+            var interests = $(".interest-name");
 
             for (var i = 0; i < interests.length; i++) {
                 var currentInterest = interests[i];
@@ -53,7 +86,7 @@
             }
             else
                 if ($("#Interests").val().trim().length === 0 && keyCode === 32) {
-                    $("#Interests").val("");
+                    $("#Interests").val("".trim());
                 }
         });
 

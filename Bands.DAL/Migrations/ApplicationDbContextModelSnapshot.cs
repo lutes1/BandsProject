@@ -241,6 +241,8 @@ namespace Bands.DAL.Migrations
                     b.Property<string>("Description")
                         .HasMaxLength(1000);
 
+                    b.Property<bool>("DisplayContactData");
+
                     b.Property<long>("Likes");
 
                     b.Property<long?>("MapLocationId")

@@ -13,6 +13,7 @@ namespace Bands.Domains.Models
         public List<MusicianBand> MusicianBands { get; set; }
         public List<Equipment> Equipments { get; set; }
         public long ApplicationUserId { set; get; }
+        public bool DisplayContactData { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
     }
 }
