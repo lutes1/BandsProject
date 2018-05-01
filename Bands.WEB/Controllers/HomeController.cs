@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Bands.WEB.Models;
 using Bands.BLL;
 using Bands.BLL.Abstractions;
+using Bands.WEB.Models.ViewModels;
 
 namespace Bands.WEB.Controllers
 {
@@ -37,7 +39,8 @@ namespace Bands.WEB.Controllers
 
         public IActionResult Musicians()
         {
-            var model = _musicianServices.GetAllMusicians();
+            var musicianread = _musicianServices.GetMusicianById(4);
+            var model = Mapper.Map<List<MusicianViewModel>>(_musicianServices.GetAllMusicians());
             return View(model);
         }
     }

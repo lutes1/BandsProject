@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using AutoMapper;
 using Bands.BLL.Abstractions;
 using Bands.DAL;
 using Bands.DAL.Abstractions;
@@ -13,25 +14,33 @@ namespace Bands.BLL.ServicesImplementations
 {
     public class MusiciansServices : IMusiciansServices
     {
+        #region DependenciesInjection
+        private readonly IMapper _mapper;
         private readonly IMusicianTypeRepository _musicianTypeRepository;
         private readonly IMusiciansRepository _musiciansRepository;
-
         private readonly IInterestsRepository _interestsRepository;
 
-        public MusiciansServices(IMusiciansRepository musiciansRepository, IInterestsRepository interestsRepository, IMusicianTypeRepository musicianTypeRepository)
+        public MusiciansServices(IMapper mapper,
+                                 IMusiciansRepository musiciansRepository,
+                                 IInterestsRepository interestsRepository,
+                                 IMusicianTypeRepository musicianTypeRepository)
         {
+            _mapper = mapper;
             _musicianTypeRepository = musicianTypeRepository;
             _musiciansRepository = musiciansRepository;
             _interestsRepository = interestsRepository;
         }
-        public List<Musician> GetAllMusicians()
+        #endregion
+        public List<MusicianReadDto> GetAllMusicians()
         {
-            return _musiciansRepository.GetAll().ToList();
+            return _mapper.Map<List<MusicianReadDto>>(_musiciansRepository.GetAll().ToList());
         }
 
-        public Musician GetMusicianById(long id)
+        public MusicianReadDto GetMusicianById(long id)
         {
-            return _musiciansRepository.GetMuscianById(id);
+            var databaseMusician = _musiciansRepository.GetMuscianById(id);
+            var musicianReadDto = _mapper.Map<MusicianReadDto>(databaseMusician);
+            return musicianReadDto;
         }
 
         public MusicianReadCommonDto GetMusicianCommonData()
@@ -39,11 +48,9 @@ namespace Bands.BLL.ServicesImplementations
             return _musiciansRepository.GetMusicianCommonData();
         }
 
-
-
         public Musician CreateMusician(MusicianCreateDto musicianDto)
         {
-           var interetsBindedList = new List<MusicianInterest>();
+            var interetsBindedList = new List<MusicianInterest>();
 
             if (!string.IsNullOrEmpty(musicianDto.Interests))
             {

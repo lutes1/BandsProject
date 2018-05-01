@@ -8,8 +8,8 @@ namespace Bands.BLL.Abstractions
 {
     public interface IMusiciansServices
     {
-        List<Musician> GetAllMusicians();
-        Musician GetMusicianById(long id);
+        List<MusicianReadDto> GetAllMusicians();
+        MusicianReadDto GetMusicianById(long id);
         MusicianReadCommonDto GetMusicianCommonData();
         Musician CreateMusician(MusicianCreateDto musician);
         MusicianType CheckForStoredMusicianType(string musicianTypeName);

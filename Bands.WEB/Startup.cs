@@ -1,4 +1,5 @@
-﻿using Bands.BLL;
+﻿using AutoMapper;
+using Bands.BLL;
 using Bands.BLL.Abstractions;
 using Bands.BLL.ServicesImplementations;
 using Bands.DAL;
@@ -50,7 +51,7 @@ namespace Bands.WEB
             services.AddIdentity<ApplicationUser, IdentityRole<long>>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
+            services.AddAutoMapper();
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 

@@ -1,5 +1,6 @@
 ﻿$(document).ready(
     function () {
+        'use strict';
         if ($(window).width() <= 991) {
             arrangeContentForSmallScreen();
         }
@@ -106,7 +107,7 @@
             $("#Interests").val("");
         }
 
-        $('#sign-up-form').on('keyup keypress', function (e) {
+        $('.sign-up-form').on('keyup keypress', function (e) {
             var keyCode = e.keyCode || e.which;
             if (keyCode === 13) {
                 e.preventDefault();

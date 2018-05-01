@@ -6,8 +6,8 @@
 
 <h2>Musicians</h2>
 
-@using Bands.Domains.Models
-@model IEnumerable<Bands.Domains.Models.Musician>
+@using Bands.WEB.Models.ViewModels
+@model IEnumerable<MusicianViewModel>
 
 
 @foreach (var musician in Model)
@@ -35,7 +35,7 @@
                     @foreach (var interest in musician.Interests)
                     {
                         <li>
-                            <label>Interests   : </label><b>@interest.Interest.Name</b><br />
+                            <label>Interests   : </label><b>@interest.Name</b><br />
                         </li>
                     }
                 </ul>

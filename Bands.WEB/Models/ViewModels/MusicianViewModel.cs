@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Bands.Domains.Models;
+using Bands.DTO;
+
+namespace Bands.WEB.Models.ViewModels
+{
+    public class MusicianViewModel
+    {
+        public long Likes { get; set; }
+        public string Description { get; set; }
+        public MapLocationDto MapLocation { get; set; }
+        public MusicianTypeDto MusicianType { get; set; }
+        public List<InterestDto> Interests { get; set; }
+        public List<BandDto> Bands { get; set; }
+        public List<EquipmentDto> Equipments { get; set; }
+        public long ApplicationUserId { set; get; }
+        public bool DisplayContactData { get; set; }
+        public ApplicationUserDto ApplicationUser { get; set; }
+    }
+}
