@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace Bands.WEB.Models.ViewModels
 {
-    public class MusicainTypeViewModel
+    public class MusicianTypeViewModel
     {
+        public long MusicianTypeId { get; set; }
+        public string TypeName { get; set; }
     }
 }

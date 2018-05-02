@@ -7,5 +7,7 @@ namespace Bands.WEB.Models.ViewModels
 {
     public class GenreViewModel
     {
+        public long GenreId { set; get; }
+        public string Name { get; set; }
     }
 }

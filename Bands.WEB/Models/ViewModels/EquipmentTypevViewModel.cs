@@ -7,5 +7,7 @@ namespace Bands.WEB.Models.ViewModels
 {
     public class EquipmentTypevViewModel
     {
+        public long EquipmentTypeId { get; set; }
+        public string Name { set; get; }
     }
 }

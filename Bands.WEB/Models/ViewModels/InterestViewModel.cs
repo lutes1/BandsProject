@@ -7,5 +7,7 @@ namespace Bands.WEB.Models.ViewModels
 {
     public class InterestViewModel
     {
+        public long InterestId { get; set; }
+        public string Name { get; set; }
     }
 }

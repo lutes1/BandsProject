@@ -13,6 +13,6 @@ namespace Bands.DTO
         public string Description { get; set; }
         public string MusicianType { get; set; }
         public string Interests { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        public ApplicationUserDto ApplicationUser { get; set; }
     }
 }
