@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Bands.WEB.Models.MusiciansViewModels
+namespace Bands.WEB.Models.ViewModels
 {
     public class MusiciansCommonDataViewModel
     {

@@ -144,6 +144,27 @@ namespace Bands.DAL.Migrations
                     b.ToTable("Bands");
                 });
 
+            modelBuilder.Entity("Bands.Domains.Models.Demo", b =>
+                {
+                    b.Property<long>("DemoId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Link")
+                        .IsRequired()
+                        .HasMaxLength(200);
+
+                    b.Property<long?>("MusicianApplicationUserId");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(30);
+
+                    b.HasKey("DemoId");
+
+                    b.HasIndex("MusicianApplicationUserId");
+
+                    b.ToTable("Demos");
+                });
+
             modelBuilder.Entity("Bands.Domains.Models.Equipment", b =>
                 {
                     b.Property<long>("EquipmentId")
@@ -477,6 +498,13 @@ namespace Bands.DAL.Migrations
                     b.HasOne("Bands.Domains.Models.Picture", "Picture")
                         .WithOne("Band")
                         .HasForeignKey("Bands.Domains.Models.Band", "PictureId");
+                });
+
+            modelBuilder.Entity("Bands.Domains.Models.Demo", b =>
+                {
+                    b.HasOne("Bands.Domains.Models.Musician", "Musician")
+                        .WithMany("Demos")
+                        .HasForeignKey("MusicianApplicationUserId");
                 });
 
             modelBuilder.Entity("Bands.Domains.Models.Equipment", b =>

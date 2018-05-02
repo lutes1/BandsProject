@@ -6,45 +6,66 @@
 
 <h4>@ViewData["Title"]</h4>
 @Html.Partial("_StatusMessage", Model.StatusMessage)
-@Html.Partial("_ManageNav")
-<form class="generic-form user-data-form" method="post">
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="Username"></label>
-        <input asp-for="Username" class="form-control" disabled />
+<link href="~/css/ProfilePage.css" rel="stylesheet" />
+<!--Profile picture-->
+@if (Model.MusicianViewModel.ApplicationUser.Picture == null)
+{
+    <div class="pictureFrameNoPicture profilePicture text-center">
+        <img class="rounded mx-auto d-block icon" src="~/images/54901.svg" />
     </div>
-    <div class="form-group">
-        <label asp-for="Email"></label>
-        @if (Model.IsEmailConfirmed)
-        {
-            <div class="input-group">
-                <input asp-for="Email" class="form-control" />
-                <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
-            </div>
-        }
-        else
-        {
-            <input asp-for="Email" class="form-control" />
-            <button asp-action="SendVerificationEmail" class="btn btn-link">Send verification email</button>
-        }
-        <span asp-validation-for="Email" class="text-danger"></span>
+}
+else
+{
+    <div class="profilePicture">
+        <img class="picture" src="@Model.MusicianViewModel.ApplicationUser.Picture.Path" />
     </div>
-    <div class="form-group">
-        <label asp-for="PhoneNumber"></label>
-        <input asp-for="PhoneNumber" class="form-control" />
-        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+}
+<!--Full Name-->
+<div class="data-container">
+    <div class="heading">
+        <h3>
+            Lutenco Petru
+        </h3>
     </div>
-    <div class="form-group">
-        <div class="input-group mb-2">
-            <div class="input-group-prepend">
-                <div class="input-group-text">First name</div>
-            </div>
-            <input type="text" disabled="disabled" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+    <form class="user-data-form" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Username"></label>
+            <input asp-for="Username" class="form-control" disabled />
         </div>
-    </div>
-    <button type="submit" class="btn btn-default">Save</button>
-</form>
-
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            @if (Model.IsEmailConfirmed)
+            {
+                <div class="input-group">
+                    <input asp-for="Email" class="form-control" />
+                    <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+                </div>
+            }
+            else
+            {
+                <input asp-for="Email" class="form-control" />
+                <button asp-action="SendVerificationEmail" class="btn btn-link">Send verification email</button>
+            }
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">First name</div>
+                </div>
+                <input type="text" disabled="disabled" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default">Save</button>
+    </form>
+    @Html.Partial("_ManageNav")
+</div>
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
 }

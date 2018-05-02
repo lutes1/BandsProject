@@ -15,5 +15,6 @@ namespace Bands.Domains.Models
         public long ApplicationUserId { set; get; }
         public bool DisplayContactData { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+        public List<Demo> Demos { get; set; }
     }
 }

@@ -12,7 +12,7 @@
     <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
         <div class="nav-item ">
             <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img id="user-dropdown" class="icon" src="https://image.flaticon.com/icons/png/512/23/23228.png" alt="@UserManager.GetUserAsync(User).Result.FirstName"/>
+                <img id="user-dropdown" class="icon" src="/images/user-icon.png" alt="@UserManager.GetUserAsync(User).Result.FirstName"/>
             </a>
             <div class="dropdown-container" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">@UserManager.GetUserAsync(User).Result.FirstName</a>

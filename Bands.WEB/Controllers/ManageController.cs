@@ -3,6 +3,8 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using AutoMapper;
+using Bands.BLL.Abstractions;
 using Bands.Domains;
 using Bands.Domains.Models;
 using Microsoft.AspNetCore.Authentication;
@@ -11,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Bands.WEB.Models.ManageViewModels;
+using Bands.WEB.Models.ViewModels;
 using Bands.WEB.Services;
 
 namespace Bands.WEB.Controllers
@@ -24,6 +27,8 @@ namespace Bands.WEB.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         private readonly UrlEncoder _urlEncoder;
+        private readonly IMusiciansServices _musicianServices;
+        private readonly IMapper _mapper;
 
         private const string AuthenticatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
         private const string RecoveryCodesKey = nameof(RecoveryCodesKey);
@@ -33,13 +38,17 @@ namespace Bands.WEB.Controllers
           SignInManager<ApplicationUser> signInManager,
           IEmailSender emailSender,
           ILogger<ManageController> logger,
-          UrlEncoder urlEncoder)
+          UrlEncoder urlEncoder,
+          IMusiciansServices musicianServices,
+          IMapper mapper)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
             _urlEncoder = urlEncoder;
+            _musicianServices = musicianServices;
+            _mapper = mapper;
         }
 
         [TempData]
@@ -60,7 +69,8 @@ namespace Bands.WEB.Controllers
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 IsEmailConfirmed = user.EmailConfirmed,
-                StatusMessage = StatusMessage
+                StatusMessage = StatusMessage,
+                MusicianViewModel = _mapper.Map<MusicianViewModel>(_musicianServices.GetMusicianById(user.Id))
             };
 
             return View(model);

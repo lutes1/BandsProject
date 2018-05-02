@@ -1,0 +1,149 @@
+﻿@model Bands.WEB.Models.ViewModels.MusicianViewModel
+<link href="~/css/ProfilePage.css" rel="stylesheet" />
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-ui/jquery-ui.js"></script>
+<script src="~/js/accountPage.js"></script>
+<!--Profile picture-->
+@if (Model.ApplicationUser.Picture == null)
+{
+    <div class="pictureFrameNoPicture profilePicture text-center">
+        <img class="icon-big rounded mx-auto d-block" src="~/images/user-icon.png" />
+    </div>
+}
+else
+{
+    <div class="profilePicture">
+        <img class="picture" src="@Model.ApplicationUser.Picture.Path" />
+    </div>
+}
+<div class="data-container">
+    <div class="heading">
+        <h4>
+            @Model.ApplicationUser.FirstName @Model.ApplicationUser.LastName
+            <img class="icon" src="~/icons/map-marker.jpg" /><span class="small-info-grey">@Model.MapLocation.City</span>
+        </h4>
+    </div>
+    <h4 class="small-data-blue">
+        @Model.MusicianType.TypeName
+    </h4>
+    <h6 class="small-info-grey info-top-margin-big">
+        Likes
+    </h6>
+    @if (Model.Likes == 0)
+    {
+        <span class="small-info-grey">No feedback yet</span>
+
+    }
+    else
+    {
+        <span class="small-data-blue">@Model.Likes</span>
+    }
+    
+    @if (Model.Interests != null)
+    {
+        <h5 class="small-info-grey info-top-margin-small">
+            Interests
+        </h5>
+        foreach (var interest in Model.Interests)
+         {
+             <span class='small-data-blue'>
+                 @interest.Name
+             </span>
+             if (interest != Model.Interests.Last())
+             {
+                 <span class="divider-vertical"></span>
+             }
+         }
+    }
+    <h5 class="small-info-grey info-top-margin-small">
+        Description
+    </h5>
+    @if (string.IsNullOrEmpty(Model.Description))
+    {
+        <span class="small-info-grey">No description</span>
+    }
+    else
+    {
+        <span class="small-data-blue">@Model.Description</span>
+    }
+    <div class="info-top-margin-big">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#demos" role="tab" aria-controls="videos" aria-selected="true"><img class="icon-small-half-opacity" src="~/icons/youtube-icon.jpg" /><strong>Demos</strong></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><img class="icon-small-half-opacity" src="~/icons/contacts-icon.png" /> <strong> Contact Data</strong></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#equipments" role="tab" aria-controls="equipments" aria-selected="false"><img class="icon-small-half-opacity" src="~/icons/guitar.png" /><strong>Equipments</strong></a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <!--Personal data-->
+            <div class="tab-pane fade show active tab-container" id="demos" role="tabpanel" aria-labelledby="home-tab">
+               @foreach (var demo in Model.Demos)
+               {
+                   <iframe class="frame"
+                           src="@demo.Link.Split('=').Last()">
+                   </iframe>
+               }
+            </div>
+
+            <!--contact data-->
+            <div class="tab-pane fade tab-container" id="contact" role="tabpanel" aria-labelledby="profile-tab">
+                @if (Model.DisplayContactData)
+                {
+                    <table>
+                        <tr >
+                            <td class="padding-min">
+                                <span>Email address :</span>
+                            </td>
+                            <td class="padding-min">
+                                <strong class='small-data-blue margin-left-med'>@Model.ApplicationUser.Email</strong>
+                            </td>
+                        </tr>
+                        @if (!string.IsNullOrEmpty(Model.ApplicationUser.PhoneNumber))
+                        {
+                            <tr>
+                                <td class="padding-min"><span>Equipment type : </span></td>
+                                <td class="padding-min"><strong class='small-data-blue margin-left-med'>@Model.ApplicationUser.PhoneNumber</strong></td>
+
+                            </tr>
+                        }
+                    </table>
+                    <span class="small-data-blue">@Model.ApplicationUser.PhoneNumber</span>
+                }
+            </div>
+
+            <!--equipments data-->
+            <div class="tab-pane fade tab-container" id="equipments" role="tabpanel" aria-labelledby="contact-tab">
+                @if (Model.Equipments != null)
+                {
+                    foreach (var equipment in Model.Equipments)
+                    {
+                        <div class="equipment-display">
+                            <table>
+                                <tr >
+                                    <td class="padding-min">
+                                        <span>Equipment name : </span>
+                                    </td>
+                                    <td class="padding-min">
+                                        <strong class='small-data-blue margin-left-med'>@equipment.EquipmentName</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="padding-min"><span>Equipment type : </span></td>
+                                    <td class="padding-min"> <strong class='small-data-blue margin-left-med'>@equipment.EquipmentType.Name</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="padding-min"><span>Model : </span></td>
+                                    <td class="padding-min"><strong class='small-data-blue margin-left-med'>@equipment.Model</strong></td>
+                                </tr>
+                            </table>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

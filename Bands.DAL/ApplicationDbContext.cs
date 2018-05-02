@@ -31,6 +31,7 @@ namespace Bands.DAL
             builder.ApplyConfiguration(new GenreConfig());
             builder.ApplyConfiguration(new InterestConfig());
             builder.ApplyConfiguration(new MapLocationConfig());
+            builder.ApplyConfiguration(new DemoConfig());
         }
 
         public DbSet<Musician> Musicians { get; set; }
@@ -46,5 +47,6 @@ namespace Bands.DAL
         public DbSet<MusicianInterest> MusicianInterests { get; set; }
         public DbSet<BandsGenres> BandsGenres { get; set; }
         public DbSet<MusicianBand> MusicianBands { get; set; }
+        public DbSet<Demo> Demos { get; set; }
     }
 }

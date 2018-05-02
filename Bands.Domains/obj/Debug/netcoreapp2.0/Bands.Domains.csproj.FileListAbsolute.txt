@@ -7,12 +7,12 @@
 /Users/petrulutenco/Desktop/Internship/BandsProject/Bands.Domains/bin/Debug/netcoreapp2.0/Bands.Domains.deps.json
 /Users/petrulutenco/Desktop/Internship/BandsProject/Bands.Domains/bin/Debug/netcoreapp2.0/Bands.Domains.dll
 /Users/petrulutenco/Desktop/Internship/BandsProject/Bands.Domains/bin/Debug/netcoreapp2.0/Bands.Domains.pdb
-C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.Domains\bin\Debug\netcoreapp2.0\Bands.Domains.deps.json
-C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.Domains\bin\Debug\netcoreapp2.0\Bands.Domains.dll
-C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.Domains\bin\Debug\netcoreapp2.0\Bands.Domains.pdb
-C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.Domains\obj\Debug\netcoreapp2.0\Bands.Domains.csprojResolveAssemblyReference.cache
-C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.Domains\obj\Debug\netcoreapp2.0\Bands.Domains.csproj.CoreCompileInputs.cache
-C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.Domains\obj\Debug\netcoreapp2.0\Bands.Domains.AssemblyInfoInputs.cache
-C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.Domains\obj\Debug\netcoreapp2.0\Bands.Domains.AssemblyInfo.cs
-C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.Domains\obj\Debug\netcoreapp2.0\Bands.Domains.dll
-C:\Users\petru.lutenco\Documents\Visual Studio 2017\Projects\Bands\Bands.Domains\obj\Debug\netcoreapp2.0\Bands.Domains.pdb
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.Domains\bin\Debug\netcoreapp2.0\Bands.Domains.deps.json
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.Domains\bin\Debug\netcoreapp2.0\Bands.Domains.dll
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.Domains\bin\Debug\netcoreapp2.0\Bands.Domains.pdb
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.Domains\obj\Debug\netcoreapp2.0\Bands.Domains.csproj.CoreCompileInputs.cache
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.Domains\obj\Debug\netcoreapp2.0\Bands.Domains.AssemblyInfoInputs.cache
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.Domains\obj\Debug\netcoreapp2.0\Bands.Domains.AssemblyInfo.cs
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.Domains\obj\Debug\netcoreapp2.0\Bands.Domains.dll
+C:\Users\petru.lutenco\documents\visual studio 2017\Projects\Bands\Bands.Domains\obj\Debug\netcoreapp2.0\Bands.Domains.pdb
+C:\Users\petru.lutenco\Documents\visual studio 2017\Projects\Bands\Bands.Domains\obj\Debug\netcoreapp2.0\Bands.Domains.csprojResolveAssemblyReference.cache

@@ -11,7 +11,6 @@ namespace Bands.DTO
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public PictureDto Picture { get; set; }
-        public MusicianReadDto Musician { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
     }

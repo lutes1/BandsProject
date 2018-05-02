@@ -13,6 +13,7 @@ namespace Bands.WEB
         public DtoToViewModelMapper()
         {
             CreateMap<MusicianViewModel, MusicianReadDto>();
+            CreateMap<MusiciansCommonDataViewModel, MusicianReadCommonDto>();
         }
     }
 }

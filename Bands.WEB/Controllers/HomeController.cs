@@ -16,11 +16,13 @@ namespace Bands.WEB.Controllers
     {
         private readonly IMusiciansServices _musicianServices;
         private readonly IBandsServices _bandServices;
+        private readonly IMapper _mapper;
 
-        public HomeController(IMusiciansServices musicianServices,IBandsServices bandServices)
+        public HomeController(IMusiciansServices musicianServices,IBandsServices bandServices,IMapper mapper)
         {
             _musicianServices = musicianServices;
             _bandServices = bandServices;
+            _mapper = mapper;
         }
         public IActionResult Index()
         {
@@ -35,6 +37,11 @@ namespace Bands.WEB.Controllers
         {
             var model = _bandServices.GetAllBands();
             return View(model);
+        }
+
+        public IActionResult MusicianPage(long id)
+        {
+            return View(_mapper.Map<MusicianViewModel>(_musicianServices.GetMusicianById(id)));
         }
 
         public IActionResult Musicians()

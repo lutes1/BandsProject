@@ -1,0 +1,122 @@
+﻿.profilePicture {
+    float: left;
+    width: 30%;
+    height: 100%;
+}
+
+.pictureFrameNoPicture {
+    display: flex;
+    background-color: #E9ECEF;
+    border-radius: 5px;
+    align-items: center;
+    height: 300px;
+}
+
+.picture {
+    width: 100%;
+    padding: 2px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px #00000050;
+    height: auto;
+}
+
+.profilePicture:hover {
+    cursor: pointer;
+}
+
+.data-container {
+    margin-left: 31%;
+    padding-left: 2%;
+    width: 69%;
+    min-height: 100vh;
+    border-left: 1px #0000003b solid;
+}
+
+.data-row {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 30px;
+    width: 100%;
+}
+
+.languages {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.language-data {
+    border: 1px #0000003b solid;
+    text-align: center;
+}
+
+/*----------------------------------*/
+#background {
+    background-color: #000000a9;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+/*----------------------------------*/
+.icon-picture-missing {
+    width: 50px;
+    height: 50px;
+    color: #00000050;
+}
+
+.small-data-blue {
+    font-size: 1.0em;
+    color: #35BCF8;
+}
+
+.small-info-grey {
+    margin-bottom: 0;
+    font-size: 0.6em;
+    color: #00000050;
+}
+
+.info-top-margin-big {
+    margin-top: 30px;
+}
+
+.info-top-margin-small {
+    margin-top: 10px;
+}
+/*----------------------------------*/
+@media only screen and (max-width:550px) {
+    /* For small screen: */
+    .profilePicture {
+        width: 100%;
+        float: none;
+        height: max-content;
+    }
+
+    .data-container {
+        padding-left: 0%;
+        width: 100%;
+        margin-left: 0%;
+        border: none;
+    }
+}
+
+.divider-vertical {
+    padding: 5px;
+    width: 1px;
+    background-clip: content-box;
+    background-color: #00000050;
+}
+.tab-container {
+    padding: 30px 15px 0px 15px;
+    max-height: 
+}
+.equipment-display {
+    margin: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #00000020
+}
+.margin-left-med {
+    margin-left: 20px;
+}
+.padding-min {
+    padding: 5px;
+}

@@ -32,7 +32,6 @@ namespace Bands.WEB.Models.AccountViewModels
             MinimumLength = 1)]
         public string MusicianType { get; set; }
 
-
         public string Interests { get; set; }
 
         [Required]

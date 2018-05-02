@@ -29,7 +29,7 @@ namespace Bands.DAL.Repositories
                 .Include(x=>x.ApplicationUser)
                 .Include(x=>x.Interests).ThenInclude(x=>x.Interest)
                 .Include(x=>x.MusicianBands).ThenInclude(x=>x.Band)
-                .Include(x=>x.Equipments)
+                .Include(x=>x.Equipments).ThenInclude(x=>x.EquipmentType)
                 .Include(x=>x.MapLocation)
                 .Include(x=>x.MusicianType)
                 .FirstOrDefault(x=>x.ApplicationUserId == id);

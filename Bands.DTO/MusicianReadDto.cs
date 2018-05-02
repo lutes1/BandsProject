@@ -13,7 +13,8 @@ namespace Bands.DTO
         public MapLocationDto MapLocation { get; set; }
         public MusicianTypeDto MusicianType { get; set; }
         public List<InterestDto> Interests { get; set; }
-        public List<BandDto> Bands { get; set; }
+        public List<long> Bands { get; set; }
+        public List<DemoDto> DemosDto { get; set; }
         public List<EquipmentDto> Equipments { get; set; }
         public long ApplicationUserId { set; get; }
         public bool DisplayContactData { get; set; }
