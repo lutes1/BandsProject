@@ -47,6 +47,7 @@
       <Content Remove="wwwroot\lib\jquery-ui\images\ui-icons_777777_256x240.png" />
       <Content Remove="wwwroot\lib\jquery-ui\images\ui-icons_cc0000_256x240.png" />
       <Content Remove="wwwroot\lib\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+      <Content Remove="wwwroot\js\accountEdit.js" />
     </ItemGroup>
     <ItemGroup>
       <None Include="wwwroot\lib\bootstrap-4\.babelrc.js" />
@@ -377,5 +378,6 @@
       <None Include="wwwroot\lib\jquery-ui\images\ui-icons_777777_256x240.png" />
       <None Include="wwwroot\lib\jquery-ui\images\ui-icons_cc0000_256x240.png" />
       <None Include="wwwroot\lib\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+      <None Include="wwwroot\js\accountEdit.js" />
     </ItemGroup>
 </Project>

@@ -82,21 +82,22 @@
 
         //------Interests additions 
         $("#Interests").keypress(function (e) {
-            var keyCode = e.keyCode || e.which;
-            if ((keyCode === 13 || keyCode === 32) && $("#Interests").val().trim().length !== 0) {
-                manageIntrests();
-            }
-            else
-                if ($("#Interests").val().trim().length === 0 && keyCode === 32) {
-                    $("#Interests").val("".trim());
-                }
+           addInterests(e);
         });
 
-        function manageIntrests() {
+        
+        function addInterests(e)
+        {
+             var keyCode = e.keyCode || e.which;
+             if ((keyCode === 13) && $("#Interests").val().trim().length !== 0) {
+                manageIntrests();
+            }
+        }
 
+        function manageIntrests() {
             $("#interests-container").css("display", "block");
             $("#interests-container").prepend("<div class='user-interest'><label class='interest-name'>" +
-                $("#Interests").val() +
+                $("#Interests").val().trim() +
                 "</label><div class='cross-icon'>&#10005</div></div>");
 
             //------------------interest remove

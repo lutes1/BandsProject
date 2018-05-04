@@ -1,12 +1,19 @@
 ﻿@model IndexViewModel
+@using Bands.Domains.Models
 @{
     ViewData["Title"] = "Profile";
     ViewData.AddActivePage(ManageNavPages.Index);
 }
-
-<h4>@ViewData["Title"]</h4>
+@inject UserManager<ApplicationUser> UserManager
+<hr />
 @Html.Partial("_StatusMessage", Model.StatusMessage)
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link href="~/css/ProfilePage.css" rel="stylesheet" />
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/accountEdit.js"></script>
+<script src="~/lib/jquery-ui/jquery-ui.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 <!--Profile picture-->
 @if (Model.MusicianViewModel.ApplicationUser.Picture == null)
 {
@@ -22,48 +29,114 @@ else
 }
 <!--Full Name-->
 <div class="data-container">
-    <div class="heading">
-        <h3>
-            Lutenco Petru
-        </h3>
-    </div>
-    <form class="user-data-form" method="post">
-        <div asp-validation-summary="All" class="text-danger"></div>
+    <form action="UpdatePersonalData" class="user-data-form" method="post">
         <div class="form-group">
-            <label asp-for="Username"></label>
-            <input asp-for="Username" class="form-control" disabled />
-        </div>
-        <div class="form-group">
-            <label asp-for="Email"></label>
-            @if (Model.IsEmailConfirmed)
-            {
-                <div class="input-group">
-                    <input asp-for="Email" class="form-control" />
-                    <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text label-profile-edit enable-editor">First name</div>
                 </div>
-            }
-            else
-            {
-                <input asp-for="Email" class="form-control" />
-                <button asp-action="SendVerificationEmail" class="btn btn-link">Send verification email</button>
-            }
-            <span asp-validation-for="Email" class="text-danger"></span>
+                <input type="text" disabled="disabled" class="form-control" id="firstname" placeholder="first Name..." value=@Model.MusicianViewModel.ApplicationUser.FirstName>
+            </div>
         </div>
         <div class="form-group">
-            <label asp-for="PhoneNumber"></label>
-            <input asp-for="PhoneNumber" class="form-control" />
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text label-profile-edit enable-editor">Last Name</div>
+                </div>
+                <input type="text" disabled="disabled" class="form-control" id="lastname" placeholder="last Name..." value=@Model.MusicianViewModel.ApplicationUser.LastName>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text label-profile-edit enable-editor">City</div>
+                </div>
+                <input type="text" disabled="disabled" class="form-control" id="city" placeholder="city..." value=@Model.MusicianViewModel.MapLocation.City>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text label-profile-edit enable-editor">Country</div>
+                </div>
+                <input type="text" disabled="disabled" class="form-control" id="country" placeholder="country..." asp-for="MusicianViewModel.MapLocation.Country">
+            </div>
+            <span asp-validation-for="MusicianViewModel.MapLocation.Country" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text label-profile-edit enable-editor">Phone</div>
+                </div>
+                <input type="number" disabled="disabled" class="form-control" id="phonenumber" placeholder="phonenumber..." asp-for="PhoneNumber">
+            </div>
             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
         </div>
         <div class="form-group">
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
-                    <div class="input-group-text">First name</div>
+                    <div class="input-group-text label-profile-edit enable-editor">Description</div>
                 </div>
-                <input type="text" disabled="disabled" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+                <textarea type="text" disabled="disabled" class="form-control" id="description" placeholder="description..." asp-for="MusicianViewModel.Description"></textarea>
             </div>
         </div>
-        <button type="submit" class="btn btn-default">Save</button>
+        <!---Suibmit--->
+        <button type="submit" id="submit" class="btn btn-default">Save Personal Data</button>
     </form>
+    <!---Interestttsss--->
+    <hr />
+    <div class="form-group">
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text label-profile-edit">Interests</div>
+            </div>
+            <input type="text" maxlength="20" title="No more than 20 characters" class="form-control" id="interests-edit" placeholder="interests..."></input>
+            <!--Hidden element to store interests-->
+            <textarea class="hidden" display="none" id="interestsEditHidden" asp-for="MusicianViewModel.Interests"></textarea>
+            <div id="interests-edit-container">
+                @foreach (var interest in Model.MusicianViewModel.Interests)
+                {
+                    <div class='user-interest'>
+                        <label class='interest-name'>
+                            @interest.Name
+                        </label><div class='cross-icon'>&#10005</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!--Instruments-->
+    <hr />
+    <span id="equipments-block-toogle">Add an equipment</span>
+    <div id="equipments-block">
+        <form action="" method="post">
+            <div class="form-group">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text label-profile-edit">Name</div>
+                    </div>
+                    <input type="text" class="form-control" id="equipment-name" placeholder="Equipment name...">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text label-profile-edit">Type</div>
+                    </div>
+                    <input type="text" class="form-control" id="equipment-type" placeholder="Equipment type...">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text label-profile-edit">Model</div>
+                    </div>
+                    <input type="text" class="form-control" id="equipment-model" placeholder="Equipment model...">
+                </div>
+            </div>
+        </form>
+    </div>
+
     @Html.Partial("_ManageNav")
 </div>
 @section Scripts {

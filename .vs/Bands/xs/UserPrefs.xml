@@ -1,5 +1,17 @@
 ﻿<Properties StartupConfiguration="{C3BBFE75-5A16-454A-BE85-B085307EEBED}|Default">
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Bands.WEB/Controllers/ManageController.cs">
+    <Files>
+      <File FileName="Bands.WEB/wwwroot/js/site.js" Line="70" Column="1" />
+      <File FileName="Bands.WEB/wwwroot/css/ProfilePage.css" Line="1" Column="1" />
+      <File FileName="Bands.WEB/Models/ManageViewModels/IndexViewModel.cs" Line="18" Column="38" />
+      <File FileName="Bands.WEB/Models/ViewModels/EquipmentViewModel.cs" Line="1" Column="1" />
+      <File FileName="Bands.WEB/Models/ViewModels/EquipmentTypevViewModel.cs" Line="8" Column="18" />
+      <File FileName="Bands.WEB/wwwroot/js/accountEdit.js" Line="54" Column="46" />
+      <File FileName="Bands.WEB/wwwroot/css/site.css" Line="121" Column="17" NotebookId="1" />
+      <File FileName="Bands.WEB/Controllers/ManageController.cs" Line="92" Column="20" NotebookId="1" />
+      <File FileName="Bands.WEB/Views/Manage/Index.cshtml" Line="98" Column="18" NotebookId="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

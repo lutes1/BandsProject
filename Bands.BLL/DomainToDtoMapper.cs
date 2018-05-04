@@ -16,7 +16,11 @@ namespace Bands.BLL
                     from => from.MapFrom(musician => musician.Interests.Select(mi => mi.Interest)))
                 .ForMember(
                     to => to.Bands,
-                    from => from.MapFrom(musician => musician.MusicianBands.Select(mb => mb.Band.BandId)));
+                    from => from.MapFrom(musician => musician.MusicianBands.Select(mb => mb.Band.BandId)))
+                .ForMember(
+                    to => to.Demos,
+                    from => from.MapFrom(musician => musician.Demos.Select(d => new { Link = d.Link, Name = d.Name })));
+
         }
     }
 }

@@ -12581,40 +12581,38 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\petru.lutenco\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/petrulutenco/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DAL\\Bands.DAL.csproj",
+      "projectUniqueName": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DAL/Bands.DAL.csproj",
       "projectName": "Bands.DAL",
-      "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DAL\\Bands.DAL.csproj",
-      "packagesPath": "C:\\Users\\petru.lutenco\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DAL\\obj\\",
+      "projectPath": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DAL/Bands.DAL.csproj",
+      "packagesPath": "/Users/petrulutenco/.nuget/packages/",
+      "outputPath": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DAL/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\petru.lutenco\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/petrulutenco/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.Domains\\Bands.Domains.csproj": {
-              "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.Domains\\Bands.Domains.csproj"
+            "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.Domains/Bands.Domains.csproj": {
+              "projectPath": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.Domains/Bands.Domains.csproj"
             },
-            "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DTO\\Bands.DTO.csproj": {
-              "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.DTO\\Bands.DTO.csproj"
+            "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DTO/Bands.DTO.csproj": {
+              "projectPath": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.DTO/Bands.DTO.csproj"
             }
           }
         }
@@ -12628,31 +12626,31 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Identity": {
-            "target": "Package",
-            "version": "[2.0.2, )"
-          },
-          "Microsoft.EntityFrameworkCore": {
-            "target": "Package",
-            "version": "[2.0.2, )"
-          },
-          "Microsoft.EntityFrameworkCore.Design": {
-            "target": "Package",
-            "version": "[2.0.2, )"
-          },
-          "Microsoft.EntityFrameworkCore.SqlServer": {
-            "target": "Package",
-            "version": "[2.0.2, )"
-          },
-          "Microsoft.Extensions.Configuration.Json": {
-            "target": "Package",
-            "version": "[2.0.1, )"
-          },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.0.0, )",
+            "version": "2.0",
             "autoReferenced": true
+          },
+          "Microsoft.AspNetCore.Identity": {
+            "target": "Package",
+            "version": "2.0.2"
+          },
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "2.0.2"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "target": "Package",
+            "version": "2.0.2"
+          },
+          "Microsoft.EntityFrameworkCore.SqlServer": {
+            "target": "Package",
+            "version": "2.0.2"
+          },
+          "Microsoft.Extensions.Configuration.Json": {
+            "target": "Package",
+            "version": "2.0.1"
           }
         },
         "imports": [

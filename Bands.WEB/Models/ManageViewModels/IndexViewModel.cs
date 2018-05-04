@@ -7,22 +7,14 @@ using Bands.WEB.Models.ViewModels;
 
 namespace Bands.WEB.Models.ManageViewModels
 {
-    public class IndexViewModel
-    {
-        public string Username { get; set; }
+	public class IndexViewModel
+	{
+		[Phone]
+		[Display(Name = "Phone number")]
+		public string PhoneNumber { get; set; }
 
-        public bool IsEmailConfirmed { get; set; }
+		public string StatusMessage { get; set; }
 
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
-
-        [Phone]
-        [Display(Name = "Phone number")]
-        public string PhoneNumber { get; set; }
-
-        public string StatusMessage { get; set; }
-
-        public MusicianViewModel MusicianViewModel { get; set; }
-    }
+		public MusicianViewModel MusicianViewModel { get; set; }
+	}
 }
