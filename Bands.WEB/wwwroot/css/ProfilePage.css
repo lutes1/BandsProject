@@ -1,6 +1,6 @@
 ﻿.profilePicture {
     float: left;
-    width: 30%;
+    width: 100%;
     height: 100%;
 }
 
@@ -25,9 +25,7 @@
 }
 
 .data-container {
-    margin-left: 31%;
     padding-left: 2%;
-    width: 69%;
     min-height: 100vh;
     border-left: 1px #0000003b solid;
 }
@@ -105,18 +103,62 @@
     background-clip: content-box;
     background-color: #00000050;
 }
+
 .tab-container {
     padding: 30px 15px 0px 15px;
-    max-height: 
+    max-height: 700px;
+    overflow-y: auto;
 }
+
 .equipment-display {
     margin: 10px;
     padding: 10px;
     border-bottom: 1px solid #00000020
 }
+
 .margin-left-med {
     margin-left: 20px;
 }
+
 .padding-min {
     padding: 5px;
+}
+
+.no-margin {
+    padding-top: 10px;
+    margin: 0;
+}
+
+.margin-bottom{
+    margin-bottom: 10px;
+}
+.all-width {
+    width: 100%;
+}
+
+.equipments-edit-form {
+    padding: 10px;
+    border: 1px solid #00000050;
+    background-color: #00000001;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.password-manage {
+    text-align: right;
+}
+
+[id|="delete-equipment-"] {
+    border: none;
+    background: none;
+}
+.control-label {
+    align-content: center;
+}
+#band-callback-message {
+    margin-top: 10px;
+}
+a:hover, a {
+    color: inherit;
+    text-decoration: none;
 }

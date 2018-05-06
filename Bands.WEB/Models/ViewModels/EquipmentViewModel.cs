@@ -9,9 +9,14 @@ namespace Bands.WEB.Models.ViewModels
 	public class EquipmentViewModel
 	{
 		public long EquipmentId { get; set; }
+        [Required]
 		[StringLength(20)]
 		public string EquipmentName { get; set; }
-		public string Model { get; set; }
-		public EquipmentTypevViewModel EquipmentType { get; set; }
+	    [Required]
+        [StringLength(30)]
+        public string EquipmentModel { get; set; }
+	    [Required]
+        [StringLength(20)]
+		public string EquipmentType { get; set; }
 	}
 }

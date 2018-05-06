@@ -9,5 +9,6 @@ namespace Bands.DAL.Abstractions
         IEnumerable<T> FindBy(Func<T, bool> predicate);
         void Add(T entity);
         void Delete(T entity);
+        void Update(T entity);
     }
 }

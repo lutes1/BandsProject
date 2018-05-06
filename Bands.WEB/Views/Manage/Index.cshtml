@@ -1,144 +1,243 @@
-﻿@model IndexViewModel
+﻿@model Bands.WEB.Models.ViewModels.MusicianViewModel
 @using Bands.Domains.Models
+@using Bands.WEB.Models.ViewModels
 @{
     ViewData["Title"] = "Profile";
     ViewData.AddActivePage(ManageNavPages.Index);
 }
 @inject UserManager<ApplicationUser> UserManager
-<hr />
-@Html.Partial("_StatusMessage", Model.StatusMessage)
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link href="~/css/ProfilePage.css" rel="stylesheet" />
-<script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/js/accountEdit.js"></script>
-<script src="~/lib/jquery-ui/jquery-ui.js"></script>
-<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 <!--Profile picture-->
-@if (Model.MusicianViewModel.ApplicationUser.Picture == null)
-{
-    <div class="pictureFrameNoPicture profilePicture text-center">
-        <img class="rounded mx-auto d-block icon" src="~/images/54901.svg" />
+<div class="row">
+    <div class="col-3">
+        @if (Model.ApplicationUser.Picture == null)
+        {
+            <div class="pictureFrameNoPicture profilePicture text-center">
+                <img class="rounded mx-auto d-block icon" src="~/images/54901.svg" />
+            </div>
+        }
+        else
+        {
+            <div class="profilePicture">
+                <img class="picture" src="@Model.ApplicationUser.Picture.Path" />
+            </div>
+        }
     </div>
-}
-else
-{
-    <div class="profilePicture">
-        <img class="picture" src="@Model.MusicianViewModel.ApplicationUser.Picture.Path" />
-    </div>
-}
-<!--Full Name-->
-<div class="data-container">
-    <form action="UpdatePersonalData" class="user-data-form" method="post">
-        <div class="form-group">
-            <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text label-profile-edit enable-editor">First name</div>
-                </div>
-                <input type="text" disabled="disabled" class="form-control" id="firstname" placeholder="first Name..." value=@Model.MusicianViewModel.ApplicationUser.FirstName>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text label-profile-edit enable-editor">Last Name</div>
-                </div>
-                <input type="text" disabled="disabled" class="form-control" id="lastname" placeholder="last Name..." value=@Model.MusicianViewModel.ApplicationUser.LastName>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text label-profile-edit enable-editor">City</div>
-                </div>
-                <input type="text" disabled="disabled" class="form-control" id="city" placeholder="city..." value=@Model.MusicianViewModel.MapLocation.City>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text label-profile-edit enable-editor">Country</div>
-                </div>
-                <input type="text" disabled="disabled" class="form-control" id="country" placeholder="country..." asp-for="MusicianViewModel.MapLocation.Country">
-            </div>
-            <span asp-validation-for="MusicianViewModel.MapLocation.Country" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text label-profile-edit enable-editor">Phone</div>
-                </div>
-                <input type="number" disabled="disabled" class="form-control" id="phonenumber" placeholder="phonenumber..." asp-for="PhoneNumber">
-            </div>
-            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text label-profile-edit enable-editor">Description</div>
-                </div>
-                <textarea type="text" disabled="disabled" class="form-control" id="description" placeholder="description..." asp-for="MusicianViewModel.Description"></textarea>
-            </div>
-        </div>
-        <!---Suibmit--->
-        <button type="submit" id="submit" class="btn btn-default">Save Personal Data</button>
-    </form>
-    <!---Interestttsss--->
-    <hr />
-    <div class="form-group">
-        <div class="input-group mb-2">
-            <div class="input-group-prepend">
-                <div class="input-group-text label-profile-edit">Interests</div>
-            </div>
-            <input type="text" maxlength="20" title="No more than 20 characters" class="form-control" id="interests-edit" placeholder="interests..."></input>
-            <!--Hidden element to store interests-->
-            <textarea class="hidden" display="none" id="interestsEditHidden" asp-for="MusicianViewModel.Interests"></textarea>
-            <div id="interests-edit-container">
-                @foreach (var interest in Model.MusicianViewModel.Interests)
-                {
-                    <div class='user-interest'>
-                        <label class='interest-name'>
-                            @interest.Name
-                        </label><div class='cross-icon'>&#10005</div>
+    <div class="col-9">
+        <!--Full Name-->
+        <div class="data-container">
+            <form class="user-data-form" method="post">
+                <div class="form-group">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text label-profile-edit enable-editor">First name</div>
+                        </div>
+                        <input type="text" disabled="disabled" class="form-control" id="firstname" placeholder="first Name..." asp-for="ApplicationUser.FirstName">
                     </div>
-                }
-            </div>
-        </div>
-    </div>
-    <!--Instruments-->
-    <hr />
-    <span id="equipments-block-toogle">Add an equipment</span>
-    <div id="equipments-block">
-        <form action="" method="post">
-            <div class="form-group">
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text label-profile-edit">Name</div>
-                    </div>
-                    <input type="text" class="form-control" id="equipment-name" placeholder="Equipment name...">
+                    <span asp-validation-for="ApplicationUser.FirstName" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text label-profile-edit">Type</div>
+                <div class="form-group">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text label-profile-edit enable-editor">Last Name</div>
+                        </div>
+                        <input type="text" disabled="disabled" class="form-control" id="lastname" placeholder="last Name..." asp-for="ApplicationUser.LastName">
                     </div>
-                    <input type="text" class="form-control" id="equipment-type" placeholder="Equipment type...">
+                    <span asp-validation-for="ApplicationUser.LastName" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text label-profile-edit">Model</div>
+                <div class="form-group">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text label-profile-edit enable-editor">City</div>
+                        </div>
+                        <input type="text" disabled="disabled" class="form-control" id="city" placeholder="city..." asp-for="MapLocation.City">
                     </div>
-                    <input type="text" class="form-control" id="equipment-model" placeholder="Equipment model...">
+                    <span asp-validation-for="MapLocation.City" class="text-danger"></span>
                 </div>
-            </div>
-        </form>
-    </div>
+                <div class="form-group">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text label-profile-edit enable-editor">Country</div>
+                        </div>
+                        <input type="text" disabled="disabled" class="form-control" id="country" placeholder="country..." asp-for="MapLocation.Country">
+                    </div>
+                    <span asp-validation-for="MapLocation.Country" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text label-profile-edit enable-editor">Phone</div>
+                        </div>
+                        <input type="number" disabled="disabled" class="form-control" id="phonenumber" placeholder="phonenumber..." asp-for="ApplicationUser.PhoneNumber">
+                    </div>
+                    <span asp-validation-for="ApplicationUser.PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text label-profile-edit enable-editor">Description</div>
+                        </div>
+                        <textarea type="text" disabled="disabled" class="form-control" id="description" placeholder="description..." asp-for="Description"></textarea>
+                    </div>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <!---Suibmit--->
+                <div class="text-center submit-container hidden">
+                    <button type="submit" id="submit" class="btn btn-default">Save</button>
+                </div>
+            </form>
+            @Html.Partial("_ManageNav")
 
-    @Html.Partial("_ManageNav")
+            <!---Interestttsss--->
+            <hr />
+            <div class="form-group">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text label-profile-edit">Interests</div>
+                    </div>
+                    <input type="text" maxlength="20" title="No more than 20 characters" class="form-control" id="interests-edit" placeholder="interests...">
+                    <!--Hidden element to store interests-->
+                    <textarea class="hidden" display="none" id="interestsEditHidden"></textarea>
+                    <div id="interests-edit-container">
+                        @foreach (var interest in Model.Interests)
+                        {
+                            <div class='user-interest'>
+                                <label class='interest-name'>
+                                    @interest.Name
+                                </label><div class='cross-icon'>&#10005</div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="text-center submit-interests-container hidden">
+                <button id="submit-interests" class="btn btn-default">Save</button>
+            </div>
+            <div id="interests-callback-message"></div>
+            <hr />
+            <!--Tabs-->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#equipments-edit-container" role="tab" aria-controls="videos" aria-selected="true"><img class="icon-small-half-opacity" src="~/icons/guitar.png" /><strong>Equipments</strong></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#bands-container" role="tab" aria-controls="contact" aria-selected="false"><img class="icon-small-half-opacity" src="~/icons/my-band.jpg" /> <strong>Band</strong></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="demos-tab" data-toggle="tab" href="#demos-container" role="tab" aria-controls="contact" aria-selected="false"><img class="icon-small-half-opacity" src="~/icons/youtube-icon.jpg" /> <strong>Demos</strong></a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <!--Equipments-->
+                <div class="tab-pane fade tab-container" id="equipments-edit-container" role="tabpanel" aria-labelledby="home-tab">
+                    <div id="equipments-edit-container">
+                        <button id="add-new-equipment-button" class="btn btn-light margin-bottom all-width">Add new equipment</button>
+                        <div id="add-new-equipment-container" class="hidden">
+                            @Html.Partial("EquipmentsManagePartial", new EquipmentViewModel())
+                            <hr />
+                        </div>
+
+                        @foreach (var equipment in Model.Equipments)
+                        {
+                            @Html.Partial("EquipmentsManagePartial", equipment);
+
+                        }
+                    </div>
+                </div>
+
+                <!--Bands-->
+                <div class="tab-pane fade tab-container" id="bands-container" role="tabpanel" aria-labelledby="profile-tab">
+                    @Html.Partial("BandCreate", new BandViewModel())
+                </div>
+                <!--Demos-->
+                <div class="tab-pane fade tab-container" id="demos-container" role="tabpanel" aria-labelledby="demos-tab">
+                
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        $("#add-new-equipment-container").find("input").removeAttr("disabled");
+        //genres manage
+        $("#genres-edit").keypress(function (e) {
+            addGenres(e);
+        });
+
+        function addGenres(e) {
+            var keyCode = e.keyCode || e.which;
+            if ((keyCode === 13) && $("#genres-edit").val().trim().length !== 0) {
+                manageGenres();
+            }
+        }
+
+        function manageGenres() {
+            $("#genres-edit-container").css("display", "block");
+            $("#genres-edit-container").prepend("<div class='band-genre'><label class='genre-name'>" +
+                $("#genres-edit").val().trim() +
+                "</label><div class='cross-icon'>&#10005</div></div>");
+            addCloseHandler();
+            $("#genres-edit").val("");
+        }
+
+        function addCloseHandler() {
+            $(".cross-icon").click(function () {
+                $(this).parent().remove();
+                if ($("#genres-edit-container").children().length === 0)
+                    $("#genres-edit-container").css("display", "none");
+            });
+        }
+
+        //bands add
+        $("#band-submit").click(function () {
+
+
+            var bandGenres = [];
+
+            var genres = $(".genre-name");
+
+            for (var i = 0; i < genres.length; i++) {
+                var currentGenre = genres[i];
+                bandGenres.push(currentGenre.textContent.trim());
+            }
+
+            var bandName = $("#BandName").val();
+
+            var model = {
+                BandName: bandName,
+                Genres: bandGenres
+            }
+
+            var request = $.post({
+                url: 'BandCreate',
+                data: model,
+                traditional: true
+            });
+
+            request.done(function (msg) {
+                $("#band-callback-message").show();
+                $("#band-callback-message").removeClass("alert-danger");
+                $("#band-callback-message").addClass("alert alert-success equipments-update-feedback");
+                $("#band-callback-message").text(msg);
+
+                $("#band-callback-message").click(function () {
+                    $(this).hide();
+                });
+            });
+
+            request.fail(function (textStatus) {
+                $("#band-callback-message").addClass("alert alert-danger equipments-update-feedback");
+                $("#band-callback-message").text("Error");
+
+                $("#band-callback-message").click(function () {
+                    $(this).hide();
+                });
+            });
+        });
+
+    </script>
 }

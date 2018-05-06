@@ -12539,28 +12539,30 @@
     ]
   },
   "packageFolders": {
-    "/Users/petrulutenco/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\petru.lutenco\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.Domains/Bands.Domains.csproj",
+      "projectUniqueName": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.Domains\\Bands.Domains.csproj",
       "projectName": "Bands.Domains",
-      "projectPath": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.Domains/Bands.Domains.csproj",
-      "packagesPath": "/Users/petrulutenco/.nuget/packages/",
-      "outputPath": "/Users/petrulutenco/Desktop/Internship/BandsProject/Bands.Domains/obj",
+      "projectPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.Domains\\Bands.Domains.csproj",
+      "packagesPath": "C:\\Users\\petru.lutenco\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\petru.lutenco\\documents\\visual studio 2017\\Projects\\Bands\\Bands.Domains\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/petrulutenco/.config/NuGet/NuGet.Config"
+        "C:\\Users\\petru.lutenco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -12577,23 +12579,23 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.NETCore.App": {
-            "suppressParent": "All",
+          "Microsoft.AspNetCore.All": {
             "target": "Package",
-            "version": "2.0",
-            "autoReferenced": true
+            "version": "[2.0.7, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
-            "version": "2.0.2"
+            "version": "[2.0.2, )"
           },
           "Microsoft.EntityFrameworkCore.Tools": {
             "target": "Package",
-            "version": "2.0.2"
+            "version": "[2.0.2, )"
           },
-          "Microsoft.AspNetCore.All": {
+          "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.7"
+            "version": "[2.0.0, )",
+            "autoReferenced": true
           }
         },
         "imports": [

@@ -26,7 +26,7 @@ namespace Bands.DAL.Repositories
 
         public Interest CheckForStoredInterest(string interestName)
         {
-            return GetInterestByName(interestName) ?? new Interest{Name = interestName};
+            return GetInterestByName(interestName) ?? new Interest{Name = interestName.Trim()};
         }
     }
 }

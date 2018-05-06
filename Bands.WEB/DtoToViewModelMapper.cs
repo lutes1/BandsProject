@@ -13,6 +13,9 @@ namespace Bands.WEB
         public DtoToViewModelMapper()
         {
             CreateMap<MusicianViewModel, MusicianReadDto>();
+            CreateMap<EquipmentDto, EquipmentViewModel>()
+                .ForMember(from => from.EquipmentType, to => to.MapFrom(x => x.EquipmentType.Name))
+                .ForMember(from => from.EquipmentModel, to => to.MapFrom(x => x.Model));
             CreateMap<MusiciansCommonDataViewModel, MusicianReadCommonDto>();
         }
     }

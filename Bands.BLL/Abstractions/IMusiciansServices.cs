@@ -13,5 +13,7 @@ namespace Bands.BLL.Abstractions
         MusicianReadCommonDto GetMusicianCommonData();
         Musician CreateMusician(MusicianCreateDto musician);
         MusicianType CheckForStoredMusicianType(string musicianTypeName);
+        Musician GetMusicianForUpdate(long id);
+        void UpdateMusician(Musician musician);
     }
 }

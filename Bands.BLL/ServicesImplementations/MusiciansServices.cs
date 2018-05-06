@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using AutoMapper;
@@ -9,6 +10,7 @@ using Bands.Domains;
 using Bands.Domains.JonctionModels;
 using Bands.Domains.Models;
 using Bands.DTO;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace Bands.BLL.ServicesImplementations
 {
@@ -82,6 +84,16 @@ namespace Bands.BLL.ServicesImplementations
         {
             return _musicianTypeRepository.GetMusicianTypeByName(musicianTypeName)
                    ?? new MusicianType() { TypeName = musicianTypeName };
+        }
+
+        public Musician GetMusicianForUpdate(long id)
+        {
+            return _musiciansRepository.GetMuscianById(id);
+        }
+
+        public void UpdateMusician(Musician musician)
+        {
+            _musiciansRepository.Update(musician);
         }
     }
 }

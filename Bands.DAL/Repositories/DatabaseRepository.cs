@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Bands.DAL.Abstractions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bands.DAL.Repositories
 {
@@ -37,6 +38,13 @@ namespace Bands.DAL.Repositories
                 throw new ArgumentException($"Cannot remove unnexisting enity from DataBase");
             }
             DbContext.Set<T>().Remove(entity);
+            DbContext.SaveChanges();
+        }
+
+        public void Update(T entity)
+        {
+            DbContext.Set<T>().Attach(entity);
+            DbContext.Entry(entity).State = EntityState.Modified;
             DbContext.SaveChanges();
         }
     }

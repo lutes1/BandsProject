@@ -12,36 +12,5 @@
 
 @foreach (var musician in Model)
 {
-    <a href="@Url.Action("MusicianPage",new{id=musician.ApplicationUserId})">
-        <div class="musician-display">
-            <div class="col-sm">
-                <label>Full Name     : </label><h3>@musician.ApplicationUser.FirstName @musician.ApplicationUser.LastName</h3>
-                <label>Musician type : </label><strong>musician.MusicianType.TypeName</strong><br />
-                <label>Likes         : </label><b>@musician.Likes</b><br />
-                <label>Description   : </label><b>@musician.Description</b><br />
-                <label>City          : </label><b>@musician.MapLocation.City</b>
-                <label>Country       : </label><b>@musician.MapLocation.Country</b>
-                @if (!string.IsNullOrEmpty(musician.MapLocation.Address))
-                {
-                    <label>Adress      : </label><b>@musician.MapLocation.Address</b>
-                }
-                @if (musician.DisplayContactData)
-                {
-                    <label>Email: </label><b>@musician.ApplicationUser.Email</b><br />
-                    <label>Phone Number: </label><b>@musician.ApplicationUser.PhoneNumber</b><br />
-                }
-                @if (@musician.Interests != null && @musician.Interests.Count > 0)
-                {
-                    <ul>
-                        @foreach (var interest in musician.Interests)
-                        {
-                            <li>
-                                <label>Interests   : </label><b>@interest.Name</b><br />
-                            </li>
-                        }
-                    </ul>
-                }
-            </div>
-        </div>
-    </a>
+    @Html.Partial("MusicianShowTemplate",musician)
 }

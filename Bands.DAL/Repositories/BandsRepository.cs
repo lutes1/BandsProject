@@ -17,12 +17,18 @@ namespace Bands.DAL.Repositories
 
         public List<Band> GetAllBands()
         {
-            return DbContext.Bands.ToList();
+            return DbContext.Bands
+                .Include(x=>x.BandsGenres)
+                .Include(x=>x.Picture)
+                .ToList();
         }
 
         public Band GetBandById(long id)
         {
-            return DbContext.Bands.FirstOrDefault(x=>x.BandId == id);
+            return DbContext.Bands
+                .Include(x => x.BandsGenres)
+                .Include(x => x.Picture)
+                .FirstOrDefault(x=>x.BandId == id);
         }
     }
 }
