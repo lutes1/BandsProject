@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography.X509Certificates;
@@ -19,7 +20,9 @@ using Microsoft.Extensions.Logging;
 using Bands.WEB.Models.ManageViewModels;
 using Bands.WEB.Models.ViewModels;
 using Bands.WEB.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using Microsoft.Net.Http.Headers;
 using Remotion.Linq.Parsing.Structure.IntermediateModel;
 
 namespace Bands.WEB.Controllers
@@ -59,7 +62,6 @@ namespace Bands.WEB.Controllers
             _mapper = mapper;
             _bandServices = bandServices;
         }
-
         private long GetUserId()
         {
             var user = _userManager.GetUserId(User);

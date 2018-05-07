@@ -4,6 +4,7 @@
 }
 @{ string emailAvalability = Model.Result?.Succeeded == false ? "This email is not avalable" : string.Empty;}
 <!--new form-->
+<link href="~/css/form.css" rel="stylesheet" />
 <form class="sign-up-form generic-form" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
     <hr />
     <!--Personal Data-->

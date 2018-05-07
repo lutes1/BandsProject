@@ -9,7 +9,7 @@
 <input type="hidden" id="search-query" value="@ViewData["SearchQuery"]">
 @if (!Model.Any())
 {
-    <div class="alert alert-danger hidden all-width">@ViewData["StatusMessage"]</div>
+    <div class="alert alert-danger all-width">@ViewData["StatusMessage"]</div>
 }
 <div id="musician-list-content">
     @foreach (var musician in Model)

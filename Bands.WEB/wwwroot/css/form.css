@@ -1,0 +1,13 @@
+﻿.outerPage {
+    background-color: #35BCF8;
+    padding: 1%;
+    min-height: 100vh;
+}
+
+.mainBlock {
+    min-height: 100vh;
+    padding: 15px;
+    background-color: #35BCF8;
+    border-radius: 5px;
+    box-shadow: none;
+}

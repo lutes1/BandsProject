@@ -7,8 +7,7 @@
 @model LoginViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 
-
-    <div class="container mainBlock">
+<link href="~/css/form.css" rel="stylesheet" />
         <section>
             <form class="sign-in-form generic-form" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
                 <hr />
@@ -44,7 +43,6 @@
                 </div>
             </form>
         </section>
-    </div>
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
 }

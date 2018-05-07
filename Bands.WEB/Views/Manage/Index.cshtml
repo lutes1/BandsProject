@@ -14,9 +14,10 @@
     <div class="col-3">
         @if (Model.ApplicationUser.Picture == null)
         {
-            <div class="pictureFrameNoPicture profilePicture text-center">
-                <img class="rounded mx-auto d-block icon" src="~/images/54901.svg" />
-            </div>
+        <div class="pictureFrameNoPicture profilePicture text-center">
+            <img class="icon-big rounded mx-auto d-block" src="~/images/user-icon.png" />
+
+        </div>
         }
         else
         {
@@ -153,7 +154,7 @@
                 </div>
                 <!--Demos-->
                 <div class="tab-pane fade tab-container" id="demos-container" role="tabpanel" aria-labelledby="demos-tab">
-                @Html.Partial("DemosManagePartial",new DemoViewModel())
+                    @Html.Partial("DemosManagePartial", new DemoViewModel())
                 </div>
             </div>
         </div>
@@ -162,110 +163,114 @@
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
     <script>
-        $("#add-new-equipment-container").find("input").removeAttr("disabled");
-        //genres manage
-        $("#genres-edit").keypress(function(e) {
-            addGenres(e);
-        });
-
-        function addGenres(e) {
-            var keyCode = e.keyCode || e.which;
-            if ((keyCode === 13) && $("#genres-edit").val().trim().length !== 0) {
-                manageGenres();
-            }
-        }
-
-        function manageGenres() {
-            $("#genres-edit-container").css("display", "block");
-            $("#genres-edit-container").prepend("<div class='band-genre'><label class='genre-name'>" +
-                $("#genres-edit").val().trim() +
-                "</label><div class='cross-icon'>&#10005</div></div>");
-            addCloseHandler();
-            $("#genres-edit").val("");
-        }
-
-        function addCloseHandler() {
-            $(".cross-icon").click(function() {
-                $(this).parent().remove();
-                if ($("#genres-edit-container").children().length === 0)
-                    $("#genres-edit-container").css("display", "none");
-            });
-        }
-
-        //bands add
-        $("#band-submit").click(function() {
+        $(function() {
 
 
-            var bandGenres = [];
-
-            var genres = $(".genre-name");
-
-            for (var i = 0; i < genres.length; i++) {
-                var currentGenre = genres[i];
-                bandGenres.push(currentGenre.textContent.trim());
-            }
-
-            var bandName = $("#BandName").val();
-
-            var model = {
-                BandName: bandName,
-                Genres: bandGenres
-            }
-
-            var request = $.post({
-                url: 'BandCreate',
-                data: model,
-                traditional: true
+            $("#add-new-equipment-container").find("input").removeAttr("disabled");
+            //genres manage
+            $("#genres-edit").keypress(function(e) {
+                addGenres(e);
             });
 
-            request.done(function(msg) {
-                $("#band-callback-message").show();
-                $("#band-callback-message").removeClass("alert-danger");
-                $("#band-callback-message").addClass("alert alert-success");
-                $("#band-callback-message").text(msg);
+            function addGenres(e) {
+                var keyCode = e.keyCode || e.which;
+                if ((keyCode === 13) && $("#genres-edit").val().trim().length !== 0) {
+                    manageGenres();
+                }
+            }
 
-                $("#band-callback-message").click(function() {
-                    $(this).hide();
+            function manageGenres() {
+                $("#genres-edit-container").css("display", "block");
+                $("#genres-edit-container").prepend("<div class='band-genre'><label class='genre-name'>" +
+                    $("#genres-edit").val().trim() +
+                    "</label><div class='cross-icon'>&#10005</div></div>");
+                addCloseHandler();
+                $("#genres-edit").val("");
+            }
+
+            function addCloseHandler() {
+                $(".cross-icon").click(function() {
+                    $(this).parent().remove();
+                    if ($("#genres-edit-container").children().length === 0)
+                        $("#genres-edit-container").css("display", "none");
+                });
+            }
+
+            //bands add
+            $("#band-submit").click(function() {
+
+
+                var bandGenres = [];
+
+                var genres = $(".genre-name");
+
+                for (var i = 0; i < genres.length; i++) {
+                    var currentGenre = genres[i];
+                    bandGenres.push(currentGenre.textContent.trim());
+                }
+
+                var bandName = $("#BandName").val();
+
+                var model = {
+                    BandName: bandName,
+                    Genres: bandGenres
+                }
+
+                var request = $.post({
+                    url: 'BandCreate',
+                    data: model,
+                    traditional: true
+                });
+
+                request.done(function(msg) {
+                    $("#band-callback-message").show();
+                    $("#band-callback-message").removeClass("alert-danger");
+                    $("#band-callback-message").addClass("alert alert-success");
+                    $("#band-callback-message").text(msg);
+
+                    $("#band-callback-message").click(function() {
+                        $(this).hide();
+                    });
+                });
+
+                request.fail(function(textStatus) {
+                    $("#band-callback-message").addClass("alert alert-danger");
+                    $("#band-callback-message").text("Error");
+
+                    $("#band-callback-message").click(function() {
+                        $(this).hide();
+                    });
                 });
             });
 
-            request.fail(function(textStatus) {
-                $("#band-callback-message").addClass("alert alert-danger");
-                $("#band-callback-message").text("Error");
+            //add demo
+            $("#demo-submit").click(function() {
 
-                $("#band-callback-message").click(function() {
-                    $(this).hide();
+                var demoViewModel = $("#create-demo :input").serialize();
+
+                var request = $.post({
+                    url: 'CreateDemo',
+                    data: demoViewModel
                 });
-            });
-        });
 
-        //add demo
-        $("#demo-submit").click(function() {
+                request.done(function(msg) {
+                    $("#demo-callback-message").show();
+                    $("#demo-callback-message").addClass("alert alert-success equipments-update-feedback");
+                    $("#demo-callback-message").text(msg);
 
-            var demoViewModel = $("#create-demo :input").serialize();
-
-            var request = $.post({
-                url: 'CreateDemo',
-                data: demoViewModel
-            });
-
-            request.done(function(msg) {
-                $("#demo-callback-message").show();
-                $("#demo-callback-message").addClass("alert alert-success equipments-update-feedback");
-                $("#demo-callback-message").text(msg);
-
-                $("#demo-callback-message").click(function() {
-                    $(this).hide();
+                    $("#demo-callback-message").click(function() {
+                        $(this).hide();
+                    });
                 });
-            });
 
-            request.fail(function(textStatus) {
-                $("#demo-callback-message").show();
-                $("#demo-callback-message").addClass("alert alert-danger equipments-update-feedback");
-                $("#demo-callback-message").text("Error");
+                request.fail(function(textStatus) {
+                    $("#demo-callback-message").show();
+                    $("#demo-callback-message").addClass("alert alert-danger equipments-update-feedback");
+                    $("#demo-callback-message").text("Error");
 
-                $("#demo-callback-message").click(function() {
-                    $(this).hide();
+                    $("#demo-callback-message").click(function() {
+                        $(this).hide();
+                    });
                 });
             });
         });
