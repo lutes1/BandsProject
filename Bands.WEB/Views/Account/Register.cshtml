@@ -81,30 +81,32 @@
 
 </form>
 @section Scripts
-{
+    {
     @await Html.PartialAsync("_ValidationScriptsPartial")
 
-    <script type="text/javascript">
+    <script src="~/js/register.js"></script>
+    <script>
         var interests = [];
         var cities = [];
         var countries = [];
         var musicianTypes = [];
 
-        @foreach (var dataElement in @Model.MusicianReadCommonData.Interests)
-        {
-            @: interests.push("@dataElement");
-        }
-        @foreach (var dataElement in @Model.MusicianReadCommonData.MusicianTypes)
-        {
-            @: musicianTypes.push("@dataElement");
-        }
-        @foreach (var dataElement in @Model.MusicianReadCommonData.Cities)
-        {
-            @: cities.push("@dataElement");
-        }
-        @foreach (var dataElement in @Model.MusicianReadCommonData.Countries)
-        {
-            @: countries.push("@dataElement");
-        }
+        @foreach(var dataElement in @Model.MusicianReadCommonData.Interests)
+    {
+    @: interests.push("@dataElement");
+}
+        @foreach(var dataElement in @Model.MusicianReadCommonData.MusicianTypes)
+{
+    @: musicianTypes.push("@dataElement");
+}
+        @foreach(var dataElement in @Model.MusicianReadCommonData.Cities)
+{
+    @: cities.push("@dataElement");
+}
+        @foreach(var dataElement in @Model.MusicianReadCommonData.Countries)
+{
+    @: countries.push("@dataElement");
+}
+
     </script>
 }
