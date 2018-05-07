@@ -1,0 +1,17 @@
+﻿.text-container {
+    text-align: center;
+}
+.info {
+    font-family: Palatino, "Andale Mono", AndaleMono, monospace;
+    height: 150px;
+    margin-top: calc(50% - 75px);
+}
+
+.image-homescreen {
+    width: 100%;
+    height: auto;
+    box-shadow: 2px 2px 20px #00000080;
+}
+.row-height {
+    height: 29%;
+ }
