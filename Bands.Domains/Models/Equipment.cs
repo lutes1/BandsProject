@@ -4,7 +4,7 @@
     {
         public long EquipmentId { get; set; }
         public string EquipmentName { get; set; }
-        public string Model { get; set; }
+        public string EquipmentModel { get; set; }
         public EquipmentType EquipmentType { get; set; }
         public Musician Musician { get; set; }
     }

@@ -8,7 +8,7 @@ namespace Bands.DTO
     {
         public long EquipmentId { get; set; }
         public string EquipmentName { get; set; }
-        public string Model { get; set; }
-        public EquipmentTypeDto EquipmentType { get; set; }
+        public string EquipmentModel { get; set; }
+        public string EquipmentType { get; set; }
     }
 }

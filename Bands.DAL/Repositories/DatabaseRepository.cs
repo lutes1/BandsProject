@@ -23,10 +23,10 @@ namespace Bands.DAL.Repositories
         }
         public void Add(T entity)
         {
-            if (DbContext.Set<T>().Contains(entity))
-            {
-                throw new ArgumentException($"Cannot add entity that already exists in the DataBase");
-            }
+            //if (DbContext.Set<T>().Contains(entity))
+            //{
+            //    throw new ArgumentException($"Cannot add entity that already exists in the DataBase");
+            //}
             DbContext.Set<T>().Add(entity);
             DbContext.SaveChanges();
         }

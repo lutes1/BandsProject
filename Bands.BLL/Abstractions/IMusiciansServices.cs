@@ -15,5 +15,10 @@ namespace Bands.BLL.Abstractions
         Musician GetMusicianForUpdate(long id);
         void UpdateMusician(Musician musician);
         List<MusicianReadDto> GetMusiciansPaginated(int pageNumber,  string name);
+        void UpdateMusicianPersonalData(long id, MusicianReadDto model);
+        void UpdateMusicianInterests(long id, string[] newInterests);
+        void RemoveMusicianEquipment(long musicianId,long equipmentId);
+        void AddMusicianEquipment(long muisicianId, EquipmentDto equipmentModel);
+        void AddDemo(long id, DemoDto demoDto);
     }
 }

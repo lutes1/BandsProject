@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -19,6 +20,7 @@ using Bands.WEB.Models.ManageViewModels;
 using Bands.WEB.Models.ViewModels;
 using Bands.WEB.Services;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using Remotion.Linq.Parsing.Structure.IntermediateModel;
 
 namespace Bands.WEB.Controllers
 {
@@ -33,6 +35,7 @@ namespace Bands.WEB.Controllers
         private readonly UrlEncoder _urlEncoder;
         private readonly IMusiciansServices _musicianServices;
         private readonly IMapper _mapper;
+        private readonly IBandsServices _bandServices;
 
         private const string AuthenticatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
         private const string RecoveryCodesKey = nameof(RecoveryCodesKey);
@@ -44,7 +47,8 @@ namespace Bands.WEB.Controllers
           ILogger<ManageController> logger,
           UrlEncoder urlEncoder,
           IMusiciansServices musicianServices,
-          IMapper mapper)
+          IMapper mapper,
+          IBandsServices bandServices)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -53,200 +57,78 @@ namespace Bands.WEB.Controllers
             _urlEncoder = urlEncoder;
             _musicianServices = musicianServices;
             _mapper = mapper;
+            _bandServices = bandServices;
+        }
+
+        private long GetUserId()
+        {
+            var user = _userManager.GetUserId(User);
+            if (user == null)
+            {
+                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
+            return long.Parse(user);
         }
 
         [TempData]
         public string StatusMessage { get; set; }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
-
-            var model = _mapper.Map<MusicianViewModel>(_musicianServices.GetMusicianById(user.Id));
+            var model = _mapper.Map<MusicianViewModel>(_musicianServices.GetMusicianById(GetUserId()));
 
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(MusicianViewModel model)
+        public IActionResult Index(MusicianViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
-
-            var musician = _musicianServices.GetMusicianForUpdate(user.Id);
-
-            if (model != null)
-            {
-                if (musician.ApplicationUser != null)
-                {
-                    musician.ApplicationUser.FirstName = model.ApplicationUser.FirstName ?? musician.ApplicationUser.FirstName;
-                    musician.ApplicationUser.LastName = model.ApplicationUser.LastName ?? musician.ApplicationUser.LastName;
-                    musician.ApplicationUser.PhoneNumber = model.ApplicationUser.PhoneNumber ?? musician.ApplicationUser.PhoneNumber;
-                }
-
-                musician.Description = model.Description ?? musician.Description;
-                if (model.MapLocation != null)
-                {
-                    musician.MapLocation.City = model.MapLocation.City ?? musician.MapLocation.City;
-                    musician.MapLocation.Country = model.MapLocation.Country ?? musician.MapLocation.Country;
-                }
-            }
-
-            _musicianServices.UpdateMusician(musician);
+            _musicianServices.UpdateMusicianPersonalData(GetUserId(), _mapper.Map<MusicianReadDto>(model));
 
             StatusMessage = "Your profile has been updated";
             return RedirectToAction(nameof(Index));
         }
         [HttpPost]
-        public async Task<IActionResult> InterestsUpdate(string[] interestsModel)
+        public IActionResult InterestsUpdate(string[] interestsModel)
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
-
-            var musician = _musicianServices.GetMusicianForUpdate(user.Id);
-
-            //Remove the deleted interests from the musicians collection
-            var musicianInterests = musician.Interests.Select(x => x.Interest.Name.Trim()).ToArray();
-            foreach (var interest in musicianInterests)
-            {
-                if (!interestsModel.Any(x => x.Equals(interest.Trim())))
-                {
-                    musician.Interests.Remove(musician.Interests.FirstOrDefault(x => x.Interest.Name.Trim().Equals(interest)));
-                }
-            }
-            
-            //add the new interests to the collection
-            foreach (var modelInterest in interestsModel)
-            {
-                if (!musician.Interests.Select(x=>x.Interest.Name.Trim()).Any(x=>x.Equals(modelInterest.Trim())))
-                {
-                    musician.Interests.Add(new MusicianInterest
-                    {
-                        Interest = new Interest { Name = modelInterest }
-                    });
-                }
-            }
-            //save
-            _musicianServices.UpdateMusician(musician);
-
-            //notify user
-            return Json($"Musician {musician.ApplicationUser.FirstName} updated!");
+            _musicianServices.UpdateMusicianInterests(GetUserId(), interestsModel);
+            return Json($"Interests updated!");
         }
 
         [HttpPost]
-        public async Task<IActionResult> RemoveEquipment(long equipmentId)
+        public IActionResult RemoveEquipment(long equipmentId)
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
-
-            var musician = _musicianServices.GetMusicianForUpdate(user.Id);
-
-            musician.Equipments.Remove(musician.Equipments.FirstOrDefault(x => x.EquipmentId == equipmentId));
-
-            _musicianServices.UpdateMusician(musician);
+            _musicianServices.RemoveMusicianEquipment(GetUserId(), equipmentId);
             return Json($"Equipment successfuly removed!");
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddEquipment(EquipmentViewModel model)
+        public IActionResult AddEquipment(EquipmentViewModel model)
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
-
-            var musician = _musicianServices.GetMusicianForUpdate(user.Id);
-
-            musician.Equipments.Add(new Equipment
-            {
-                EquipmentName = model.EquipmentName,
-                EquipmentType = new EquipmentType()
-                {
-                    Name = model.EquipmentType
-                },
-                Model = model.EquipmentModel
-            });
-
-            _musicianServices.UpdateMusician(musician);
+            _musicianServices.AddMusicianEquipment(GetUserId(), _mapper.Map<EquipmentDto>(model));
 
             return new JsonResult($"Equipment {model.EquipmentName} was succesfuly added!");
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateDemo(DemoViewModel demoViewModel)
+        public IActionResult CreateDemo(DemoViewModel demoViewModel)
         {
-
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
-
-            var musician = _musicianServices.GetMusicianForUpdate(user.Id);
-            musician.Demos.Add(new Demo
-            {
-                Name = demoViewModel.Name,
-                Link = demoViewModel.Link
-            });
-            _musicianServices.UpdateMusician(musician);
+            _musicianServices.AddDemo(GetUserId(), _mapper.Map<DemoDto>(demoViewModel));
+            
             return Json($"Demo {demoViewModel.Name} successfuly created!");
         }
 
         [HttpPost]
-        public async Task<IActionResult> BandCreate(BandViewModel model)
+        public IActionResult BandCreate(BandViewModel model)
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
-
-            var musician = _musicianServices.GetMusicianForUpdate(user.Id);
-
-            var bandsGenres = new List<BandsGenres>();
-
-            foreach (var genre in model.Genres)
-            {
-                bandsGenres.Add(new BandsGenres
-                {
-                    Genre = new Genre
-                    {
-                        Name = genre
-                    }
-                });
-            }
-
-            musician.MusicianBands.Add(new MusicianBand()
-            {
-                Band = new Band
-                {
-                    BandName = model.BandName,
-                    BandsGenres = bandsGenres
-                }
-            });
-
-            _musicianServices.UpdateMusician(musician);
+            _bandServices.CreateBand(GetUserId(), _mapper.Map<BandDto>(model));
 
             return new JsonResult($"Band {model.BandName} added sucessfully ");
         }

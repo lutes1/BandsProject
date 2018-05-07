@@ -9,7 +9,7 @@ namespace Bands.Domains.Configs
         public void Configure(EntityTypeBuilder<Equipment> builder)
         {
             builder.Property(x => x.EquipmentName).IsRequired().HasMaxLength(20);
-            builder.Property(x => x.Model).HasMaxLength(30);
+            builder.Property(x => x.EquipmentModel).HasMaxLength(30);
             builder.HasOne(x => x.EquipmentType).WithMany(x => x.Equipments).IsRequired();
             builder.HasOne(x => x.Musician).WithMany(x => x.Equipments).IsRequired();
         }

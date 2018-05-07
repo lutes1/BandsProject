@@ -108,12 +108,103 @@ namespace Bands.BLL.ServicesImplementations
         public List<MusicianReadDto> GetMusiciansPaginated(int pageNumber, string name = null)
         {
             int pageSize = 5;
-            Thread.Sleep(500);
             var paginatedList = !string.IsNullOrEmpty(name) 
                 ? GetMusiciansByName(name) 
                 : GetAllMusicians();
 
             return paginatedList.Skip(pageSize * pageNumber).Take(pageSize).ToList();
+        }
+
+        public void UpdateMusicianPersonalData(long id, MusicianReadDto model)
+        {
+            var musician = GetMusicianForUpdate(id);
+
+            if (model != null)
+            {
+                if (musician.ApplicationUser != null)
+                {
+                    musician.ApplicationUser.FirstName = model.ApplicationUser.FirstName ?? musician.ApplicationUser.FirstName;
+                    musician.ApplicationUser.LastName = model.ApplicationUser.LastName ?? musician.ApplicationUser.LastName;
+                    musician.ApplicationUser.PhoneNumber = model.ApplicationUser.PhoneNumber ?? musician.ApplicationUser.PhoneNumber;
+                }
+
+                musician.Description = model.Description ?? musician.Description;
+                if (model.MapLocation != null)
+                {
+                    musician.MapLocation.City = model.MapLocation.City ?? musician.MapLocation.City;
+                    musician.MapLocation.Country = model.MapLocation.Country ?? musician.MapLocation.Country;
+                }
+            }
+
+            UpdateMusician(musician);
+        }
+
+        public void UpdateMusicianInterests(long id, string[] interestsModel)
+        {
+            var musician = GetMusicianForUpdate(id);
+
+            //Remove the deleted interests from the musicians collection
+            var musicianInterests = musician.Interests.Select(x => x.Interest.Name.Trim()).ToArray();
+            foreach (var interest in musicianInterests)
+            {
+                if (!interestsModel.Any(x => x.Equals(interest.Trim())))
+                {
+                    musician.Interests.Remove(musician.Interests.FirstOrDefault(x => x.Interest.Name.Trim().Equals(interest)));
+                }
+            }
+
+            //add the new interests to the collection
+            foreach (var modelInterest in interestsModel)
+            {
+                if (!musician.Interests.Select(x => x.Interest.Name.Trim()).Any(x => x.Equals(modelInterest.Trim())))
+                {
+                    musician.Interests.Add(new MusicianInterest
+                    {
+                        Interest = new Interest { Name = modelInterest }
+                    });
+                }
+            }
+            //save
+            UpdateMusician(musician);
+        }
+
+        public void RemoveMusicianEquipment(long musicianId, long equipmentId)
+        {
+            var musician = GetMusicianForUpdate(musicianId);
+
+            musician.Equipments.Remove(musician.Equipments.FirstOrDefault(x => x.EquipmentId == equipmentId));
+
+            UpdateMusician(musician);
+        }
+
+        public void AddMusicianEquipment(long musicianId,EquipmentDto equipmentModel)
+        {
+            var musician = GetMusicianForUpdate(musicianId);
+
+            musician.Equipments.Add(new Equipment
+            {
+                EquipmentName = equipmentModel.EquipmentName,
+                EquipmentType = new EquipmentType()
+                {
+                    Name = equipmentModel.EquipmentType
+                },
+                EquipmentModel = equipmentModel.EquipmentModel
+            });
+
+            UpdateMusician(musician);
+        }
+
+        public void AddDemo(long id, DemoDto demoDto)
+        {
+            var musician = GetMusicianForUpdate(id);
+
+            musician.Demos.Add(new Demo
+            {
+                Name = demoDto.Name,
+                Link = demoDto.Link
+            });
+
+            UpdateMusician(musician);
         }
     }
 }
