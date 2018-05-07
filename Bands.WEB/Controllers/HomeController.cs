@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Bands.WEB.Models;
-using Bands.BLL;
 using Bands.BLL.Abstractions;
 using Bands.WEB.Models.ViewModels;
 
@@ -15,13 +11,11 @@ namespace Bands.WEB.Controllers
     public class HomeController : Controller
     {
         private readonly IMusiciansServices _musicianServices;
-        private readonly IBandsServices _bandServices;
         private readonly IMapper _mapper;
 
-        public HomeController(IMusiciansServices musicianServices,IBandsServices bandServices,IMapper mapper)
+        public HomeController(IMusiciansServices musicianServices, IBandsServices bandServices, IMapper mapper)
         {
             _musicianServices = musicianServices;
-            _bandServices = bandServices;
             _mapper = mapper;
         }
         public IActionResult Index()
@@ -33,22 +27,24 @@ namespace Bands.WEB.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Bands()
-        {
-            var model = _bandServices.GetAllBands();
-            return View(model);
-        }
-
-        public IActionResult MusicianPage(long id)
+        public IActionResult MusicianInfo(long id)
         {
             return View(_mapper.Map<MusicianViewModel>(_musicianServices.GetMusicianById(id)));
         }
 
-        public IActionResult Musicians()
+        public IActionResult Musicians(string name)
         {
-            var musicianread = _musicianServices.GetMusicianById(4);
-            var model = Mapper.Map<List<MusicianViewModel>>(_musicianServices.GetAllMusicians());
+            ViewData["SearchQuery"] = name;
+            var model = _mapper.Map<List<MusicianViewModel>>(_musicianServices.GetMusiciansPaginated(0,name));
+            if (!string.IsNullOrEmpty(name) && model.Count == 0)
+                ViewData["StatusMessage"] = "There aren't any musicians with this name"; 
             return View(model);
+        }
+
+        public IActionResult MusiciansPage(int pageNumber, string name)
+        {
+            var model = _mapper.Map<List<MusicianViewModel>>(_musicianServices.GetMusiciansPaginated(pageNumber, name));
+            return PartialView("MusicianPage",model);
         }
     }
 }

@@ -16,23 +16,35 @@ namespace Bands.DAL.Repositories
         public override IEnumerable<Musician> GetAll()
         {
             return DbContext.Musicians
-                .Include(x=>x.MusicianType)
                 .Include(x => x.ApplicationUser)
-                .Include(x=>x.Interests).ThenInclude(x=>x.Interest)
-                .Include(x=>x.MapLocation)
+                .Include(x => x.Interests).ThenInclude(x => x.Interest)
+                .Include(x => x.MusicianBands).ThenInclude(x => x.Band)
+                .Include(x => x.Equipments).ThenInclude(x => x.EquipmentType)
+                .Include(x => x.MapLocation)
+                .Include(x => x.MusicianType)
+                .Include(x => x.Demos)
+                .Include(x=>x.MusicianBands)
+                .ThenInclude(x => x.Band.BandsGenres)
+                .ThenInclude(x => x.Genre)
                 .ToList();
         }
 
         public Musician GetMuscianById(long id)
         {
-            return DbContext.Musicians
-                .Include(x=>x.ApplicationUser)
-                .Include(x=>x.Interests).ThenInclude(x=>x.Interest)
-                .Include(x=>x.MusicianBands).ThenInclude(x=>x.Band)
-                .Include(x=>x.Equipments).ThenInclude(x=>x.EquipmentType)
-                .Include(x=>x.MapLocation)
-                .Include(x=>x.MusicianType)
-                .FirstOrDefault(x=>x.ApplicationUserId == id);
+            var musician = DbContext.Musicians
+                .Include(x => x.ApplicationUser)
+                .Include(x => x.Interests).ThenInclude(x => x.Interest)
+                .Include(x => x.MusicianBands).ThenInclude(x => x.Band)
+                .Include(x => x.Equipments).ThenInclude(x => x.EquipmentType)
+                .Include(x => x.MapLocation)
+                .Include(x => x.MusicianType)
+                .Include(x => x.Demos)
+                .Include(x => x.MusicianBands)
+                .ThenInclude(x=>x.Band.BandsGenres)
+                .ThenInclude(x=>x.Genre)
+                .FirstOrDefault(x => x.ApplicationUserId == id);
+
+            return musician;
         }
 
         public MusicianReadCommonDto GetMusicianCommonData()

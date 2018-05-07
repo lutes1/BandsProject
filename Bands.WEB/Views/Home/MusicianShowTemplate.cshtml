@@ -8,18 +8,18 @@
         @if (Model.ApplicationUser.Picture == null)
         {
             <div class="pictureFrameNoPicture profilePicture text-center">
-                    <img class="icon-big rounded mx-auto d-block" src="~/images/user-icon.png" />
+                <img class="icon-big rounded mx-auto d-block" src="~/images/user-icon.png" />
             </div>
-            }
-            else
-            {
+        }
+        else
+        {
             <div class="profilePicture">
                 <img class="picture" src="@Model.ApplicationUser.Picture.Path" />
             </div>
-            }
-        </div>
+        }
+    </div>
     <div class="col-9">
-        <a href="@Url.Action("MusicianPage",new{id=Model.ApplicationUserId})">
+        <a href="@Url.Action("MusicianInfo",new{id=Model.ApplicationUserId})">
             <h4>
                 @Model.ApplicationUser.FirstName @Model.ApplicationUser.LastName
 
@@ -34,41 +34,41 @@
             Likes
         </h6>
         @if (Model.Likes == 0)
-    {
-        <span class="small-info-grey">No feedback yet</span>
+        {
+            <span class="small-info-grey">No feedback yet</span>
 
-}
-else
-{
-    <span class="small-data-blue">@Model.Likes</span>
-}
+        }
+        else
+        {
+            <span class="small-data-blue">@Model.Likes</span>
+        }
 
         @if (Model.Interests != null)
-    {
-        <h5 class="small-info-grey info-top-margin-small">
-            Interests
-        </h5>
-    foreach (var interest in Model.Interests)
-    {
-        <span class='small-data-blue'>
-            @interest.Name
-        </span>
-    if (interest != Model.Interests.Last())
-    {
-        <span class="divider-vertical"></span>
-}
-}
-}
+        {
+            <h5 class="small-info-grey info-top-margin-small">
+                Interests
+            </h5>
+            foreach (var interest in Model.Interests)
+            {
+                <span class='small-data-blue'>
+                    @interest.Name
+                </span>
+                if (interest != Model.Interests.Last())
+                {
+                    <span class="divider-vertical"></span>
+                }
+            }
+        }
         <h5 class="small-info-grey info-top-margin-small">
             Description
         </h5>
         @if (string.IsNullOrEmpty(Model.Description))
-    {
-        <span class="small-info-grey">No description</span>
-}
-else
-{
-    <span class="small-data-blue">@Model.Description</span>
-}
+        {
+            <span class="small-info-grey">No description</span>
+        }
+        else
+        {
+            <span class="small-data-blue">@Model.Description</span>
+        }
     </div>
-    </div>
+</div>

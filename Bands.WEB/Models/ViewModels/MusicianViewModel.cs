@@ -16,7 +16,7 @@ namespace Bands.WEB.Models.ViewModels
 		public MapLocationViewModel MapLocation { get; set; }
 		public MusicianTypeViewModel MusicianType { get; set; }
 		public List<InterestViewModel> Interests { get; set; }
-		public List<long> Bands { get; set; }
+		public List<BandViewModel> Bands { get; set; }
 		public List<EquipmentViewModel> Equipments { get; set; }
 		public long ApplicationUserId { set; get; }
 		public bool DisplayContactData { get; set; }

@@ -120,7 +120,7 @@
             <!--Tabs-->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#equipments-edit-container" role="tab" aria-controls="videos" aria-selected="true"><img class="icon-small-half-opacity" src="~/icons/guitar.png" /><strong>Equipments</strong></a>
+                    <a class="nav-link active" aria-selected="true" id="home-tab" data-toggle="tab" href="#equipments-edit-container" role="tab" aria-controls="videos"><img class="icon-small-half-opacity" src="~/icons/guitar.png" /><strong>Equipments</strong></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#bands-container" role="tab" aria-controls="contact" aria-selected="false"><img class="icon-small-half-opacity" src="~/icons/my-band.jpg" /> <strong>Band</strong></a>
@@ -131,7 +131,7 @@
             </ul>
             <div class="tab-content" id="myTabContent">
                 <!--Equipments-->
-                <div class="tab-pane fade tab-container" id="equipments-edit-container" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane fade show active tab-container" id="equipments-edit-container" role="tabpanel" aria-labelledby="home-tab">
                     <div id="equipments-edit-container">
                         <button id="add-new-equipment-button" class="btn btn-light margin-bottom all-width">Add new equipment</button>
                         <div id="add-new-equipment-container" class="hidden">
@@ -153,7 +153,7 @@
                 </div>
                 <!--Demos-->
                 <div class="tab-pane fade tab-container" id="demos-container" role="tabpanel" aria-labelledby="demos-tab">
-                
+                @Html.Partial("DemosManagePartial",new DemoViewModel())
                 </div>
             </div>
         </div>
@@ -164,7 +164,7 @@
     <script>
         $("#add-new-equipment-container").find("input").removeAttr("disabled");
         //genres manage
-        $("#genres-edit").keypress(function (e) {
+        $("#genres-edit").keypress(function(e) {
             addGenres(e);
         });
 
@@ -185,7 +185,7 @@
         }
 
         function addCloseHandler() {
-            $(".cross-icon").click(function () {
+            $(".cross-icon").click(function() {
                 $(this).parent().remove();
                 if ($("#genres-edit-container").children().length === 0)
                     $("#genres-edit-container").css("display", "none");
@@ -193,7 +193,7 @@
         }
 
         //bands add
-        $("#band-submit").click(function () {
+        $("#band-submit").click(function() {
 
 
             var bandGenres = [];
@@ -218,26 +218,56 @@
                 traditional: true
             });
 
-            request.done(function (msg) {
+            request.done(function(msg) {
                 $("#band-callback-message").show();
                 $("#band-callback-message").removeClass("alert-danger");
-                $("#band-callback-message").addClass("alert alert-success equipments-update-feedback");
+                $("#band-callback-message").addClass("alert alert-success");
                 $("#band-callback-message").text(msg);
 
-                $("#band-callback-message").click(function () {
+                $("#band-callback-message").click(function() {
                     $(this).hide();
                 });
             });
 
-            request.fail(function (textStatus) {
-                $("#band-callback-message").addClass("alert alert-danger equipments-update-feedback");
+            request.fail(function(textStatus) {
+                $("#band-callback-message").addClass("alert alert-danger");
                 $("#band-callback-message").text("Error");
 
-                $("#band-callback-message").click(function () {
+                $("#band-callback-message").click(function() {
                     $(this).hide();
                 });
             });
         });
 
+        //add demo
+        $("#demo-submit").click(function() {
+
+            var demoViewModel = $("#create-demo :input").serialize();
+
+            var request = $.post({
+                url: 'CreateDemo',
+                data: demoViewModel
+            });
+
+            request.done(function(msg) {
+                $("#demo-callback-message").show();
+                $("#demo-callback-message").addClass("alert alert-success equipments-update-feedback");
+                $("#demo-callback-message").text(msg);
+
+                $("#demo-callback-message").click(function() {
+                    $(this).hide();
+                });
+            });
+
+            request.fail(function(textStatus) {
+                $("#demo-callback-message").show();
+                $("#demo-callback-message").addClass("alert alert-danger equipments-update-feedback");
+                $("#demo-callback-message").text("Error");
+
+                $("#demo-callback-message").click(function() {
+                    $(this).hide();
+                });
+            });
+        });
     </script>
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 using AutoMapper;
 using Bands.BLL.Abstractions;
 using Bands.DAL;
@@ -94,6 +95,25 @@ namespace Bands.BLL.ServicesImplementations
         public void UpdateMusician(Musician musician)
         {
             _musiciansRepository.Update(musician);
+        }
+
+        public List<MusicianReadDto> GetMusiciansByName(string name)
+        {
+
+            return _mapper.Map<List<MusicianReadDto>>(_musiciansRepository.GetAll()
+                .Where(x=>x.ApplicationUser.FirstName.ToLower().Contains(name.ToLower()) ||
+                          x.ApplicationUser.LastName.ToLower().Contains(name.ToLower())));
+        }
+
+        public List<MusicianReadDto> GetMusiciansPaginated(int pageNumber, string name = null)
+        {
+            int pageSize = 5;
+            Thread.Sleep(500);
+            var paginatedList = !string.IsNullOrEmpty(name) 
+                ? GetMusiciansByName(name) 
+                : GetAllMusicians();
+
+            return paginatedList.Skip(pageSize * pageNumber).Take(pageSize).ToList();
         }
     }
 }

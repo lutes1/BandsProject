@@ -194,6 +194,26 @@ namespace Bands.WEB.Controllers
         }
 
         [HttpPost]
+        public async Task<IActionResult> CreateDemo(DemoViewModel demoViewModel)
+        {
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
+            var musician = _musicianServices.GetMusicianForUpdate(user.Id);
+            musician.Demos.Add(new Demo
+            {
+                Name = demoViewModel.Name,
+                Link = demoViewModel.Link
+            });
+            _musicianServices.UpdateMusician(musician);
+            return Json($"Demo {demoViewModel.Name} successfuly created!");
+        }
+
+        [HttpPost]
         public async Task<IActionResult> BandCreate(BandViewModel model)
         {
             var user = await _userManager.GetUserAsync(User);

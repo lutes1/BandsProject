@@ -23,18 +23,18 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto mx-auto">
+            <ul class="navbar-nav">
                 <li class="nav-item active line-right top-menu-item">
                     <a asp-area="" class="nav-item nav-link" asp-controller="Home" asp-action="Index">Home</a>
                 </li>
-                <li class="nav-item active line-right top-menu-item">
+                <li class="nav-item active">
                     <a asp-area="" class="nav-item nav-link" asp-controller="Home" asp-action="Musicians">Musicians</a>
                 </li>
-                <li class="nav-item active">
-                    <a asp-area="" class="nav-item nav-link" asp-controller="Home" asp-action="Bands">Bands</a>
-                </li>
             </ul>
-            <span class="navbar-text">
+            <div class="search-input">
+                <form asp-controller="Home" asp-action="Musicians"><input type="text" name="name" class="form-control" id="search-musicians" placeholder="search musicians..."/></form>
+            </div>
+            <span class="navbar-text mr-auto">
                 @await Html.PartialAsync("_LoginPartial")
             </span>
         </div>

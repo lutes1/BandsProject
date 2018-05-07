@@ -12,11 +12,16 @@ namespace Bands.WEB
     {
         public DtoToViewModelMapper()
         {
-            CreateMap<MusicianViewModel, MusicianReadDto>();
+            CreateMap<MusicianReadDto, MusicianViewModel>();
             CreateMap<EquipmentDto, EquipmentViewModel>()
-                .ForMember(from => from.EquipmentType, to => to.MapFrom(x => x.EquipmentType.Name))
-                .ForMember(from => from.EquipmentModel, to => to.MapFrom(x => x.Model));
-            CreateMap<MusiciansCommonDataViewModel, MusicianReadCommonDto>();
+                .ForMember(
+                    to => to.EquipmentType,
+                    from => from.MapFrom(x => x.EquipmentType.Name))
+                .ForMember(
+                    to => to.EquipmentModel,
+                    from => from.MapFrom(x => x.Model));
+
+            CreateMap<MusicianReadCommonDto, MusiciansCommonDataViewModel>();
         }
     }
 }

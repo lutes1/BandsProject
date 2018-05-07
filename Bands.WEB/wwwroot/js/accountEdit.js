@@ -102,37 +102,31 @@
 
     $("#equipment-submit-0").click(function () {
 
-        if ($('#equipments-update-form-0 :input').valid()) {
+        var model = $("#equipments-update-form-0 :input").serialize();
 
-            var model = $("#equipments-update-form-0 :input").serialize();
-            alert(model);
+        var request = $.post({
+            url: 'AddEquipment',
+            data: model
+        });
 
-            var request = $.post({
-                url: 'AddEquipment',
-                data: model
+        request.done(function (msg) {
+            $("#equipments-callback-message-0").show();
+            $("#equipments-callback-message-0").addClass("alert alert-success equipments-update-feedback");
+            $("#equipments-callback-message-0").text(msg);
+
+            $(".equipments-update-feedback").click(function () {
+                $(this).hide();
             });
+        });
 
-            request.done(function (msg) {
-                $("#equipments-callback-message-0").show();
-                $("#equipments-callback-message-0").addClass("alert alert-success equipments-update-feedback");
-                $("#equipments-callback-message-0").text(msg);
+        request.fail(function (textStatus) {
+            $("#equipments-callback-message-0").addClass("alert alert-danger equipments-update-feedback");
+            $("#equipments-callback-message-0").text("Error");
 
-                $(".equipments-update-feedback").click(function () {
-                    $(this).hide();
-                });
+            $(".equipments-update-feedback").click(function () {
+                $(this).hide();
             });
-
-            request.fail(function (textStatus) {
-                $("#equipments-callback-message-0").addClass("alert alert-danger equipments-update-feedback");
-                $("#equipments-callback-message-0").text("Error");
-
-                $(".equipments-update-feedback").click(function () {
-                    $(this).hide();
-                });
-            });
-        } else {
-            alert("The form is not valid.")
-        }
+        });
 
     });
 

@@ -13,7 +13,6 @@ namespace Bands.WEB.Models.ViewModels
         [StringLength(20)]
         public string LastName { get; set; }
         public PictureViewModel Picture { get; set; }
-        public MusicianViewModel Musician { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
     }

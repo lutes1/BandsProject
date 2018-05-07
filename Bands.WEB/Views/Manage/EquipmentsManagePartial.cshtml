@@ -13,7 +13,7 @@
     }
 }
 
-<form class="equipments-edit-form" id="equipments-update-form-@Model.EquipmentId" asp-action="AddEquipment">
+<div class="equipments-edit-form" id="equipments-update-form-@Model.EquipmentId">
     <div class="text-right  @iconDeleteHidden">
         <button id="delete-equipment-@Model.EquipmentId" class="btn btn-light"><div class='cross-icon-equipments'>&#10005</div></button>
     </div>
@@ -55,9 +55,9 @@
     @if (Model.EquipmentId == 0)
     {
         <div class="text-center">
-            <input type="submit" id="equipment-submit-@Model.EquipmentId---" class="btn btn-default" value="Save">
+            <input type="submit" id="equipment-submit-@Model.EquipmentId" class="btn btn-default" value="Save">
         </div>
     }
 
-</form>
+</div>
 <div id="equipments-callback-message-@Model.EquipmentId"></div>
